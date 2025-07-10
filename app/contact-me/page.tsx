@@ -184,7 +184,7 @@ export default function ContactMe() {
           </div>
 
           <div className="flex justify-center items-start w-[55%] border-r-[0.5px] border-[#607B96] py-[100px] px-[90px]">
-            <div className="flex flex-col items-start">
+            <div className="flex flex-col items-start w-[98%]">
               <div className="flex">
                 <span className="mr-[20px]">1</span>
                 <p>
@@ -260,7 +260,8 @@ export default function ContactMe() {
               <div className="flex">
                 <span className="mr-[20px]">9</span>
               </div>
-              <div className="flex">
+              <div className="relative flex">
+                <span className="absolute -left-2">1</span>
                 <span className="mr-[20px]">0</span>
                 <p>
                   <span className="text-[#5565E8]">
@@ -273,7 +274,8 @@ export default function ContactMe() {
                   <span>{`{`}</span>
                 </p>
               </div>
-              <div className="flex">
+              <div className="relative flex">
+                <span className="absolute -left-2">1</span>
                 <span className="mr-[20px]">1</span>
                 <p>
                   <span className="text-[#5565E8] ml-[10px]">form</span>
@@ -284,7 +286,8 @@ export default function ContactMe() {
                   <span>);</span>
                 </p>
               </div>
-              <div className="flex">
+              <div className="relative flex">
+                <span className="absolute -left-2">1</span>
                 <span className="mr-[20px]">2</span>
                 <p>
                   <span>{`})`}</span>
