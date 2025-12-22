@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import formatDate from "../../utils/formatdate";
 
 export default function ContactMe() {
@@ -9,10 +9,39 @@ export default function ContactMe() {
   const [name, setName] = useState<String>("");
   const [email, setEmail] = useState<String>("");
   const [message, setMessage] = useState<String>("");
+  const [line, setLine] = useState<number>(10);
+  const [lineArr, setLineArr] = useState<Array<number>>([
+    1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
+  ]);
   let date = new Date();
 
+  useEffect(() => {
+    countLines();
+  }, []);
+
+  function countLines() {
+    var el = document.getElementById("content");
+    var divHeight = el.offsetHeight;
+    var lineHeight = parseInt(el.style.lineHeight);
+    var lines = divHeight / lineHeight;
+    setLine(lines);
+    let i = 0;
+    const last = lineArr[lineArr.length - 1];
+    console.log(line, last, lineArr);
+    if (last < line) {
+      i = last;
+      let temp = [];
+      for (i; i < line; i++) {
+        temp.push(i + 1);
+      }
+      setLineArr((prev) => [...prev, ...temp]);
+    } else if (line < last) {
+      setLineArr((prev) => prev.slice(0, line));
+    }
+  }
+
   return (
-    <div className="h-full w-full flex">
+    <div className="h-full w-full bg-[#011627] flex">
       {/* 왼쪽 */}
       <div className="h-full w-[300px] border-r-[0.5px] border-[#607B96]">
         <div>
@@ -146,7 +175,7 @@ export default function ContactMe() {
           </div>
         </div>
         <div className="flex h-full">
-          <div className="flex flex-col items-center w-[45%] border-r-[0.5px] border-[#607B96]">
+          <div className="flex flex-col items-center w-[50%] border-r-[0.5px] border-[#607B96]">
             <form
               action=""
               className="flex flex-col items-start pt-[115px] gap-7"
@@ -156,7 +185,10 @@ export default function ContactMe() {
                 <input
                   id="name"
                   type="text"
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    countLines();
+                  }}
                   className="bg-[#011221] p-[13px] w-[372px] h-[40px] border-[0.5px] border-[#1E2D3D] focus:border-[#607B96] focus:border-[2px] outline-none rounded-[8px]"
                 />
               </div>
@@ -165,7 +197,10 @@ export default function ContactMe() {
                 <input
                   id="email"
                   type="text"
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    countLines();
+                  }}
                   className="bg-[#011221] p-[13px] w-[372px] h-[40px] border-[0.5px] border-[#1E2D3D] focus:border-[#607B96] focus:border-[2px] outline-none rounded-[8px]"
                 />
               </div>
@@ -173,7 +208,10 @@ export default function ContactMe() {
                 <label htmlFor="message">_message:</label>
                 <textarea
                   id="message"
-                  onChange={(e) => setMessage(e.target.value)}
+                  onChange={(e) => {
+                    setMessage(e.target.value);
+                    countLines();
+                  }}
                   className="bg-[#011221] resize-none p-[13px] w-[372px] h-[145px] border-[0.5px] border-[#1E2D3D] focus:border-[#607B96] focus:border-[2px] outline-none rounded-[8px]"
                 />
               </div>
@@ -183,116 +221,89 @@ export default function ContactMe() {
             </form>
           </div>
 
-          <div className="flex justify-center items-start w-[55%] border-r-[0.5px] border-[#607B96] py-[100px] px-[90px]">
-            <div className="flex flex-col items-start w-[98%]">
-              <div className="flex">
-                <span className="mr-[20px]">1</span>
-                <p>
-                  <span className="text-[#C98BDF]">const </span>
-                  <span className="text-[#5565E8]">button</span>
-                  <span className="text-[#C98BDF]"> = </span>
-                  <span className="text-[#5565E8]">document</span>
-                  <span>.</span>
-                  <span className="text-[#5565E8]">querySelector</span>
-                  <span>(</span>
-                  <span className="text-[#FEA55F]">'#sendBtn'</span>
-                  <span>);</span>
-                </p>
-              </div>
-              <div className="flex">
-                <span className="mr-[20px]">2</span>
-              </div>
-              <div className="flex">
-                <span className="mr-[20px]">3</span>
-                <p>
-                  <span className="text-[#C98BDF]">const </span>
-                  <span className="text-[#5565E8]">message</span>
-                  <span className="text-[#C98BDF]"> = </span>
-                  <span>{`{`}</span>
-                </p>
-              </div>
-              <div className="flex">
-                <span className="mr-[20px]">4</span>
-                <p>
-                  <span className="text-[#5565E8] ml-[10px]">name</span>
-                  <span>: </span>
-                  <span className="text-[#FEA55F]">{`"${name}"`}</span>
-                  <span>,</span>
-                </p>
-              </div>
-              <div className="flex">
-                <span className="mr-[20px]">5</span>
-                <p>
-                  <span className="text-[#5565E8] ml-[10px]">email</span>
-                  <span>: </span>
-                  <span className="text-[#FEA55F]">{`"${email}"`}</span>
-                  <span>,</span>
-                </p>
-              </div>
-              <div className="flex">
-                <span className="mr-[20px]">6</span>
-                <p>
-                  <span className="text-[#5565E8] ml-[10px]">message</span>
-                  <span>: </span>
-                  <span className="text-[#FEA55F]">{`"${message}"`}</span>
-                  <span>,</span>
-                </p>
-              </div>
-              <div className="flex">
-                <span className="mr-[20px]">7</span>
-                <p>
-                  <span className="ml-[10px]">date: </span>
-                  <span className="text-[#FEA55F]">{`"${formatDate(
-                    "day",
-                    date.getDay()
-                  )} ${date.getDate()} ${formatDate(
-                    "month",
-                    date.getMonth() + 1
-                  )}"`}</span>
-                </p>
-              </div>
-              <div className="flex">
-                <span className="mr-[20px]">8</span>
-                <p>
-                  <span>{`}`}</span>
-                </p>
-              </div>
-              <div className="flex">
-                <span className="mr-[20px]">9</span>
-              </div>
-              <div className="relative flex">
+          <div className="flex justify-center items-start w-[50%] border-r-[0.5px] border-[#607B96] py-[100px] px-[50px]">
+            <div style={{ lineHeight: "20px" }} className="mr-[20px]">
+              {lineArr.map((cnt, idx) => (
+                <p key={idx}>{cnt}</p>
+              ))}
+            </div>
+            <div
+              id="content"
+              style={{ lineHeight: "20px" }}
+              className="flex flex-col items-start w-[98%]"
+            >
+              <p>
+                <span id="text" className="text-[#C98BDF]">
+                  const{" "}
+                </span>
+                <span className="text-[#5565E8]">button</span>
+                <span className="text-[#C98BDF]"> = </span>
+                <span className="text-[#5565E8]">document</span>
+                <span>.</span>
+                <span className="text-[#5565E8]">querySelector</span>
+                <span>(</span>
+                <span className="text-[#FEA55F]">'#sendBtn'</span>
+                <span>);</span>
+              </p>
+              <p>
+                <span className="text-[#C98BDF]">const </span>
+                <span className="text-[#5565E8]">message</span>
+                <span className="text-[#C98BDF]"> = </span>
+                <span>{`{`}</span>
+              </p>
+              <p>
+                <span className="text-[#5565E8] ml-[10px]">name</span>
+                <span>: </span>
+                <span className="text-[#FEA55F]">{`"${name}"`}</span>
+                <span>,</span>
+              </p>
+              <p>
+                <span className="text-[#5565E8] ml-[10px]">email</span>
+                <span>: </span>
+                <span className="text-[#FEA55F]">{`"${email}"`}</span>
+                <span>,</span>
+              </p>
+              <p>
+                <span className="text-[#5565E8] ml-[10px]">message</span>
+                <span>: </span>
+                <span className="text-[#FEA55F]">{`"${message}"`}</span>
+                <span>,</span>
+              </p>
+              <p>
+                <span className="ml-[10px]">date: </span>
+                <span className="text-[#FEA55F]">{`"${formatDate(
+                  "day",
+                  date.getDay()
+                )} ${date.getDate()} ${formatDate(
+                  "month",
+                  date.getMonth() + 1
+                )}"`}</span>
+              </p>
+              <p>
+                <span>{`}`}</span>
+              </p>
+              {/* <div className="relative flex">
                 <span className="absolute -left-2">1</span>
-                <span className="mr-[20px]">0</span>
-                <p>
-                  <span className="text-[#5565E8]">
-                    button.addEventListener
-                  </span>
-                  <span>(</span>
-                  <span className="text-[#FEA55F]">'click'</span>
-                  <span>, ()</span>
-                  <span className="text-[#C98BDF]">{` => `}</span>
-                  <span>{`{`}</span>
-                </p>
-              </div>
-              <div className="relative flex">
-                <span className="absolute -left-2">1</span>
-                <span className="mr-[20px]">1</span>
-                <p>
-                  <span className="text-[#5565E8] ml-[10px]">form</span>
-                  <span>.</span>
-                  <span className="text-[#5565E8]">send</span>
-                  <span>(</span>
-                  <span className="text-[#5565E8]">message</span>
-                  <span>);</span>
-                </p>
-              </div>
-              <div className="relative flex">
-                <span className="absolute -left-2">1</span>
-                <span className="mr-[20px]">2</span>
-                <p>
-                  <span>{`})`}</span>
-                </p>
-              </div>
+                <span className="mr-[20px]">0</span> */}
+              <p>
+                <span className="text-[#5565E8]">button.addEventListener</span>
+                <span>(</span>
+                <span className="text-[#FEA55F]">'click'</span>
+                <span>, ()</span>
+                <span className="text-[#C98BDF]">{` => `}</span>
+                <span>{`{`}</span>
+              </p>
+              <p>
+                <span className="text-[#5565E8] ml-[10px]">form</span>
+                <span>.</span>
+                <span className="text-[#5565E8]">send</span>
+                <span>(</span>
+                <span className="text-[#5565E8]">message</span>
+                <span>);</span>
+              </p>
+              <p>
+                <span>{`})`}</span>
+              </p>
             </div>
           </div>
           <div className="w-[25px] border-l-[0.5px] border-[#607B96] flex justify-center pt-1">

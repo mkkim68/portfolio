@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <div className="text-[#607B96] flex justify-between w-full border-t-[0.5px] h-[5vh]">
+    <div className="text-[#607B96] rounded-[8px] bg-[#011627] flex justify-between w-full border-t-[0.5px] h-[5vh]">
       <div className="flex">
         <div className="border-r-[0.5px] w-[150px] flex justify-center items-center">
           <span>find me in :</span>
