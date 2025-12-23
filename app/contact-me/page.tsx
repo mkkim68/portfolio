@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import formatDate from "../../utils/formatdate";
 
 export default function ContactMe() {
@@ -13,11 +13,32 @@ export default function ContactMe() {
   const [lineArr, setLineArr] = useState<Array<number>>([
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
   ]);
+  const previewRef = useRef<HTMLDivElement | null>(null);
+  const [w, setWidth] = useState<number>(300);
+
   let date = new Date();
 
   useEffect(() => {
-    countLines();
+    if (previewRef.current) {
+      const eventHandler = () => {
+        const { width, height } = previewRef.current.getBoundingClientRect();
+
+        setWidth(width);
+        // console.log(width, height);
+      };
+
+      const resizeObserver = new ResizeObserver(eventHandler);
+      resizeObserver.observe(previewRef.current);
+
+      return () => resizeObserver.disconnect();
+    }
   }, []);
+
+  useEffect(() => {
+    requestAnimationFrame(() => {
+      countLines();
+    });
+  }, [w]);
 
   function countLines() {
     var el = document.getElementById("content");
@@ -26,17 +47,17 @@ export default function ContactMe() {
     var lines = divHeight / lineHeight;
     setLine(lines);
     let i = 0;
-    const last = lineArr[lineArr.length - 1];
-    console.log(line, last, lineArr);
-    if (last < line) {
+    const last = lineArr[lineArr.length - 1] ?? 0;
+    // console.log(line, last, lineArr);
+    if (last < lines) {
       i = last;
       let temp = [];
-      for (i; i < line; i++) {
+      for (i; i < lines; i++) {
         temp.push(i + 1);
       }
       setLineArr((prev) => [...prev, ...temp]);
-    } else if (line < last) {
-      setLineArr((prev) => prev.slice(0, line));
+    } else if (lines < last) {
+      setLineArr((prev) => prev.slice(0, lines));
     }
   }
 
@@ -49,10 +70,34 @@ export default function ContactMe() {
             onClick={() => setIsContactOpen((prev) => !prev)}
             className="cursor-pointer h-[45px] w-full flex p-[22px] items-center border-b-[0.5px] border-[#607B96]"
           >
-            <h3 className="text-white">{isContactOpen ? "▲" : "▼"} contacts</h3>
+            <h3 className="text-white">
+              <span
+                className={`
+                  inline-block
+                  transition-transform duration-200 ease-in-out
+                  ${isContactOpen ? "rotate-180" : "rotate-0"}
+                `}
+              >
+                ▼
+              </span>{" "}
+              <span>contacts</span>
+            </h3>
           </button>
-          {isContactOpen ? (
-            <div className="text-[#607B96] flex flex-col p-[22px] gap-2">
+          <div
+            className={`
+              overflow-hidden
+              transition-[max-height] duration-300 ease-in-out
+              ${isContactOpen ? "max-h-[70px]" : "max-h-0"}
+            `}
+          >
+            <div
+              className={`text-[#607B96] flex flex-col p-[22px] gap-2 duration-200
+            ${
+              isContactOpen
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 -translate-y-1"
+            }`}
+            >
               <p className="flex items-center gap-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -68,23 +113,8 @@ export default function ContactMe() {
                 </svg>
                 <span>kimminkyoung0608@gmail.com</span>
               </p>
-              <p className="flex items-center gap-2">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 17 17"
-                  fill="none"
-                >
-                  <path
-                    d="M16.221 12.496V15.6825C16.2211 15.9107 16.1347 16.1304 15.9791 16.2973C15.8236 16.4642 15.6105 16.5659 15.3829 16.5819C14.9891 16.6089 14.6674 16.6234 14.4187 16.6234C6.45507 16.6234 0 10.1683 0 2.20468C0 1.95596 0.0135175 1.63424 0.0414537 1.24043C0.0574246 1.01283 0.159129 0.799769 0.326046 0.644225C0.492962 0.488682 0.712664 0.402241 0.940819 0.402344H4.12735C4.23913 0.402231 4.34696 0.44367 4.4299 0.518613C4.51283 0.593555 4.56495 0.69665 4.57613 0.80787C4.59686 1.01514 4.61578 1.18005 4.63381 1.30531C4.8129 2.55517 5.17992 3.77076 5.72242 4.91089C5.80803 5.09112 5.75215 5.3065 5.58994 5.42185L3.64522 6.81145C4.83427 9.58205 7.04222 11.79 9.81282 12.979L11.2006 11.0379C11.2573 10.9586 11.3401 10.9017 11.4345 10.8772C11.5288 10.8527 11.6288 10.862 11.717 10.9037C12.857 11.4451 14.0723 11.8112 15.3217 11.9896C15.4469 12.0076 15.6118 12.0274 15.8173 12.0472C15.9284 12.0586 16.0312 12.1108 16.106 12.1937C16.1807 12.2767 16.2221 12.3844 16.2219 12.496H16.221Z"
-                    fill="#607B96"
-                  />
-                </svg>
-                <span>+821041783253</span>
-              </p>
             </div>
-          ) : null}
+          </div>
         </div>
         <div>
           <button
@@ -92,10 +122,25 @@ export default function ContactMe() {
             className="cursor-pointer h-[40px] w-full flex p-[22px] items-center border-y-[0.5px] border-[#607B96]"
           >
             <h3 className="text-white">
-              {isFindOpen ? "▲" : "▼"} find-me-also-in
+              <span
+                className={`
+                  inline-block
+                  transition-transform duration-200 ease-in-out
+                  ${isFindOpen ? "rotate-180" : "rotate-0"}
+                `}
+              >
+                ▼
+              </span>{" "}
+              <span>find-me-also-in</span>
             </h3>
           </button>
-          {isFindOpen ? (
+          <div
+            className={`
+              origin-top
+              transition-all duration-300 ease-in-out
+              ${isFindOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}
+            `}
+          >
             <div className="text-[#607B96] flex flex-col p-[22px] gap-[10px]">
               <a
                 href="https://github.com/mkkim68"
@@ -152,7 +197,7 @@ export default function ContactMe() {
                 <span>Instagram account</span>
               </a>
             </div>
-          ) : null}
+          </div>
         </div>
       </div>
       {/* 메인 */}
@@ -174,8 +219,8 @@ export default function ContactMe() {
             </svg>
           </div>
         </div>
-        <div className="flex h-full">
-          <div className="flex flex-col items-center w-[50%] border-r-[0.5px] border-[#607B96]">
+        <div ref={previewRef} className="flex h-full">
+          <div className="flex flex-col items-center w-[100%] border-r-[0.5px] border-[#607B96]">
             <form
               action=""
               className="flex flex-col items-start pt-[115px] gap-7"
@@ -221,10 +266,16 @@ export default function ContactMe() {
             </form>
           </div>
 
-          <div className="flex justify-center items-start w-[50%] border-r-[0.5px] border-[#607B96] py-[100px] px-[50px]">
+          <div
+            className={`${
+              w <= 800 ? "hidden" : "block"
+            } flex justify-center items-start w-[100%] border-r-[0.5px] border-[#607B96] py-[100px] px-[50px]`}
+          >
             <div style={{ lineHeight: "20px" }} className="mr-[20px]">
               {lineArr.map((cnt, idx) => (
-                <p key={idx}>{cnt}</p>
+                <p className="text-right" key={idx}>
+                  {cnt}
+                </p>
               ))}
             </div>
             <div
@@ -233,9 +284,7 @@ export default function ContactMe() {
               className="flex flex-col items-start w-[98%]"
             >
               <p>
-                <span id="text" className="text-[#C98BDF]">
-                  const{" "}
-                </span>
+                <span className="text-[#C98BDF]">const </span>
                 <span className="text-[#5565E8]">button</span>
                 <span className="text-[#C98BDF]"> = </span>
                 <span className="text-[#5565E8]">document</span>
@@ -282,9 +331,6 @@ export default function ContactMe() {
               <p>
                 <span>{`}`}</span>
               </p>
-              {/* <div className="relative flex">
-                <span className="absolute -left-2">1</span>
-                <span className="mr-[20px]">0</span> */}
               <p>
                 <span className="text-[#5565E8]">button.addEventListener</span>
                 <span>(</span>
