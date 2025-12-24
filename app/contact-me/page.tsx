@@ -9,7 +9,6 @@ export default function ContactMe() {
   const [name, setName] = useState<String>("");
   const [email, setEmail] = useState<String>("");
   const [message, setMessage] = useState<String>("");
-  const [line, setLine] = useState<number>(10);
   const [lineArr, setLineArr] = useState<Array<number>>([
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
   ]);
@@ -21,7 +20,7 @@ export default function ContactMe() {
   useEffect(() => {
     if (previewRef.current) {
       const eventHandler = () => {
-        const { width, height } = previewRef.current.getBoundingClientRect();
+        const { width } = previewRef.current?.getBoundingClientRect();
 
         setWidth(width);
         // console.log(width, height);
@@ -45,7 +44,6 @@ export default function ContactMe() {
     var divHeight = el.offsetHeight;
     var lineHeight = parseInt(el.style.lineHeight);
     var lines = divHeight / lineHeight;
-    setLine(lines);
     let i = 0;
     const last = lineArr[lineArr.length - 1] ?? 0;
     // console.log(line, last, lineArr);
@@ -64,11 +62,11 @@ export default function ContactMe() {
   return (
     <div className="h-full w-full bg-[#011627] flex">
       {/* 왼쪽 */}
-      <div className="h-full w-[300px] border-r-[0.5px] border-[#607B96]">
+      <div className="h-full w-[350px] border-r-[0.5px] border-[#607B96]">
         <div>
           <button
             onClick={() => setIsContactOpen((prev) => !prev)}
-            className="cursor-pointer h-[45px] w-full flex p-[22px] items-center border-b-[0.5px] border-[#607B96]"
+            className="cursor-pointer h-[50px] w-full flex p-[22px] items-center border-b-[0.5px] border-[#607B96]"
           >
             <h3 className="text-white">
               <span
@@ -119,7 +117,7 @@ export default function ContactMe() {
         <div>
           <button
             onClick={() => setIsFindOpen((prev) => !prev)}
-            className="cursor-pointer h-[40px] w-full flex p-[22px] items-center border-y-[0.5px] border-[#607B96]"
+            className="cursor-pointer h-[50px] w-full flex p-[22px] items-center border-y-[0.5px] border-[#607B96]"
           >
             <h3 className="text-white">
               <span
@@ -201,8 +199,8 @@ export default function ContactMe() {
         </div>
       </div>
       {/* 메인 */}
-      <div className="w-[calc(100%-300px)] flex flex-col text-[#607B96] ">
-        <div className="h-[45px] border-b-[0.5px] border-[#607B96]">
+      <div className="w-[calc(100%-350px)] flex flex-col text-[#607B96] ">
+        <div className="h-[50px] border-b-[0.5px] border-[#607B96]">
           <div className="h-full p-[22px] flex items-center w-[167px] border-r-[0.5px] border-[#607B96] justify-between">
             <span>contacts</span>
             <svg
@@ -223,7 +221,7 @@ export default function ContactMe() {
           <div className="flex flex-col items-center w-[100%] border-r-[0.5px] border-[#607B96]">
             <form
               action=""
-              className="flex flex-col items-start pt-[115px] gap-7"
+              className="flex flex-col items-start pt-[115px] gap-7 text-[14px]"
             >
               <div className="flex flex-col items-start gap-1.5">
                 <label htmlFor="name">_name:</label>
@@ -234,6 +232,9 @@ export default function ContactMe() {
                     setName(e.target.value);
                     countLines();
                   }}
+                  spellCheck={false}
+                  autoCorrect="off"
+                  autoCapitalize="off"
                   className="bg-[#011221] p-[13px] w-[372px] h-[40px] border-[0.5px] border-[#1E2D3D] focus:border-[#607B96] focus:border-[2px] outline-none rounded-[8px]"
                 />
               </div>
@@ -246,6 +247,9 @@ export default function ContactMe() {
                     setEmail(e.target.value);
                     countLines();
                   }}
+                  spellCheck={false}
+                  autoCorrect="off"
+                  autoCapitalize="off"
                   className="bg-[#011221] p-[13px] w-[372px] h-[40px] border-[0.5px] border-[#1E2D3D] focus:border-[#607B96] focus:border-[2px] outline-none rounded-[8px]"
                 />
               </div>
@@ -257,6 +261,9 @@ export default function ContactMe() {
                     setMessage(e.target.value);
                     countLines();
                   }}
+                  spellCheck={false}
+                  autoCorrect="off"
+                  autoCapitalize="off"
                   className="bg-[#011221] resize-none p-[13px] w-[372px] h-[145px] border-[0.5px] border-[#1E2D3D] focus:border-[#607B96] focus:border-[2px] outline-none rounded-[8px]"
                 />
               </div>
@@ -267,7 +274,7 @@ export default function ContactMe() {
           </div>
 
           <div
-            className={`${
+            className={`text-[14px] ${
               w <= 800 ? "hidden" : "block"
             } flex justify-center items-start w-[100%] border-r-[0.5px] border-[#607B96] py-[100px] px-[50px]`}
           >

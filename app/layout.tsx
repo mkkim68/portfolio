@@ -24,10 +24,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={`bg-[#010C15] h-screen p-[15px]`}>
         <div
-          className={`${firacode_light.className} border-[0.5px] rounded-[8px] border-[#607B96] text-[14px]`}
+          className={`${firacode_light.className} border-[0.5px] rounded-[8px] border-[#607B96] text-[16px]`}
         >
           <Navigation />
-          <div className="h-[calc(90vh-30px)]">{children}</div>
+          <div className="h-[calc(88vh-30px)]">{children}</div>
           <Footer />
         </div>
       </body>
