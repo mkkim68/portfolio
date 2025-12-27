@@ -124,7 +124,8 @@ export default function AboutMe() {
                       pl-[47px] py-[4px]
                       ${
                         isHard ? "text-white bg-[#ffffff1a] cursor-default" : "cursor-pointer"
-                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] w-full`}
+                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
+ease-in-out w-full`}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -197,7 +198,8 @@ export default function AboutMe() {
                       pl-[47px] py-[4px]
                       ${
                         isHard ? "text-white bg-[#ffffff1a] cursor-default" : "cursor-pointer"
-                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] w-full`}
+                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
+ease-in-out w-full`}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -272,7 +274,8 @@ export default function AboutMe() {
                         isUniversity
                           ? "text-white bg-[#ffffff1a] cursor-default"
                           : "cursor-pointer"
-                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] w-full`}
+                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
+ease-in-out w-full`}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -300,7 +303,8 @@ export default function AboutMe() {
                         isSSAFY
                           ? "text-white bg-[#ffffff1a] cursor-default"
                           : "cursor-pointer"
-                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] w-full`}
+                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
+ease-in-out w-full`}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -415,7 +419,8 @@ export default function AboutMe() {
                         isHard
                           ? "text-white bg-[#ffffff1a] cursor-default"
                           : "cursor-pointer"
-                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] w-full`}
+                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
+ease-in-out w-full`}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -441,7 +446,8 @@ export default function AboutMe() {
                         isSoft
                           ? "text-white bg-[#ffffff1a] cursor-default"
                           : "cursor-pointer"
-                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] w-full`}
+                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
+ease-in-out w-full`}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -519,7 +525,8 @@ export default function AboutMe() {
                         isCareer
                           ? "text-white bg-[#ffffff1a] cursor-default"
                           : "cursor-pointer"
-                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] w-full`}
+                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
+ease-in-out w-full`}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -545,7 +552,8 @@ export default function AboutMe() {
                         isOpenSource
                           ? "text-white bg-[#ffffff1a] cursor-default"
                           : "cursor-pointer"
-                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] w-full`}
+                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
+ease-in-out w-full`}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

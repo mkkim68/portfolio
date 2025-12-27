@@ -142,7 +142,7 @@ export default function ContactMe() {
             <div className="text-[#607B96] flex flex-col p-[22px] gap-[10px]">
               <a
                 href="https://github.com/mkkim68"
-                className="flex items-center gap-2 hover:text-white"
+                className="flex items-center gap-2 hover:underline"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -160,7 +160,7 @@ export default function ContactMe() {
               </a>
               <a
                 href="https://www.linkedin.com/in/%EB%AF%BC%EA%B2%BD-%EA%B9%80-b36195373/"
-                className="flex items-center gap-2 hover:text-white"
+                className="flex items-center gap-2 hover:underline"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -178,7 +178,7 @@ export default function ContactMe() {
               </a>
               <a
                 href="https://www.instagram.com/mmkkkkkim?igsh=YXB1OTYxcDhxdmR0&utm_source=qr"
-                className="flex items-center gap-2 hover:text-white"
+                className="flex items-center gap-2 hover:underline"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -235,7 +235,8 @@ export default function ContactMe() {
                   spellCheck={false}
                   autoCorrect="off"
                   autoCapitalize="off"
-                  className="bg-[#011221] p-[13px] w-[372px] h-[40px] border-[0.5px] border-[#1E2D3D] focus:border-[#607B96] focus:border-[2px] outline-none rounded-[8px]"
+                  className="bg-[#011221] p-[13px] w-[372px] h-[40px] border-[0.5px] border-[#1E2D3D] duration-150
+ease-in-out focus:border-[#607B96] focus:border-[2px] outline-none rounded-[8px]"
                 />
               </div>
               <div className="flex flex-col items-start gap-1.5">
@@ -250,7 +251,8 @@ export default function ContactMe() {
                   spellCheck={false}
                   autoCorrect="off"
                   autoCapitalize="off"
-                  className="bg-[#011221] p-[13px] w-[372px] h-[40px] border-[0.5px] border-[#1E2D3D] focus:border-[#607B96] focus:border-[2px] outline-none rounded-[8px]"
+                  className="bg-[#011221] p-[13px] w-[372px] h-[40px] border-[0.5px] border-[#1E2D3D] duration-150
+ease-in-out focus:border-[#607B96] focus:border-[2px] outline-none rounded-[8px]"
                 />
               </div>
               <div className="flex flex-col items-start gap-1.5">
@@ -264,10 +266,14 @@ export default function ContactMe() {
                   spellCheck={false}
                   autoCorrect="off"
                   autoCapitalize="off"
-                  className="bg-[#011221] resize-none p-[13px] w-[372px] h-[145px] border-[0.5px] border-[#1E2D3D] focus:border-[#607B96] focus:border-[2px] outline-none rounded-[8px]"
+                  className="bg-[#011221] resize-none p-[13px] w-[372px] h-[145px] border-[0.5px] border-[#1E2D3D] duration-150
+ease-in-out focus:border-[#607B96] focus:border-[2px] outline-none rounded-[8px]"
                 />
               </div>
-              <button className="bg-[#1C2B3A] cursor-pointer hover:bg-[#607B96] active:bg-[#011221] w-[146px] h-[38px] text-white rounded-[8px]">
+              <button
+                className="bg-[#1C2B3A] cursor-pointer hover:bg-[#607B96] active:bg-[#011221] w-[146px] h-[38px] text-white rounded-[8px] duration-150
+ease-in-out"
+              >
                 submit-message
               </button>
             </form>
