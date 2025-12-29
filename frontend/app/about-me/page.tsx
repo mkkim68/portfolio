@@ -9,14 +9,17 @@ export default function AboutMe() {
   const [isInterestsOpen, setIsInterestsOpen] = useState<Boolean>(false);
   const [isEduOpen, setIsEduOpen] = useState<Boolean>(false);
   const [isSkillsOpen, setIsSkillsOpen] = useState<Boolean>(false);
-  const [isExpOpen, setIsExpOpen] = useState<Boolean>(false);
+  const [isExpOpen, setIsExpOpen] = useState<Boolean>(true);
 
   const [isHard, setIsHard] = useState<Boolean>(false);
   const [isSoft, setIsSoft] = useState<Boolean>(false);
-  const [isCareer, setIsCareer] = useState<Boolean>(false);
+  const [isCareer, setIsCareer] = useState<Boolean>(true);
   const [isOpenSource, setIsOpenSource] = useState<Boolean>(false);
   const [isUniversity, setIsUniversity] = useState<Boolean>(false);
   const [isSSAFY, setIsSSAFY] = useState<Boolean>(false);
+
+  const [open, setOpen] = useState<string>("career");
+  const [openContent, setOpenContent] = useState<Array<string>>(["career"]);
 
   const turnOffAll = () => {
     setIsHard(false);
@@ -25,6 +28,32 @@ export default function AboutMe() {
     setIsOpenSource(false);
     setIsUniversity(false);
     setIsSSAFY(false);
+  };
+
+  const handleDeleteContent = (content: string, e: React.MouseEvent) => {
+    if (
+      (e.currentTarget as HTMLElement).parentNode?.firstChild?.textContent ===
+        openContent[openContent.length - 1] &&
+      openContent.length > 1
+    ) {
+      setOpen(openContent[openContent.length - 2]);
+
+      turnOffAll();
+      if (openContent[openContent.length - 2] === "career") {
+        setIsCareer(true);
+      } else if (openContent[openContent.length - 2] === "open-source") {
+        setIsOpenSource(true);
+      } else if (openContent[openContent.length - 2] === "hard-skills") {
+        setIsHard(true);
+      } else if (openContent[openContent.length - 2] === "soft-skills") {
+        setIsSoft(true);
+      } else if (openContent[openContent.length - 2] === "university") {
+        setIsUniversity(true);
+      } else if (openContent[openContent.length - 2] === "SSAFY-11th") {
+        setIsSSAFY(true);
+      }
+    }
+    setOpenContent(openContent.filter((item) => item !== content));
   };
 
   return (
@@ -267,6 +296,9 @@ ease-in-out w-full`}
                     onClick={() => {
                       turnOffAll();
                       setIsUniversity(true);
+                      if (!openContent.includes("university")) {
+                        setOpenContent([...openContent, "university"]);
+                      }
                     }}
                     className={`
                       pl-[47px] py-[4px]
@@ -296,6 +328,9 @@ ease-in-out w-full`}
                     onClick={() => {
                       turnOffAll();
                       setIsSSAFY(true);
+                      if (!openContent.includes("SSAFY-11th")) {
+                        setOpenContent([...openContent, "SSAFY-11th"]);
+                      }
                     }}
                     className={`
                       pl-[47px] py-[4px]
@@ -318,7 +353,7 @@ ease-in-out w-full`}
                         fill="#81A1C1"
                       />
                     </svg>
-                    <span>SSAFY 11th</span>
+                    <span>SSAFY-11th</span>
                   </p>
                 </div>
               </div>
@@ -412,6 +447,9 @@ ease-in-out w-full`}
                   onClick={() => {
                     turnOffAll();
                     setIsHard(true);
+                    if (!openContent.includes("hard-skills")) {
+                      setOpenContent([...openContent, "hard-skills"]);
+                    }
                   }}
                   className={`
                       pl-[47px] py-[4px]
@@ -440,6 +478,9 @@ ease-in-out w-full`}
                   onClick={() => {
                     turnOffAll();
                     setIsSoft(true);
+                    if (!openContent.includes("soft-skills")) {
+                      setOpenContent([...openContent, "soft-skills"]);
+                    }
                   }}
                   className={`pl-[47px] py-[4px]
                       ${
@@ -518,6 +559,9 @@ ease-in-out w-full`}
                   onClick={() => {
                     turnOffAll();
                     setIsCareer(true);
+                    if (!openContent.includes("career")) {
+                      setOpenContent([...openContent, "career"]);
+                    }
                   }}
                   className={`
                       pl-[47px] py-[4px]
@@ -546,6 +590,9 @@ ease-in-out w-full`}
                   onClick={() => {
                     turnOffAll();
                     setIsOpenSource(true);
+                    if (!openContent.includes("open-source")) {
+                      setOpenContent([...openContent, "open-source"]);
+                    }
                   }}
                   className={`pl-[47px] py-[4px]
                       ${
@@ -578,23 +625,39 @@ ease-in-out w-full`}
       <div className="w-[calc(100%-350px)] flex flex-col text-[#607B96] ">
         {/* 상단 */}
         <div className="h-[50px] border-b-[0.5px] border-[#607B96]">
-          {/* 컨텐츠 */}
-          <div className="h-full p-[22px] flex items-center w-[167px] border-r-[0.5px] border-[#607B96] justify-between">
-            <span>contacts</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="10"
-              height="11"
-              viewBox="0 0 10 11"
-              fill="none"
-            >
-              <path
-                d="M5.00005 4.65244L8.71255 0.939941L9.77305 2.00044L6.06055 5.71294L9.77305 9.42544L8.71255 10.4859L5.00005 6.77344L1.28755 10.4859L0.227051 9.42544L3.93955 5.71294L0.227051 2.00044L1.28755 0.939941L5.00005 4.65244Z"
-                fill="#607B96"
-              />
-            </svg>
-          </div>
+          {openContent.length > 0 ? (
+            <div className="h-full flex">
+              {openContent.map((content) => (
+                <div
+                  key={content}
+                  className={`h-full p-[22px] pr-[17px] flex items-center w-fit border-r-[0.5px] border-[#607B96] justify-between  cursor-pointer hover:bg-[#ffffff0b] duration-150 ease-in-out`}
+                >
+                  <span className="mr-[20px] whitespace-nowrap">{content}</span>
+                  <div
+                    className="w-max p-[5px]"
+                    onClick={(e) => handleDeleteContent(content, e)}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="10"
+                      height="11"
+                      viewBox="0 0 10 11"
+                      fill="none"
+                    >
+                      <path
+                        d="M5.00005 4.65244L8.71255 0.939941L9.77305 2.00044L6.06055 5.71294L9.77305 9.42544L8.71255 10.4859L5.00005 6.77344L1.28755 10.4859L0.227051 9.42544L3.93955 5.71294L0.227051 2.00044L1.28755 0.939941L5.00005 4.65244Z"
+                        fill="#607B96"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              ))}{" "}
+            </div>
+          ) : (
+            <div className="h-full flex"></div>
+          )}
         </div>
+        {/* 컨텐츠 */}
       </div>
     </div>
   );
