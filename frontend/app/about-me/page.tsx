@@ -11,49 +11,21 @@ export default function AboutMe() {
   const [isSkillsOpen, setIsSkillsOpen] = useState<Boolean>(false);
   const [isExpOpen, setIsExpOpen] = useState<Boolean>(true);
 
-  const [isHard, setIsHard] = useState<Boolean>(false);
-  const [isSoft, setIsSoft] = useState<Boolean>(false);
-  const [isCareer, setIsCareer] = useState<Boolean>(true);
-  const [isOpenSource, setIsOpenSource] = useState<Boolean>(false);
-  const [isUniversity, setIsUniversity] = useState<Boolean>(false);
-  const [isSSAFY, setIsSSAFY] = useState<Boolean>(false);
-
   const [open, setOpen] = useState<string>("career");
-  const [openContent, setOpenContent] = useState<Array<string>>(["career"]);
-
-  const turnOffAll = () => {
-    setIsHard(false);
-    setIsSoft(false);
-    setIsCareer(false);
-    setIsOpenSource(false);
-    setIsUniversity(false);
-    setIsSSAFY(false);
-  };
+  const [openContents, setOpenContents] = useState<Array<string>>(["career"]);
 
   const handleDeleteContent = (content: string, e: React.MouseEvent) => {
+    e.stopPropagation();
     if (
       (e.currentTarget as HTMLElement).parentNode?.firstChild?.textContent ===
-        openContent[openContent.length - 1] &&
-      openContent.length > 1
+        openContents[openContents.length - 1] &&
+      openContents.length > 1
     ) {
-      setOpen(openContent[openContent.length - 2]);
-
-      turnOffAll();
-      if (openContent[openContent.length - 2] === "career") {
-        setIsCareer(true);
-      } else if (openContent[openContent.length - 2] === "open-source") {
-        setIsOpenSource(true);
-      } else if (openContent[openContent.length - 2] === "hard-skills") {
-        setIsHard(true);
-      } else if (openContent[openContent.length - 2] === "soft-skills") {
-        setIsSoft(true);
-      } else if (openContent[openContent.length - 2] === "university") {
-        setIsUniversity(true);
-      } else if (openContent[openContent.length - 2] === "SSAFY-11th") {
-        setIsSSAFY(true);
-      }
+      setOpen(openContents[openContents.length - 2]);
+    } else if (openContents.length === 1) {
+      setOpen("");
     }
-    setOpenContent(openContent.filter((item) => item !== content));
+    setOpenContents(openContents.filter((item) => item !== content));
   };
 
   return (
@@ -146,13 +118,12 @@ export default function AboutMe() {
                 >
                   {/* <p
                     onClick={() => {
-                      turnOffAll();
-                      setIsHard(true);
+                      setOpen();
                     }}
                     className={`
                       pl-[47px] py-[4px]
                       ${
-                        isHard ? "text-white bg-[#ffffff1a] cursor-default" : "cursor-pointer"
+                        open === "" ? "text-white bg-[#ffffff1a] cursor-default" : "cursor-pointer"
                       } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
 ease-in-out w-full`}
                   >
@@ -220,13 +191,12 @@ ease-in-out w-full`}
                 >
                   {/* <p
                     onClick={() => {
-                      turnOffAll();
-                      setIsHard(true);
+                    setOpen()
                     }}
                     className={`
                       pl-[47px] py-[4px]
                       ${
-                        isHard ? "text-white bg-[#ffffff1a] cursor-default" : "cursor-pointer"
+                        open === "" ? "text-white bg-[#ffffff1a] cursor-default" : "cursor-pointer"
                       } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
 ease-in-out w-full`}
                   >
@@ -294,16 +264,15 @@ ease-in-out w-full`}
                 >
                   <p
                     onClick={() => {
-                      turnOffAll();
-                      setIsUniversity(true);
-                      if (!openContent.includes("university")) {
-                        setOpenContent([...openContent, "university"]);
+                      setOpen("university");
+                      if (!openContents.includes("university")) {
+                        setOpenContents([...openContents, "university"]);
                       }
                     }}
                     className={`
                       pl-[47px] py-[4px]
                       ${
-                        isUniversity
+                        open === "university"
                           ? "text-white bg-[#ffffff1a] cursor-default"
                           : "cursor-pointer"
                       } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
@@ -326,16 +295,15 @@ ease-in-out w-full`}
 
                   <p
                     onClick={() => {
-                      turnOffAll();
-                      setIsSSAFY(true);
-                      if (!openContent.includes("SSAFY-11th")) {
-                        setOpenContent([...openContent, "SSAFY-11th"]);
+                      setOpen("SSAFY-11th");
+                      if (!openContents.includes("SSAFY-11th")) {
+                        setOpenContents([...openContents, "SSAFY-11th"]);
                       }
                     }}
                     className={`
                       pl-[47px] py-[4px]
                       ${
-                        isSSAFY
+                        open === "SSAFY-11th"
                           ? "text-white bg-[#ffffff1a] cursor-default"
                           : "cursor-pointer"
                       } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
@@ -445,16 +413,15 @@ ease-in-out w-full`}
               >
                 <p
                   onClick={() => {
-                    turnOffAll();
-                    setIsHard(true);
-                    if (!openContent.includes("hard-skills")) {
-                      setOpenContent([...openContent, "hard-skills"]);
+                    setOpen("hard-skills");
+                    if (!openContents.includes("hard-skills")) {
+                      setOpenContents([...openContents, "hard-skills"]);
                     }
                   }}
                   className={`
                       pl-[47px] py-[4px]
                       ${
-                        isHard
+                        open === "hard-skills"
                           ? "text-white bg-[#ffffff1a] cursor-default"
                           : "cursor-pointer"
                       } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
@@ -476,15 +443,14 @@ ease-in-out w-full`}
                 </p>
                 <p
                   onClick={() => {
-                    turnOffAll();
-                    setIsSoft(true);
-                    if (!openContent.includes("soft-skills")) {
-                      setOpenContent([...openContent, "soft-skills"]);
+                    setOpen("soft-skills");
+                    if (!openContents.includes("soft-skills")) {
+                      setOpenContents([...openContents, "soft-skills"]);
                     }
                   }}
                   className={`pl-[47px] py-[4px]
                       ${
-                        isSoft
+                        open === "soft-skills"
                           ? "text-white bg-[#ffffff1a] cursor-default"
                           : "cursor-pointer"
                       } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
@@ -557,16 +523,15 @@ ease-in-out w-full`}
               >
                 <p
                   onClick={() => {
-                    turnOffAll();
-                    setIsCareer(true);
-                    if (!openContent.includes("career")) {
-                      setOpenContent([...openContent, "career"]);
+                    setOpen("career");
+                    if (!openContents.includes("career")) {
+                      setOpenContents([...openContents, "career"]);
                     }
                   }}
                   className={`
                       pl-[47px] py-[4px]
                       ${
-                        isCareer
+                        open === "career"
                           ? "text-white bg-[#ffffff1a] cursor-default"
                           : "cursor-pointer"
                       } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
@@ -588,15 +553,14 @@ ease-in-out w-full`}
                 </p>
                 <p
                   onClick={() => {
-                    turnOffAll();
-                    setIsOpenSource(true);
-                    if (!openContent.includes("open-source")) {
-                      setOpenContent([...openContent, "open-source"]);
+                    setOpen("open-source");
+                    if (!openContents.includes("open-source")) {
+                      setOpenContents([...openContents, "open-source"]);
                     }
                   }}
                   className={`pl-[47px] py-[4px]
                       ${
-                        isOpenSource
+                        open === "open-source"
                           ? "text-white bg-[#ffffff1a] cursor-default"
                           : "cursor-pointer"
                       } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
@@ -624,13 +588,16 @@ ease-in-out w-full`}
       {/* 메인 */}
       <div className="w-[calc(100%-350px)] flex flex-col text-[#607B96] ">
         {/* 상단 */}
-        <div className="h-[50px] border-b-[0.5px] border-[#607B96]">
-          {openContent.length > 0 ? (
+        {openContents.length > 0 ? (
+          <div className="h-[50px] border-b-[0.5px] border-[#607B96]">
             <div className="h-full flex">
-              {openContent.map((content) => (
+              {openContents.map((content) => (
                 <div
                   key={content}
-                  className={`h-full p-[22px] pr-[17px] flex items-center w-fit border-r-[0.5px] border-[#607B96] justify-between  cursor-pointer hover:bg-[#ffffff0b] duration-150 ease-in-out`}
+                  onClick={() => setOpen(content)}
+                  className={`${
+                    open === content ? "bg-[#ffffff1a] text-white" : ""
+                  } h-full p-[22px] pr-[17px] flex items-center w-fit border-r-[0.5px] border-[#607B96] justify-between  cursor-pointer hover:bg-[#ffffff0b] duration-150 ease-in-out`}
                 >
                   <span className="mr-[20px] whitespace-nowrap">{content}</span>
                   <div
@@ -646,17 +613,17 @@ ease-in-out w-full`}
                     >
                       <path
                         d="M5.00005 4.65244L8.71255 0.939941L9.77305 2.00044L6.06055 5.71294L9.77305 9.42544L8.71255 10.4859L5.00005 6.77344L1.28755 10.4859L0.227051 9.42544L3.93955 5.71294L0.227051 2.00044L1.28755 0.939941L5.00005 4.65244Z"
-                        fill="#607B96"
+                        fill={`${open === content ? "#ffffff" : "#607B96"}`}
                       />
                     </svg>
                   </div>
                 </div>
               ))}{" "}
             </div>
-          ) : (
-            <div className="h-full flex"></div>
-          )}
-        </div>
+          </div>
+        ) : (
+          <div className="h-full flex"></div>
+        )}
         {/* 컨텐츠 */}
       </div>
     </div>
