@@ -1,19 +1,12 @@
 import Footer from "../components/footer";
 import Navigation from "../components/navigation";
+import { firacode_light } from "../styles/font";
 import "../styles/global.css";
-import localFont from "next/font/local";
 
 export const metadata = {
   title: "Kim Min Kyoung",
   description: "Front-end Developer",
 };
-
-const firacode_light = localFont({
-  src: "../public/fonts/FiraCode-Light.ttf",
-  display: "swap",
-  weight: "100 900",
-  variable: "--font-firacode-light",
-});
 
 export default function RootLayout({
   children,

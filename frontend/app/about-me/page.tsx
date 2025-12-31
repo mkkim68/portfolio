@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { firacode_medium } from "../../styles/font";
 
 export default function AboutMe() {
   const [isPersonalInfoOpen, setIsPersonalInfoOpen] = useState<Boolean>(true);
@@ -19,7 +20,8 @@ export default function AboutMe() {
     if (
       (e.currentTarget as HTMLElement).parentNode?.firstChild?.textContent ===
         openContents[openContents.length - 1] &&
-      openContents.length > 1
+      openContents.length > 1 &&
+      open === content
     ) {
       setOpen(openContents[openContents.length - 2]);
     } else if (openContents.length === 1) {
@@ -27,6 +29,8 @@ export default function AboutMe() {
     }
     setOpenContents(openContents.filter((item) => item !== content));
   };
+
+  const techs_fe = ["React", "Vue.js", "Next.js", "Javascript", "Typescript"];
 
   return (
     <div className="h-full w-full bg-[#011627] flex">
@@ -102,7 +106,7 @@ export default function AboutMe() {
                   >
                     <path
                       d="M14.4444 3.61111V12.2778C14.4444 12.4693 14.3684 12.653 14.2329 12.7885C14.0975 12.9239 13.9138 13 13.7222 13H0.722222C0.530677 13 0.346977 12.9239 0.211534 12.7885C0.076091 12.653 0 12.4693 0 12.2778V2.88889H13.7222C13.9138 2.88889 14.0975 2.96498 14.2329 3.10042C14.3684 3.23587 14.4444 3.41957 14.4444 3.61111ZM7.52122 1.44444H0V0.722222C0 0.530677 0.076091 0.346977 0.211534 0.211534C0.346977 0.076091 0.530677 0 0.722222 0H6.07678L7.52122 1.44444Z"
-                      fill="#E99287"
+                      fill="#607B96"
                     />
                   </svg>
                   <span className={`${isBioOpen ? "text-white" : ""}`}>
@@ -175,7 +179,7 @@ ease-in-out w-full`}
                   >
                     <path
                       d="M14.4444 3.61111V12.2778C14.4444 12.4693 14.3684 12.653 14.2329 12.7885C14.0975 12.9239 13.9138 13 13.7222 13H0.722222C0.530677 13 0.346977 12.9239 0.211534 12.7885C0.076091 12.653 0 12.4693 0 12.2778V2.88889H13.7222C13.9138 2.88889 14.0975 2.96498 14.2329 3.10042C14.3684 3.23587 14.4444 3.41957 14.4444 3.61111ZM7.52122 1.44444H0V0.722222C0 0.530677 0.076091 0.346977 0.211534 0.211534C0.346977 0.076091 0.530677 0 0.722222 0H6.07678L7.52122 1.44444Z"
-                      fill="#43D9AD"
+                      fill="#607B96"
                     />
                   </svg>
                   <span className={`${isInterestsOpen ? "text-white" : ""}`}>
@@ -248,7 +252,7 @@ ease-in-out w-full`}
                   >
                     <path
                       d="M14.4444 3.61111V12.2778C14.4444 12.4693 14.3684 12.653 14.2329 12.7885C14.0975 12.9239 13.9138 13 13.7222 13H0.722222C0.530677 13 0.346977 12.9239 0.211534 12.7885C0.076091 12.653 0 12.4693 0 12.2778V2.88889H13.7222C13.9138 2.88889 14.0975 2.96498 14.2329 3.10042C14.3684 3.23587 14.4444 3.41957 14.4444 3.61111ZM7.52122 1.44444H0V0.722222C0 0.530677 0.076091 0.346977 0.211534 0.211534C0.346977 0.076091 0.530677 0 0.722222 0H6.07678L7.52122 1.44444Z"
-                      fill="#3A49A4"
+                      fill="#607B96"
                     />
                   </svg>
                   <span className={`${isEduOpen ? "text-white" : ""}`}>
@@ -397,7 +401,7 @@ ease-in-out w-full`}
                 >
                   <path
                     d="M14.4444 3.61111V12.2778C14.4444 12.4693 14.3684 12.653 14.2329 12.7885C14.0975 12.9239 13.9138 13 13.7222 13H0.722222C0.530677 13 0.346977 12.9239 0.211534 12.7885C0.076091 12.653 0 12.4693 0 12.2778V2.88889H13.7222C13.9138 2.88889 14.0975 2.96498 14.2329 3.10042C14.3684 3.23587 14.4444 3.41957 14.4444 3.61111ZM7.52122 1.44444H0V0.722222C0 0.530677 0.076091 0.346977 0.211534 0.211534C0.346977 0.076091 0.530677 0 0.722222 0H6.07678L7.52122 1.44444Z"
-                    fill="#E99287"
+                    fill="#607B96"
                   />
                 </svg>
                 <span className={`${isSkillsOpen ? "text-white" : ""}`}>
@@ -503,7 +507,7 @@ ease-in-out w-full`}
                 >
                   <path
                     d="M14.4444 3.61111V12.2778C14.4444 12.4693 14.3684 12.653 14.2329 12.7885C14.0975 12.9239 13.9138 13 13.7222 13H0.722222C0.530677 13 0.346977 12.9239 0.211534 12.7885C0.076091 12.653 0 12.4693 0 12.2778V2.88889H13.7222C13.9138 2.88889 14.0975 2.96498 14.2329 3.10042C14.3684 3.23587 14.4444 3.41957 14.4444 3.61111ZM7.52122 1.44444H0V0.722222C0 0.530677 0.076091 0.346977 0.211534 0.211534C0.346977 0.076091 0.530677 0 0.722222 0H6.07678L7.52122 1.44444Z"
-                    fill="#43D9AD"
+                    fill="#607B96"
                   />
                 </svg>
                 <span className={`${isExpOpen ? "text-white" : ""}`}>
@@ -625,6 +629,63 @@ ease-in-out w-full`}
           <div className="h-full flex"></div>
         )}
         {/* 컨텐츠 */}
+        {open === "hard-skills" ? (
+          <div className="h-full p-[20px] flex-col">
+            <section className="mb-5">
+              <h3
+                className={`text-[#5DDCFF] mb-3 text-[18px] ${firacode_medium.className}`}
+              >
+                Frontend
+              </h3>
+              <div className="flex gap-2">
+                {techs_fe.map((content) => (
+                  <div
+                    key={content}
+                    className="cursor-default
+                      w-fit px-3 py-2 rounded-2xl
+                      text-[#607B96]
+                      bg-white/5 backdrop-blur-md
+                      border border-white/10 border-t-white/20
+
+                      transition-all duration-300 ease-out
+
+                      hover:text-[#5DDCFF]
+                      hover:bg-gradient-to-br hover:from-[#5DDCFF]/12 hover:via-white/2 hover:to-transparent
+                      hover:border-[#5DDCFF]/15 hover:border-t-[#5DDCFF]/30 hover:-translate-y-[1.5px]
+                    "
+                  >
+                    {content}
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
+        ) : null}
+        {open === "soft-skills" ? (
+          <div className="h-full p-[20px] flex-col">
+            <h1>soft skills</h1>
+          </div>
+        ) : null}
+        {open === "career" ? (
+          <div className="h-full p-[20px] flex-col">
+            <h1>career</h1>
+          </div>
+        ) : null}
+        {open === "open-source" ? (
+          <div className="h-full p-[20px] flex-col">
+            <h1>open-source</h1>
+          </div>
+        ) : null}
+        {open === "university" ? (
+          <div className="h-full p-[20px] flex-col">
+            <h1>university</h1>
+          </div>
+        ) : null}
+        {open === "SSAFY-11th" ? (
+          <div className="h-full p-[20px] flex-col">
+            <h1>SSAFY-11th</h1>
+          </div>
+        ) : null}
       </div>
     </div>
   );
