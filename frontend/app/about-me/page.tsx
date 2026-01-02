@@ -30,7 +30,36 @@ export default function AboutMe() {
     setOpenContents(openContents.filter((item) => item !== content));
   };
 
-  const techs_fe = ["React", "Vue.js", "Next.js", "Javascript", "Typescript"];
+  const techs_fe = [
+    "HTML5",
+    "CSS3",
+    "React",
+    "Vue.js",
+    "Next.js",
+    "Javascript",
+    "Typescript",
+    "Recoil",
+    "Redux",
+    "React-Query",
+    "Bootstrap",
+    "Styled-Components",
+    "Tailwind CSS",
+  ];
+
+  const techs_be = ["Python", "Django", "Node.js", "Express", "REST API"];
+  const techs_mb = ["Kotlin", "Jetpack Compose"];
+  const techs_tools = [
+    "Git",
+    "Docker",
+    "Jenkins",
+    "Visual Studio Code",
+    "Jira",
+    "Notion",
+    "Figma",
+    "Gitlab",
+    "Github",
+    "Mock Service Worker",
+  ];
 
   return (
     <div className="h-full w-full bg-[#011627] flex">
@@ -630,28 +659,112 @@ ease-in-out w-full`}
         )}
         {/* 컨텐츠 */}
         {open === "hard-skills" ? (
-          <div className="h-full p-[20px] flex-col">
+          <div className="h-full p-[35px] flex-col">
             <section className="mb-5">
               <h3
-                className={`text-[#5DDCFF] mb-3 text-[18px] ${firacode_medium.className}`}
+                className={`text-[#719fe9] mb-3 text-[18px] ${firacode_medium.className}`}
               >
                 Frontend
               </h3>
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 {techs_fe.map((content) => (
                   <div
                     key={content}
-                    className="cursor-default
-                      w-fit px-3 py-2 rounded-2xl
+                    className="cursor-default text-[14px]
+                      w-fit px-3 py-2 rounded-lg
                       text-[#607B96]
                       bg-white/5 backdrop-blur-md
                       border border-white/10 border-t-white/20
 
                       transition-all duration-300 ease-out
 
-                      hover:text-[#5DDCFF]
-                      hover:bg-gradient-to-br hover:from-[#5DDCFF]/12 hover:via-white/2 hover:to-transparent
-                      hover:border-[#5DDCFF]/15 hover:border-t-[#5DDCFF]/30 hover:-translate-y-[1.5px]
+                      hover:text-[#719fe9]
+                      hover:bg-gradient-to-br hover:from-[#719fe9]/12 hover:via-white/2 hover:to-transparent
+                      hover:border-[#719fe9]/15 hover:border-t-[#719fe9]/30 hover:-translate-y-[1.5px]
+                    "
+                  >
+                    {content}
+                  </div>
+                ))}
+              </div>
+            </section>
+            <section className="mb-5">
+              <h3
+                className={`text-[#66ebe6] mb-3 text-[18px] ${firacode_medium.className}`}
+              >
+                Backend
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {techs_be.map((content) => (
+                  <div
+                    key={content}
+                    className="cursor-default text-[14px]
+                      w-fit px-3 py-2 rounded-lg
+                      text-[#607B96]
+                      bg-white/5 backdrop-blur-md
+                      border border-white/10 border-t-white/20
+
+                      transition-all duration-300 ease-out
+
+                      hover:text-[#66ebe6]
+                      hover:bg-gradient-to-br hover:from-[#66ebe6]/12 hover:via-white/2 hover:to-transparent
+                      hover:border-[#66ebe6]/15 hover:border-t-[#66ebe6]/30 hover:-translate-y-[1.5px]
+                    "
+                  >
+                    {content}
+                  </div>
+                ))}
+              </div>
+            </section>
+            <section className="mb-5">
+              <h3
+                className={`text-[#A7E399] mb-3 text-[18px] ${firacode_medium.className}`}
+              >
+                Mobile
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {techs_mb.map((content) => (
+                  <div
+                    key={content}
+                    className="cursor-default text-[14px]
+                      w-fit px-3 py-2 rounded-lg
+                      text-[#607B96]
+                      bg-white/5 backdrop-blur-md
+                      border border-white/10 border-t-white/20
+
+                      transition-all duration-300 ease-out
+
+                      hover:text-[#A7E399]
+                      hover:bg-gradient-to-br hover:from-[#A7E399]/12 hover:via-white/2 hover:to-transparent
+                      hover:border-[#A7E399]/15 hover:border-t-[#A7E399]/30 hover:-translate-y-[1.5px]
+                    "
+                  >
+                    {content}
+                  </div>
+                ))}
+              </div>
+            </section>
+            <section className="mb-5">
+              <h3
+                className={`text-[#F6FF99] mb-3 text-[18px] ${firacode_medium.className}`}
+              >
+                Tools & Infra
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {techs_tools.map((content) => (
+                  <div
+                    key={content}
+                    className="cursor-default text-[14px]
+                      w-fit px-3 py-2 rounded-lg
+                      text-[#607B96]
+                      bg-white/5 backdrop-blur-md
+                      border border-white/10 border-t-white/20
+
+                      transition-all duration-300 ease-out
+
+                      hover:text-[#F6FF99]
+                      hover:bg-gradient-to-br hover:from-[#F6FF99]/12 hover:via-white/2 hover:to-transparent
+                      hover:border-[#F6FF99]/15 hover:border-t-[#F6FF99]/30 hover:-translate-y-[1.5px]
                     "
                   >
                     {content}
