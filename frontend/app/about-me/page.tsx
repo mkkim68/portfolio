@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { firacode_medium } from "../../styles/font";
+import Education from "./components/education";
 
 export default function AboutMe() {
   const [isPersonalInfoOpen, setIsPersonalInfoOpen] = useState<Boolean>(true);
@@ -10,21 +11,27 @@ export default function AboutMe() {
   const [isInterestsOpen, setIsInterestsOpen] = useState<Boolean>(false);
   const [isEduOpen, setIsEduOpen] = useState<Boolean>(false);
   const [isSkillsOpen, setIsSkillsOpen] = useState<Boolean>(false);
-  const [isExpOpen, setIsExpOpen] = useState<Boolean>(true);
+  const [isExpOpen, setIsExpOpen] = useState<Boolean>(false);
 
-  const [open, setOpen] = useState<string>("career");
-  const [openContents, setOpenContents] = useState<Array<string>>(["career"]);
+  const [open, setOpen] = useState<string>("education");
+  const [openContents, setOpenContents] = useState<Array<string>>([
+    "education",
+  ]);
 
   const handleDeleteContent = (content: string, e: React.MouseEvent) => {
     e.stopPropagation();
-    if (
-      (e.currentTarget as HTMLElement).parentNode?.firstChild?.textContent ===
-        openContents[openContents.length - 1] &&
-      openContents.length > 1 &&
-      open === content
-    ) {
-      setOpen(openContents[openContents.length - 2]);
-    } else if (openContents.length === 1) {
+    if (openContents.length > 1) {
+      let target = (e.currentTarget as HTMLElement).parentNode?.firstChild
+        ?.textContent;
+      if (open === target) {
+        let idx = openContents.findIndex((v) => v === target);
+        if (idx >= 1) {
+          setOpen(openContents[idx - 1]);
+        } else {
+          setOpen(openContents[1]);
+        }
+      }
+    } else {
       setOpen("");
     }
     setOpenContents(openContents.filter((item) => item !== content));
@@ -45,7 +52,6 @@ export default function AboutMe() {
     "Styled-Components",
     "Tailwind CSS",
   ];
-
   const techs_be = ["Python", "Django", "Node.js", "Express", "REST API"];
   const techs_mb = ["Kotlin", "Jetpack Compose"];
   const techs_tools = [
@@ -92,7 +98,7 @@ export default function AboutMe() {
             className={`
               overflow-hidden
               transition-[max-height] duration-300 ease-in-out
-              ${isPersonalInfoOpen ? "max-h-[500px]" : "max-h-0"}
+              ${isPersonalInfoOpen ? "max-h-[150px]" : "max-h-0"}
             `}
           >
             <div
@@ -252,6 +258,38 @@ ease-in-out w-full`}
               {/* education */}
               <div>
                 <p
+                  onClick={() => {
+                    setOpen("education");
+                    if (!openContents.includes("education")) {
+                      setOpenContents([...openContents, "education"]);
+                    }
+                  }}
+                  className={`
+                      pl-[39px] py-[4px] mt-[3px] mb-[18px]
+                      ${
+                        open === "education"
+                          ? "text-white bg-[#ffffff1a] cursor-default"
+                          : "cursor-pointer"
+                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
+ease-in-out w-full`}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="17"
+                    height="15"
+                    viewBox="0 0 17 15"
+                    fill="none"
+                  >
+                    <path
+                      d="M0.811096 0H15.4108C15.6259 0 15.8322 0.0854545 15.9844 0.237565C16.1365 0.389675 16.2219 0.59598 16.2219 0.811096V13.7886C16.2219 14.0038 16.1365 14.2101 15.9844 14.3622C15.8322 14.5143 15.6259 14.5997 15.4108 14.5997H0.811096C0.59598 14.5997 0.389675 14.5143 0.237565 14.3622C0.0854545 14.2101 0 14.0038 0 13.7886V0.811096C0 0.59598 0.0854545 0.389675 0.237565 0.237565C0.389675 0.0854545 0.59598 0 0.811096 0V0ZM4.05548 10.1387V6.89432L5.67767 8.51651L7.29987 6.89432V10.1387H8.92206V4.46103H7.29987L5.67767 6.08322L4.05548 4.46103H2.43329V10.1387H4.05548ZM12.9775 7.70541V4.46103H11.3553V7.70541H9.73315L12.1664 10.1387L14.5997 7.70541H12.9775Z"
+                      fill="#81A1C1"
+                    />
+                  </svg>
+                  <span>education</span>
+                </p>
+              </div>
+              {/* <div>
+                <p
                   onClick={() => setIsEduOpen((prev) => !prev)}
                   className={`flex items-center gap-2.5 cursor-pointer w-min px-[22px] "pb-[3px] pt-[7px]`}
                 >
@@ -288,6 +326,7 @@ ease-in-out w-full`}
                     education
                   </span>
                 </p>
+                
                 <div
                   className={`
                     overflow-hidden
@@ -357,8 +396,7 @@ ease-in-out w-full`}
                     <span>SSAFY-11th</span>
                   </p>
                 </div>
-              </div>
-              <div className="h-[22px]"></div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -655,7 +693,7 @@ ease-in-out w-full`}
             </div>
           </div>
         ) : (
-          <div className="h-full flex"></div>
+          <div className="h-full flex">none</div>
         )}
         {/* 컨텐츠 */}
         {open === "hard-skills" ? (
@@ -789,16 +827,7 @@ ease-in-out w-full`}
             <h1>open-source</h1>
           </div>
         ) : null}
-        {open === "university" ? (
-          <div className="h-full p-[20px] flex-col">
-            <h1>university</h1>
-          </div>
-        ) : null}
-        {open === "SSAFY-11th" ? (
-          <div className="h-full p-[20px] flex-col">
-            <h1>SSAFY-11th</h1>
-          </div>
-        ) : null}
+        {open === "education" ? Education() : null}
       </div>
     </div>
   );
