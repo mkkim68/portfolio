@@ -199,7 +199,7 @@ export default function ContactMe() {
         </div>
       </div>
       {/* 메인 */}
-      <div className="w-[calc(100%-300px)] flex flex-col text-white cursor-default">
+      <div className="w-[calc(100%-270px)] flex flex-col text-white cursor-default">
         <div className="h-[40px] border-b-[0.5px] border-[#607B96]">
           <div className="h-full p-[20px] flex items-center w-[167px] border-r-[0.5px] border-[#607B96] justify-between">
             <span>contacts</span>

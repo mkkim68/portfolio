@@ -530,7 +530,7 @@ ease-in-out w-full`}
         </div>
       </div>
       {/* 메인 */}
-      <div className="w-[calc(100%-300px)] flex flex-col text-[#607B96] ">
+      <div className="w-[calc(100%-270px)] flex flex-col text-[#607B96] ">
         {/* 상단 */}
         {openContents.length > 0 ? (
           <div className="h-[40px] border-b-[0.5px] border-[#607B96]">
