@@ -1,13 +1,13 @@
 export default function Footer() {
   return (
-    <div className="text-[#607B96] rounded-b-[8px] bg-[#011627] flex justify-between w-full border-t-[0.5px] h-[6vh]">
+    <div className="text-[#607B96] rounded-b-[8px] bg-[#011627] flex justify-between w-full border-t-[0.5px] h-[5vh]">
       <div className="flex">
-        <div className="border-r-[0.5px] w-[170px] flex justify-center items-center">
-          <span>find me in :</span>
+        <div className="border-r-[0.5px] w-[150px] flex justify-center items-center">
+          <span className="cursor-default">find me in :</span>
         </div>
         <a
           href="https://www.linkedin.com/in/%EB%AF%BC%EA%B2%BD-%EA%B9%80-b36195373/"
-          className="border-r-[0.5px] w-[6vh] flex justify-center items-center"
+          className="border-r-[0.5px] w-[5vh] flex justify-center items-center"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,7 @@ export default function Footer() {
         </a>
         <a
           href="https://www.instagram.com/mmkkkkkim?igsh=YXB1OTYxcDhxdmR0&utm_source=qr"
-          className="border-r-[0.5px] w-[6vh] flex justify-center items-center"
+          className="border-r-[0.5px] w-[5vh] flex justify-center items-center"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +61,7 @@ export default function Footer() {
       </div>
       <a
         href="https://github.com/mkkim68"
-        className="w-[150px] flex gap-2 justify-center items-center border-l-[0.5px]"
+        className="w-[130px] flex gap-2 justify-center items-center border-l-[0.5px]"
       >
         <span>@mkkim68</span>
         <svg

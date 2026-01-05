@@ -62,11 +62,11 @@ export default function ContactMe() {
   return (
     <div className="h-full w-full bg-[#011627] flex">
       {/* 왼쪽 */}
-      <div className="h-full w-[350px] border-r-[0.5px] border-[#607B96]">
+      <div className="h-full w-[300px] border-r-[0.5px] border-[#607B96]">
         <div>
           <button
             onClick={() => setIsContactOpen((prev) => !prev)}
-            className="cursor-pointer h-[50px] w-full flex p-[22px] items-center border-b-[0.5px] border-[#607B96]"
+            className="cursor-pointer h-[40px] w-full flex p-[20px] items-center border-b-[0.5px] border-[#607B96]"
           >
             <h3 className="text-white">
               <span
@@ -117,7 +117,7 @@ export default function ContactMe() {
         <div>
           <button
             onClick={() => setIsFindOpen((prev) => !prev)}
-            className="cursor-pointer h-[50px] w-full flex p-[22px] items-center border-y-[0.5px] border-[#607B96]"
+            className="cursor-pointer h-[40px] w-full flex p-[20px] items-center border-y-[0.5px] border-[#607B96]"
           >
             <h3 className="text-white">
               <span
@@ -199,9 +199,9 @@ export default function ContactMe() {
         </div>
       </div>
       {/* 메인 */}
-      <div className="w-[calc(100%-350px)] flex flex-col text-[#607B96] ">
-        <div className="h-[50px] border-b-[0.5px] border-[#607B96]">
-          <div className="h-full p-[22px] flex items-center w-[167px] border-r-[0.5px] border-[#607B96] justify-between">
+      <div className="w-[calc(100%-300px)] flex flex-col text-white cursor-default">
+        <div className="h-[40px] border-b-[0.5px] border-[#607B96]">
+          <div className="h-full p-[20px] flex items-center w-[167px] border-r-[0.5px] border-[#607B96] justify-between">
             <span>contacts</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -212,7 +212,7 @@ export default function ContactMe() {
             >
               <path
                 d="M5.00005 4.65244L8.71255 0.939941L9.77305 2.00044L6.06055 5.71294L9.77305 9.42544L8.71255 10.4859L5.00005 6.77344L1.28755 10.4859L0.227051 9.42544L3.93955 5.71294L0.227051 2.00044L1.28755 0.939941L5.00005 4.65244Z"
-                fill="#607B96"
+                fill="#ffffff"
               />
             </svg>
           </div>

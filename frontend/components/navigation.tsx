@@ -6,10 +6,10 @@ import { usePathname } from "next/navigation";
 export default function Navigation() {
   const path = usePathname();
   return (
-    <nav className="h-[7vh] rounded-[8px] bg-[#011627]">
+    <nav className="h-[6vh] rounded-[8px] bg-[#011627]">
       <ul className="text-[#607B96] flex justify-between w-full border-b-[0.5px] h-full">
         <div className="flex">
-          <li className="p-[22px] flex justify-start items-center border-r-[0.5px] w-[350px]">
+          <li className="p-[20px] flex justify-start items-center border-r-[0.5px] w-[300px]">
             <span>kim-min-kyoung</span>
           </li>
           <li
@@ -58,7 +58,7 @@ export default function Navigation() {
             path === "/contact-me"
               ? "border-b-[2px] border-b-[#FEA55F]"
               : "none"
-          } w-[153px] flex justify-center border-l-[0.5px] items-center`}
+          } w-[150px] flex justify-center border-l-[0.5px] items-center`}
         >
           <Link
             href="/contact-me"
