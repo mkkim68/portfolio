@@ -62,7 +62,7 @@ export default function ContactMe() {
   return (
     <div className="h-full w-full bg-[#011627] flex">
       {/* 왼쪽 */}
-      <div className="h-full w-[300px] border-r-[0.5px] border-[#607B96]">
+      <div className="h-full w-[270px] border-r-[0.5px] border-[#607B96]">
         <div>
           <button
             onClick={() => setIsContactOpen((prev) => !prev)}
@@ -89,7 +89,7 @@ export default function ContactMe() {
             `}
           >
             <div
-              className={`text-[#607B96] flex flex-col p-[22px] gap-2 duration-200
+              className={`text-[#607B96] flex flex-col p-[10px] gap-2 duration-200
             ${
               isContactOpen
                 ? "opacity-100 translate-y-0"
@@ -139,7 +139,7 @@ export default function ContactMe() {
               ${isFindOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}
             `}
           >
-            <div className="text-[#607B96] flex flex-col p-[22px] gap-[10px]">
+            <div className="text-[#607B96] flex flex-col p-[15px] gap-[8px]">
               <a
                 href="https://github.com/mkkim68"
                 className="flex items-center gap-2 hover:underline"
@@ -335,10 +335,10 @@ ease-in-out"
                 <span className="ml-[10px]">date: </span>
                 <span className="text-[#FEA55F]">{`"${formatDate(
                   "day",
-                  date.getDay()
+                  date.getDay(),
                 )} ${date.getDate()} ${formatDate(
                   "month",
-                  date.getMonth() + 1
+                  date.getMonth() + 1,
                 )}"`}</span>
               </p>
               <p>

@@ -12,3 +12,10 @@ body {
     caret-color: #607b96;
   }
 }
+
+/* :root[data-theme="default"] {
+  --bg: #011627;
+  --fg: #607b96;
+  --primary: #5ddcff;
+  --border: rgba(255, 255, 255, 0.12);
+} */
