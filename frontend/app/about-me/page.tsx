@@ -67,9 +67,9 @@ export default function AboutMe() {
     "Mock Service Worker",
   ];
   return (
-    <div className="h-full w-full bg-[#011627] flex">
+    <div className="h-full w-full bg-fg flex">
       {/* 왼쪽 */}
-      <div className="h-full w-[270px] border-r-[0.5px] border-[#607B96] flex">
+      <div className="h-full w-[270px] border-r-[0.5px] border-border flex">
         <div className="w-[50px] h-full flex justify-center pt-[15px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -77,12 +77,10 @@ export default function AboutMe() {
             height="24"
             viewBox="0 0 24 24"
             fill="none"
+            className="fill-border"
           >
-            <g opacity="1" clip-path="url(#clip0_1_924)">
-              <path
-                d="M3 3H21C21.2652 3 21.5196 3.10536 21.7071 3.29289C21.8946 3.48043 22 3.73478 22 4V20C22 20.2652 21.8946 20.5196 21.7071 20.7071C21.5196 20.8946 21.2652 21 21 21H3C2.73478 21 2.48043 20.8946 2.29289 20.7071C2.10536 20.5196 2 20.2652 2 20V4C2 3.73478 2.10536 3.48043 2.29289 3.29289C2.48043 3.10536 2.73478 3 3 3ZM12 15V17H18V15H12ZM8.414 12L5.586 14.828L7 16.243L11.243 12L7 7.757L5.586 9.172L8.414 12Z"
-                fill="#607B96"
-              />
+            <g opacity="1" clipPath="url(#clip0_1_924)">
+              <path d="M3 3H21C21.2652 3 21.5196 3.10536 21.7071 3.29289C21.8946 3.48043 22 3.73478 22 4V20C22 20.2652 21.8946 20.5196 21.7071 20.7071C21.5196 20.8946 21.2652 21 21 21H3C2.73478 21 2.48043 20.8946 2.29289 20.7071C2.10536 20.5196 2 20.2652 2 20V4C2 3.73478 2.10536 3.48043 2.29289 3.29289C2.48043 3.10536 2.73478 3 3 3ZM12 15V17H18V15H12ZM8.414 12L5.586 14.828L7 16.243L11.243 12L7 7.757L5.586 9.172L8.414 12Z" />
             </g>
             <defs>
               <clipPath id="clip0_1_924">
@@ -91,7 +89,7 @@ export default function AboutMe() {
             </defs>
           </svg>
         </div>
-        <div className="w-[220px] border-l-[0.5px] border-[#607B96]">
+        <div className="w-[220px] border-l-[0.5px] border-border">
           <button
             onClick={() => {
               setIsPersonalInfoOpen((prev) => !prev);
@@ -99,9 +97,9 @@ export default function AboutMe() {
               setIsExpOpen(false);
               setIsInterestsOpen(false);
             }}
-            className="cursor-pointer h-[40px] w-full flex p-[20px] items-center border-b-[0.5px] border-[#607B96]"
+            className="cursor-pointer h-[40px] w-full flex p-[20px] items-center border-b-[0.5px] border-border"
           >
-            <h3 className="text-white">
+            <h3 className="text-highlight">
               <span
                 className={`
                   inline-block
@@ -122,7 +120,7 @@ export default function AboutMe() {
             `}
           >
             <div
-              className={`text-[#607B96] flex flex-col duration-200
+              className={`text-border flex flex-col duration-200
             ${
               isPersonalInfoOpen
                 ? "opacity-100 translate-y-0"
@@ -133,7 +131,8 @@ export default function AboutMe() {
               <div>
                 <p
                   onClick={() => setIsBioOpen((prev) => !prev)}
-                  className="flex items-center gap-2.5 cursor-pointer w-full px-[10px] py-[5px] hover:bg-amber-50"
+                  className="flex items-center gap-2.5 cursor-pointer w-full px-[10px] py-[5px] hover:bg-hover duration-150
+ease-in-out"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -142,15 +141,13 @@ export default function AboutMe() {
                     viewBox="0 0 8 13"
                     fill="none"
                     className={`
+                      fill-border
                   inline-block
                   transition-transform duration-200 ease-in-out
                   ${isBioOpen ? "rotate-90" : "rotate-0"}
                 `}
                   >
-                    <path
-                      d="M4.95 6.36403L-4.94551e-07 1.41403L1.414 2.66411e-05L7.778 6.36403L1.414 12.728L-6.18079e-08 11.314L4.95 6.36403Z"
-                      fill="#607B96"
-                    />
+                    <path d="M4.95 6.36403L-4.94551e-07 1.41403L1.414 2.66411e-05L7.778 6.36403L1.414 12.728L-6.18079e-08 11.314L4.95 6.36403Z" />
                   </svg>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -158,15 +155,12 @@ export default function AboutMe() {
                     height="13"
                     viewBox="0 0 15 13"
                     fill="none"
+                    className="
+                      fill-border"
                   >
-                    <path
-                      d="M14.4444 3.61111V12.2778C14.4444 12.4693 14.3684 12.653 14.2329 12.7885C14.0975 12.9239 13.9138 13 13.7222 13H0.722222C0.530677 13 0.346977 12.9239 0.211534 12.7885C0.076091 12.653 0 12.4693 0 12.2778V2.88889H13.7222C13.9138 2.88889 14.0975 2.96498 14.2329 3.10042C14.3684 3.23587 14.4444 3.41957 14.4444 3.61111ZM7.52122 1.44444H0V0.722222C0 0.530677 0.076091 0.346977 0.211534 0.211534C0.346977 0.076091 0.530677 0 0.722222 0H6.07678L7.52122 1.44444Z"
-                      fill="#607B96"
-                    />
+                    <path d="M14.4444 3.61111V12.2778C14.4444 12.4693 14.3684 12.653 14.2329 12.7885C14.0975 12.9239 13.9138 13 13.7222 13H0.722222C0.530677 13 0.346977 12.9239 0.211534 12.7885C0.076091 12.653 0 12.4693 0 12.2778V2.88889H13.7222C13.9138 2.88889 14.0975 2.96498 14.2329 3.10042C14.3684 3.23587 14.4444 3.41957 14.4444 3.61111ZM7.52122 1.44444H0V0.722222C0 0.530677 0.076091 0.346977 0.211534 0.211534C0.346977 0.076091 0.530677 0 0.722222 0H6.07678L7.52122 1.44444Z" />
                   </svg>
-                  <span className={`${isBioOpen ? "text-white" : ""}`}>
-                    bio
-                  </span>
+                  <span>bio</span>
                 </p>
                 <div
                   className={`
@@ -174,39 +168,14 @@ export default function AboutMe() {
                     transition-[max-height] duration-300 ease-in-out
                     ${isBioOpen ? "max-h-[100px]" : "max-h-0"}
                   `}
-                >
-                  {/* <p
-                    onClick={() => {
-                      setOpen();
-                    }}
-                    className={`
-                      pl-[27px] py-[4px]
-                      ${
-                        open === "" ? "text-white bg-[#ffffff1a] cursor-default" : "cursor-pointer"
-                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
-ease-in-out w-full`}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="15"
-                      viewBox="0 0 17 15"
-                      fill="none"
-                    >
-                      <path
-                        d="M0.811096 0H15.4108C15.6259 0 15.8322 0.0854545 15.9844 0.237565C16.1365 0.389675 16.2219 0.59598 16.2219 0.811096V13.7886C16.2219 14.0038 16.1365 14.2101 15.9844 14.3622C15.8322 14.5143 15.6259 14.5997 15.4108 14.5997H0.811096C0.59598 14.5997 0.389675 14.5143 0.237565 14.3622C0.0854545 14.2101 0 14.0038 0 13.7886V0.811096C0 0.59598 0.0854545 0.389675 0.237565 0.237565C0.389675 0.0854545 0.59598 0 0.811096 0V0ZM4.05548 10.1387V6.89432L5.67767 8.51651L7.29987 6.89432V10.1387H8.92206V4.46103H7.29987L5.67767 6.08322L4.05548 4.46103H2.43329V10.1387H4.05548ZM12.9775 7.70541V4.46103H11.3553V7.70541H9.73315L12.1664 10.1387L14.5997 7.70541H12.9775Z"
-                        fill="#81A1C1"
-                      />
-                    </svg>
-                    <span>hard-skills</span>
-                  </p> */}
-                </div>
+                ></div>
               </div>
               {/* interests */}
               <div>
                 <p
                   onClick={() => setIsInterestsOpen((prev) => !prev)}
-                  className="flex items-center gap-2.5 cursor-pointer w-full px-[10px] py-[5px] hover:bg-amber-50"
+                  className="flex items-center gap-2.5 cursor-pointer w-full px-[10px] py-[5px] hover:bg-hover duration-150
+ease-in-out"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -215,15 +184,14 @@ ease-in-out w-full`}
                     viewBox="0 0 8 13"
                     fill="none"
                     className={`
+
+                fill-border
                   inline-block
                   transition-transform duration-200 ease-in-out
                   ${isInterestsOpen ? "rotate-90" : "rotate-0"}
                 `}
                   >
-                    <path
-                      d="M4.95 6.36403L-4.94551e-07 1.41403L1.414 2.66411e-05L7.778 6.36403L1.414 12.728L-6.18079e-08 11.314L4.95 6.36403Z"
-                      fill="#607B96"
-                    />
+                    <path d="M4.95 6.36403L-4.94551e-07 1.41403L1.414 2.66411e-05L7.778 6.36403L1.414 12.728L-6.18079e-08 11.314L4.95 6.36403Z" />
                   </svg>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -231,15 +199,11 @@ ease-in-out w-full`}
                     height="13"
                     viewBox="0 0 15 13"
                     fill="none"
+                    className="fill-border"
                   >
-                    <path
-                      d="M14.4444 3.61111V12.2778C14.4444 12.4693 14.3684 12.653 14.2329 12.7885C14.0975 12.9239 13.9138 13 13.7222 13H0.722222C0.530677 13 0.346977 12.9239 0.211534 12.7885C0.076091 12.653 0 12.4693 0 12.2778V2.88889H13.7222C13.9138 2.88889 14.0975 2.96498 14.2329 3.10042C14.3684 3.23587 14.4444 3.41957 14.4444 3.61111ZM7.52122 1.44444H0V0.722222C0 0.530677 0.076091 0.346977 0.211534 0.211534C0.346977 0.076091 0.530677 0 0.722222 0H6.07678L7.52122 1.44444Z"
-                      fill="#607B96"
-                    />
+                    <path d="M14.4444 3.61111V12.2778C14.4444 12.4693 14.3684 12.653 14.2329 12.7885C14.0975 12.9239 13.9138 13 13.7222 13H0.722222C0.530677 13 0.346977 12.9239 0.211534 12.7885C0.076091 12.653 0 12.4693 0 12.2778V2.88889H13.7222C13.9138 2.88889 14.0975 2.96498 14.2329 3.10042C14.3684 3.23587 14.4444 3.41957 14.4444 3.61111ZM7.52122 1.44444H0V0.722222C0 0.530677 0.076091 0.346977 0.211534 0.211534C0.346977 0.076091 0.530677 0 0.722222 0H6.07678L7.52122 1.44444Z" />
                   </svg>
-                  <span className={`${isInterestsOpen ? "text-white" : ""}`}>
-                    interests
-                  </span>
+                  <span>interests</span>
                 </p>
                 <div
                   className={`
@@ -247,39 +211,14 @@ ease-in-out w-full`}
                     transition-[max-height] duration-300 ease-in-out
                     ${isInterestsOpen ? "max-h-[100px]" : "max-h-0"}
                   `}
-                >
-                  {/* <p
-                    onClick={() => {
-                    setOpen()
-                    }}
-                    className={`
-                      pl-[27px] py-[4px]
-                      ${
-                        open === "" ? "text-white bg-[#ffffff1a] cursor-default" : "cursor-pointer"
-                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
-ease-in-out w-full`}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="15"
-                      viewBox="0 0 17 15"
-                      fill="none"
-                    >
-                      <path
-                        d="M0.811096 0H15.4108C15.6259 0 15.8322 0.0854545 15.9844 0.237565C16.1365 0.389675 16.2219 0.59598 16.2219 0.811096V13.7886C16.2219 14.0038 16.1365 14.2101 15.9844 14.3622C15.8322 14.5143 15.6259 14.5997 15.4108 14.5997H0.811096C0.59598 14.5997 0.389675 14.5143 0.237565 14.3622C0.0854545 14.2101 0 14.0038 0 13.7886V0.811096C0 0.59598 0.0854545 0.389675 0.237565 0.237565C0.389675 0.0854545 0.59598 0 0.811096 0V0ZM4.05548 10.1387V6.89432L5.67767 8.51651L7.29987 6.89432V10.1387H8.92206V4.46103H7.29987L5.67767 6.08322L4.05548 4.46103H2.43329V10.1387H4.05548ZM12.9775 7.70541V4.46103H11.3553V7.70541H9.73315L12.1664 10.1387L14.5997 7.70541H12.9775Z"
-                        fill="#81A1C1"
-                      />
-                    </svg>
-                    <span>hard-skills</span>
-                  </p> */}
-                </div>
+                ></div>
               </div>
               {/* experiences */}
               <div>
                 <p
                   onClick={() => setIsExpOpen((prev) => !prev)}
-                  className={`flex items-center gap-2.5 cursor-pointer w-full px-[10px] py-[5px] hover:bg-amber-50`}
+                  className={`flex items-center gap-2.5 cursor-pointer w-full px-[10px] py-[5px] hover:bg-hover duration-150
+ease-in-out`}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -287,16 +226,13 @@ ease-in-out w-full`}
                     height="13"
                     viewBox="0 0 8 13"
                     fill="none"
-                    className={`
+                    className={`fill-border
                   inline-block
                   transition-transform duration-200 ease-in-out
                   ${isExpOpen ? "rotate-90" : "rotate-0"}
                 `}
                   >
-                    <path
-                      d="M4.95 6.36403L-4.94551e-07 1.41403L1.414 2.66411e-05L7.778 6.36403L1.414 12.728L-6.18079e-08 11.314L4.95 6.36403Z"
-                      fill="#607B96"
-                    />
+                    <path d="M4.95 6.36403L-4.94551e-07 1.41403L1.414 2.66411e-05L7.778 6.36403L1.414 12.728L-6.18079e-08 11.314L4.95 6.36403Z" />
                   </svg>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -304,15 +240,11 @@ ease-in-out w-full`}
                     height="13"
                     viewBox="0 0 15 13"
                     fill="none"
+                    className="fill-border"
                   >
-                    <path
-                      d="M14.4444 3.61111V12.2778C14.4444 12.4693 14.3684 12.653 14.2329 12.7885C14.0975 12.9239 13.9138 13 13.7222 13H0.722222C0.530677 13 0.346977 12.9239 0.211534 12.7885C0.076091 12.653 0 12.4693 0 12.2778V2.88889H13.7222C13.9138 2.88889 14.0975 2.96498 14.2329 3.10042C14.3684 3.23587 14.4444 3.41957 14.4444 3.61111ZM7.52122 1.44444H0V0.722222C0 0.530677 0.076091 0.346977 0.211534 0.211534C0.346977 0.076091 0.530677 0 0.722222 0H6.07678L7.52122 1.44444Z"
-                      fill="#607B96"
-                    />
+                    <path d="M14.4444 3.61111V12.2778C14.4444 12.4693 14.3684 12.653 14.2329 12.7885C14.0975 12.9239 13.9138 13 13.7222 13H0.722222C0.530677 13 0.346977 12.9239 0.211534 12.7885C0.076091 12.653 0 12.4693 0 12.2778V2.88889H13.7222C13.9138 2.88889 14.0975 2.96498 14.2329 3.10042C14.3684 3.23587 14.4444 3.41957 14.4444 3.61111ZM7.52122 1.44444H0V0.722222C0 0.530677 0.076091 0.346977 0.211534 0.211534C0.346977 0.076091 0.530677 0 0.722222 0H6.07678L7.52122 1.44444Z" />
                   </svg>
-                  <span className={`${isExpOpen ? "text-white" : ""}`}>
-                    experiences
-                  </span>
+                  <span>experiences</span>
                 </p>
                 <div
                   className={`
@@ -332,9 +264,9 @@ ease-in-out w-full`}
                       pl-[27px] py-[4px]
                       ${
                         open === "education"
-                          ? "text-white bg-[#ffffff1a] cursor-default"
+                          ? "text-highlight bg-focus cursor-default"
                           : "cursor-pointer"
-                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
+                      } flex items-center gap-[10px] hover:bg-hover duration-150
 ease-in-out w-full`}
                   >
                     <svg
@@ -343,11 +275,9 @@ ease-in-out w-full`}
                       height="15"
                       viewBox="0 0 17 15"
                       fill="none"
+                      className="fill-border"
                     >
-                      <path
-                        d="M0.811096 0H15.4108C15.6259 0 15.8322 0.0854545 15.9844 0.237565C16.1365 0.389675 16.2219 0.59598 16.2219 0.811096V13.7886C16.2219 14.0038 16.1365 14.2101 15.9844 14.3622C15.8322 14.5143 15.6259 14.5997 15.4108 14.5997H0.811096C0.59598 14.5997 0.389675 14.5143 0.237565 14.3622C0.0854545 14.2101 0 14.0038 0 13.7886V0.811096C0 0.59598 0.0854545 0.389675 0.237565 0.237565C0.389675 0.0854545 0.59598 0 0.811096 0V0ZM4.05548 10.1387V6.89432L5.67767 8.51651L7.29987 6.89432V10.1387H8.92206V4.46103H7.29987L5.67767 6.08322L4.05548 4.46103H2.43329V10.1387H4.05548ZM12.9775 7.70541V4.46103H11.3553V7.70541H9.73315L12.1664 10.1387L14.5997 7.70541H12.9775Z"
-                        fill="#81A1C1"
-                      />
+                      <path d="M0.811096 0H15.4108C15.6259 0 15.8322 0.0854545 15.9844 0.237565C16.1365 0.389675 16.2219 0.59598 16.2219 0.811096V13.7886C16.2219 14.0038 16.1365 14.2101 15.9844 14.3622C15.8322 14.5143 15.6259 14.5997 15.4108 14.5997H0.811096C0.59598 14.5997 0.389675 14.5143 0.237565 14.3622C0.0854545 14.2101 0 14.0038 0 13.7886V0.811096C0 0.59598 0.0854545 0.389675 0.237565 0.237565C0.389675 0.0854545 0.59598 0 0.811096 0V0ZM4.05548 10.1387V6.89432L5.67767 8.51651L7.29987 6.89432V10.1387H8.92206V4.46103H7.29987L5.67767 6.08322L4.05548 4.46103H2.43329V10.1387H4.05548ZM12.9775 7.70541V4.46103H11.3553V7.70541H9.73315L12.1664 10.1387L14.5997 7.70541H12.9775Z" />
                     </svg>
                     <span>education</span>
                   </p>
@@ -357,7 +287,8 @@ ease-in-out w-full`}
               <div>
                 <p
                   onClick={() => setIsSkillsOpen((prev) => !prev)}
-                  className="flex items-center gap-2.5 cursor-pointer w-full px-[10px] py-[5px] hover:bg-amber-50"
+                  className="flex items-center gap-2.5 cursor-pointer w-full px-[10px] py-[5px] hover:bg-hover duration-150
+ease-in-out"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -366,15 +297,13 @@ ease-in-out w-full`}
                     viewBox="0 0 8 13"
                     fill="none"
                     className={`
+                  fill-border
                   inline-block
                   transition-transform duration-200 ease-in-out
                   ${isSkillsOpen ? "rotate-90" : "rotate-0"}
                 `}
                   >
-                    <path
-                      d="M4.95 6.36403L-4.94551e-07 1.41403L1.414 2.66411e-05L7.778 6.36403L1.414 12.728L-6.18079e-08 11.314L4.95 6.36403Z"
-                      fill="#607B96"
-                    />
+                    <path d="M4.95 6.36403L-4.94551e-07 1.41403L1.414 2.66411e-05L7.778 6.36403L1.414 12.728L-6.18079e-08 11.314L4.95 6.36403Z" />
                   </svg>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -382,15 +311,11 @@ ease-in-out w-full`}
                     height="13"
                     viewBox="0 0 15 13"
                     fill="none"
+                    className="fill-border"
                   >
-                    <path
-                      d="M14.4444 3.61111V12.2778C14.4444 12.4693 14.3684 12.653 14.2329 12.7885C14.0975 12.9239 13.9138 13 13.7222 13H0.722222C0.530677 13 0.346977 12.9239 0.211534 12.7885C0.076091 12.653 0 12.4693 0 12.2778V2.88889H13.7222C13.9138 2.88889 14.0975 2.96498 14.2329 3.10042C14.3684 3.23587 14.4444 3.41957 14.4444 3.61111ZM7.52122 1.44444H0V0.722222C0 0.530677 0.076091 0.346977 0.211534 0.211534C0.346977 0.076091 0.530677 0 0.722222 0H6.07678L7.52122 1.44444Z"
-                      fill="#607B96"
-                    />
+                    <path d="M14.4444 3.61111V12.2778C14.4444 12.4693 14.3684 12.653 14.2329 12.7885C14.0975 12.9239 13.9138 13 13.7222 13H0.722222C0.530677 13 0.346977 12.9239 0.211534 12.7885C0.076091 12.653 0 12.4693 0 12.2778V2.88889H13.7222C13.9138 2.88889 14.0975 2.96498 14.2329 3.10042C14.3684 3.23587 14.4444 3.41957 14.4444 3.61111ZM7.52122 1.44444H0V0.722222C0 0.530677 0.076091 0.346977 0.211534 0.211534C0.346977 0.076091 0.530677 0 0.722222 0H6.07678L7.52122 1.44444Z" />
                   </svg>
-                  <span className={`${isSkillsOpen ? "text-white" : ""}`}>
-                    skills
-                  </span>
+                  <span>skills</span>
                 </p>
                 <div
                   className={`
@@ -410,9 +335,9 @@ ease-in-out w-full`}
                       pl-[27px] py-[4px]
                       ${
                         open === "hard-skills"
-                          ? "text-white bg-[#ffffff1a] cursor-default"
+                          ? "text-highlight bg-focus cursor-default"
                           : "cursor-pointer"
-                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
+                      } flex items-center gap-[10px] hover:bg-hover duration-150
 ease-in-out w-full`}
                   >
                     <svg
@@ -421,11 +346,9 @@ ease-in-out w-full`}
                       height="15"
                       viewBox="0 0 17 15"
                       fill="none"
+                      className="fill-border"
                     >
-                      <path
-                        d="M0.811096 0H15.4108C15.6259 0 15.8322 0.0854545 15.9844 0.237565C16.1365 0.389675 16.2219 0.59598 16.2219 0.811096V13.7886C16.2219 14.0038 16.1365 14.2101 15.9844 14.3622C15.8322 14.5143 15.6259 14.5997 15.4108 14.5997H0.811096C0.59598 14.5997 0.389675 14.5143 0.237565 14.3622C0.0854545 14.2101 0 14.0038 0 13.7886V0.811096C0 0.59598 0.0854545 0.389675 0.237565 0.237565C0.389675 0.0854545 0.59598 0 0.811096 0V0ZM4.05548 10.1387V6.89432L5.67767 8.51651L7.29987 6.89432V10.1387H8.92206V4.46103H7.29987L5.67767 6.08322L4.05548 4.46103H2.43329V10.1387H4.05548ZM12.9775 7.70541V4.46103H11.3553V7.70541H9.73315L12.1664 10.1387L14.5997 7.70541H12.9775Z"
-                        fill="#81A1C1"
-                      />
+                      <path d="M0.811096 0H15.4108C15.6259 0 15.8322 0.0854545 15.9844 0.237565C16.1365 0.389675 16.2219 0.59598 16.2219 0.811096V13.7886C16.2219 14.0038 16.1365 14.2101 15.9844 14.3622C15.8322 14.5143 15.6259 14.5997 15.4108 14.5997H0.811096C0.59598 14.5997 0.389675 14.5143 0.237565 14.3622C0.0854545 14.2101 0 14.0038 0 13.7886V0.811096C0 0.59598 0.0854545 0.389675 0.237565 0.237565C0.389675 0.0854545 0.59598 0 0.811096 0V0ZM4.05548 10.1387V6.89432L5.67767 8.51651L7.29987 6.89432V10.1387H8.92206V4.46103H7.29987L5.67767 6.08322L4.05548 4.46103H2.43329V10.1387H4.05548ZM12.9775 7.70541V4.46103H11.3553V7.70541H9.73315L12.1664 10.1387L14.5997 7.70541H12.9775Z" />
                     </svg>
                     <span>hard-skills</span>
                   </p>
@@ -439,9 +362,9 @@ ease-in-out w-full`}
                     className={`pl-[27px] py-[4px]
                       ${
                         open === "soft-skills"
-                          ? "text-white bg-[#ffffff1a] cursor-default"
+                          ? "text-highlight bg-focus cursor-default"
                           : "cursor-pointer"
-                      } flex items-center gap-[10px] hover:bg-[#ffffff1a] duration-150
+                      } flex items-center gap-[10px] hover:bg-hover duration-150
 ease-in-out w-full`}
                   >
                     <svg
@@ -450,11 +373,9 @@ ease-in-out w-full`}
                       height="15"
                       viewBox="0 0 17 15"
                       fill="none"
+                      className="fill-border"
                     >
-                      <path
-                        d="M0.811096 0H15.4108C15.6259 0 15.8322 0.0854545 15.9844 0.237565C16.1365 0.389675 16.2219 0.59598 16.2219 0.811096V13.7886C16.2219 14.0038 16.1365 14.2101 15.9844 14.3622C15.8322 14.5143 15.6259 14.5997 15.4108 14.5997H0.811096C0.59598 14.5997 0.389675 14.5143 0.237565 14.3622C0.0854545 14.2101 0 14.0038 0 13.7886V0.811096C0 0.59598 0.0854545 0.389675 0.237565 0.237565C0.389675 0.0854545 0.59598 0 0.811096 0V0ZM4.05548 10.1387V6.89432L5.67767 8.51651L7.29987 6.89432V10.1387H8.92206V4.46103H7.29987L5.67767 6.08322L4.05548 4.46103H2.43329V10.1387H4.05548ZM12.9775 7.70541V4.46103H11.3553V7.70541H9.73315L12.1664 10.1387L14.5997 7.70541H12.9775Z"
-                        fill="#81A1C1"
-                      />
+                      <path d="M0.811096 0H15.4108C15.6259 0 15.8322 0.0854545 15.9844 0.237565C16.1365 0.389675 16.2219 0.59598 16.2219 0.811096V13.7886C16.2219 14.0038 16.1365 14.2101 15.9844 14.3622C15.8322 14.5143 15.6259 14.5997 15.4108 14.5997H0.811096C0.59598 14.5997 0.389675 14.5143 0.237565 14.3622C0.0854545 14.2101 0 14.0038 0 13.7886V0.811096C0 0.59598 0.0854545 0.389675 0.237565 0.237565C0.389675 0.0854545 0.59598 0 0.811096 0V0ZM4.05548 10.1387V6.89432L5.67767 8.51651L7.29987 6.89432V10.1387H8.92206V4.46103H7.29987L5.67767 6.08322L4.05548 4.46103H2.43329V10.1387H4.05548ZM12.9775 7.70541V4.46103H11.3553V7.70541H9.73315L12.1664 10.1387L14.5997 7.70541H12.9775Z" />
                     </svg>
                     <span>soft-skills</span>
                   </p>
@@ -465,9 +386,9 @@ ease-in-out w-full`}
           <div>
             <button
               onClick={() => setIsContacts((prev) => !prev)}
-              className="cursor-pointer h-[40px] w-full flex p-[20px] items-center border-y-[0.5px] border-[#607B96]"
+              className="cursor-pointer h-[40px] w-full flex p-[20px] items-center border-y-[0.5px] border-border"
             >
-              <h3 className="text-white">
+              <h3 className="text-highlight">
                 <span
                   className={`
                   inline-block
@@ -487,7 +408,7 @@ ease-in-out w-full`}
               ${isContacts ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}
             `}
             >
-              <div className="text-[#607B96] flex flex-col p-[15px] gap-[10px]">
+              <div className="text-border flex flex-col p-[15px] gap-[10px]">
                 <a
                   href="https://www.linkedin.com/in/%EB%AF%BC%EA%B2%BD-%EA%B9%80-b36195373/"
                   className="flex items-center gap-2 hover:underline"
@@ -498,11 +419,9 @@ ease-in-out w-full`}
                     height="14"
                     viewBox="0 0 16 16"
                     fill="none"
+                    className="fill-border"
                   >
-                    <path
-                      d="M6.22222 2.66667V4.44444H1.77778V14.2222H11.5556V9.77778H13.3333V15.1111C13.3333 15.3469 13.2397 15.573 13.073 15.7397C12.9063 15.9064 12.6802 16 12.4444 16H0.888889C0.653141 16 0.427048 15.9064 0.260349 15.7397C0.0936505 15.573 0 15.3469 0 15.1111V3.55556C0 3.31981 0.0936505 3.09372 0.260349 2.92702C0.427048 2.76032 0.653141 2.66667 0.888889 2.66667H6.22222ZM16 0V7.11111H14.2222V3.03378L7.29511 9.96178L6.03822 8.70489L12.9644 1.77778H8.88889V0H16Z"
-                      fill="#607B96"
-                    />
+                    <path d="M6.22222 2.66667V4.44444H1.77778V14.2222H11.5556V9.77778H13.3333V15.1111C13.3333 15.3469 13.2397 15.573 13.073 15.7397C12.9063 15.9064 12.6802 16 12.4444 16H0.888889C0.653141 16 0.427048 15.9064 0.260349 15.7397C0.0936505 15.573 0 15.3469 0 15.1111V3.55556C0 3.31981 0.0936505 3.09372 0.260349 2.92702C0.427048 2.76032 0.653141 2.66667 0.888889 2.66667H6.22222ZM16 0V7.11111H14.2222V3.03378L7.29511 9.96178L6.03822 8.70489L12.9644 1.77778H8.88889V0H16Z" />
                   </svg>
                   <span>Linked-In account</span>
                 </a>
@@ -516,11 +435,9 @@ ease-in-out w-full`}
                     height="14"
                     viewBox="0 0 16 16"
                     fill="none"
+                    className="fill-border"
                   >
-                    <path
-                      d="M6.22222 2.66667V4.44444H1.77778V14.2222H11.5556V9.77778H13.3333V15.1111C13.3333 15.3469 13.2397 15.573 13.073 15.7397C12.9063 15.9064 12.6802 16 12.4444 16H0.888889C0.653141 16 0.427048 15.9064 0.260349 15.7397C0.0936505 15.573 0 15.3469 0 15.1111V3.55556C0 3.31981 0.0936505 3.09372 0.260349 2.92702C0.427048 2.76032 0.653141 2.66667 0.888889 2.66667H6.22222ZM16 0V7.11111H14.2222V3.03378L7.29511 9.96178L6.03822 8.70489L12.9644 1.77778H8.88889V0H16Z"
-                      fill="#607B96"
-                    />
+                    <path d="M6.22222 2.66667V4.44444H1.77778V14.2222H11.5556V9.77778H13.3333V15.1111C13.3333 15.3469 13.2397 15.573 13.073 15.7397C12.9063 15.9064 12.6802 16 12.4444 16H0.888889C0.653141 16 0.427048 15.9064 0.260349 15.7397C0.0936505 15.573 0 15.3469 0 15.1111V3.55556C0 3.31981 0.0936505 3.09372 0.260349 2.92702C0.427048 2.76032 0.653141 2.66667 0.888889 2.66667H6.22222ZM16 0V7.11111H14.2222V3.03378L7.29511 9.96178L6.03822 8.70489L12.9644 1.77778H8.88889V0H16Z" />
                   </svg>
                   <span>Instagram account</span>
                 </a>
@@ -530,18 +447,18 @@ ease-in-out w-full`}
         </div>
       </div>
       {/* 메인 */}
-      <div className="w-[calc(100%-270px)] flex flex-col text-[#607B96] ">
+      <div className="w-[calc(100%-270px)] flex flex-col text-border ">
         {/* 상단 */}
         {openContents.length > 0 ? (
-          <div className="h-[40px] border-b-[0.5px] border-[#607B96]">
+          <div className="h-[40px] border-b-[0.5px] border-border">
             <div className="h-full flex">
               {openContents.map((content) => (
                 <div
                   key={content}
                   onClick={() => setOpen(content)}
                   className={`${
-                    open === content ? "bg-[#ffffff1a] text-white" : ""
-                  } h-full p-[20px] pr-[17px] flex items-center w-fit border-r-[0.5px] border-[#607B96] justify-between  cursor-pointer hover:bg-[#ffffff0b] duration-150 ease-in-out`}
+                    open === content ? "bg-focus text-highlight" : ""
+                  } h-full p-[20px] pr-[17px] flex items-center w-fit border-r-[0.5px] border-border justify-between  cursor-pointer hover:bg-hover duration-150 ease-in-out`}
                 >
                   <span className="mr-[20px] whitespace-nowrap">{content}</span>
                   <div
@@ -554,11 +471,9 @@ ease-in-out w-full`}
                       height="11"
                       viewBox="0 0 10 11"
                       fill="none"
+                      className={`${open === content ? "fill-highlight" : "fill-border"}`}
                     >
-                      <path
-                        d="M5.00005 4.65244L8.71255 0.939941L9.77305 2.00044L6.06055 5.71294L9.77305 9.42544L8.71255 10.4859L5.00005 6.77344L1.28755 10.4859L0.227051 9.42544L3.93955 5.71294L0.227051 2.00044L1.28755 0.939941L5.00005 4.65244Z"
-                        fill={`${open === content ? "#ffffff" : "#607B96"}`}
-                      />
+                      <path d="M5.00005 4.65244L8.71255 0.939941L9.77305 2.00044L6.06055 5.71294L9.77305 9.42544L8.71255 10.4859L5.00005 6.77344L1.28755 10.4859L0.227051 9.42544L3.93955 5.71294L0.227051 2.00044L1.28755 0.939941L5.00005 4.65244Z" />
                     </svg>
                   </div>
                 </div>
@@ -583,7 +498,7 @@ ease-in-out w-full`}
                     key={content}
                     className="cursor-default text-[14px]
                       w-fit px-3 py-2 rounded-lg
-                      text-[#607B96]
+                      text-border
                       bg-white/5 backdrop-blur-md
                       border border-white/10 border-t-white/20
 
@@ -611,7 +526,7 @@ ease-in-out w-full`}
                     key={content}
                     className="cursor-default text-[14px]
                       w-fit px-3 py-2 rounded-lg
-                      text-[#607B96]
+                      text-border
                       bg-white/5 backdrop-blur-md
                       border border-white/10 border-t-white/20
 
@@ -639,7 +554,7 @@ ease-in-out w-full`}
                     key={content}
                     className="cursor-default text-[14px]
                       w-fit px-3 py-2 rounded-lg
-                      text-[#607B96]
+                      text-border
                       bg-white/5 backdrop-blur-md
                       border border-white/10 border-t-white/20
 
@@ -667,7 +582,7 @@ ease-in-out w-full`}
                     key={content}
                     className="cursor-default text-[14px]
                       w-fit px-3 py-2 rounded-lg
-                      text-[#607B96]
+                      text-border
                       bg-white/5 backdrop-blur-md
                       border border-white/10 border-t-white/20
 

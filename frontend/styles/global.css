@@ -1,21 +1,38 @@
 @import "tailwindcss";
 
-body {
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 1000px #011221 inset;
-    -webkit-text-fill-color: #607b96;
-    transition: background-color 9999s ease-in-out 0s;
-    -webkit-text-fill-color: #607b96;
-    caret-color: #607b96;
-  }
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #011221 inset;
+  -webkit-text-fill-color: #607b96;
+  transition: background-color 9999s ease-in-out 0s;
+  -webkit-text-fill-color: #607b96;
+  caret-color: #607b96;
 }
 
-/* :root[data-theme="default"] {
-  --bg: #011627;
-  --fg: #607b96;
-  --primary: #5ddcff;
-  --border: rgba(255, 255, 255, 0.12);
-} */
+@theme {
+  --color-bg: #000000;
+  --color-primary: #000000;
+  --color-fg: #000000;
+  --color-border: #000000;
+  --color-highlight: #000000;
+  --color-hover: #000000;
+  --color-focus: #000000;
+  --color-submit-bg: #000000;
+  --color-submit-bg-active: #000000;
+  --color-underline: #000000;
+}
+
+:root[data-theme="default"] {
+  --color-bg: #010c15;
+  --color-primary: red; /* 나중에 사용 */
+  --color-fg: #011627;
+  --color-border: #607b96;
+  --color-highlight: white;
+  --color-hover: #ffffff1a;
+  --color-focus: #ffffff0b;
+  --color-submit-bg: #1c2b3a;
+  --color-submit-bg-active: #011221;
+  --color-underline: #fea55f;
+}

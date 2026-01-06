@@ -3,6 +3,7 @@ import Navigation from "../components/navigation";
 import { firacode_light } from "../styles/font";
 import { ThemeProvider } from "next-themes";
 import "../styles/global.css";
+import Providers from "./providers";
 
 export const metadata = {
   title: "Kim Min Kyoung",
@@ -15,17 +16,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`bg-[#010C15] h-screen p-[20px]`}>
-        <ThemeProvider attribute="class">
-          <div
-            className={`${firacode_light.className} border-[0.5px] rounded-[8px] border-[#607B96] text-[14px]`}
-          >
-            <Navigation />
-            <div className="h-[calc(89vh-40px)]">{children}</div>
-            <Footer />
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <Providers>
+          {/* <ThemeProvider attribute="data-theme" defaultTheme="red"> */}
+          <div className={`bg-bg h-screen p-[30px]`}>
+            <div
+              className={`${firacode_light.className} border-[0.5px] rounded-[8px] border-border text-[14px]`}
+            >
+              <Navigation />
+              <div className="h-[calc(89vh-60px)]">{children}</div>
+              <Footer />
+            </div>
           </div>
-        </ThemeProvider>
+          {/* </ThemeProvider> */}
+        </Providers>
       </body>
     </html>
   );
