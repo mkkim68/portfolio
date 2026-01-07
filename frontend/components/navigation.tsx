@@ -6,63 +6,57 @@ import { usePathname } from "next/navigation";
 export default function Navigation() {
   const path = usePathname();
   return (
-    <nav className="h-[6vh] rounded-[8px] bg-[#011627]">
-      <ul className="text-[#607B96] flex justify-between w-full border-b-[0.5px] h-full">
+    <nav className="h-[6vh] rounded-[8px] bg-fg">
+      <ul className="text-border flex justify-between w-full border-b-[0.5px] h-full">
         <div className="flex">
-          <li className="p-[20px] flex justify-start items-center border-r-[0.5px] w-[270px]">
-            <span>kim-min-kyoung</span>
+          <li className="cursor-pointer p-[20px] flex justify-start items-center hover:bg-hover transition-colors duration-150 border-r-[0.5px] w-[270px]">
+            <Link href="/">kim-min-kyoung</Link>
           </li>
           <li
-            className={`${
-              path === "/" ? "border-b-[2px] border-b-[#FEA55F]" : "none"
-            } w-[121px] flex justify-center border-r-[0.5px] items-center`}
+            className={`cursor-pointer ${
+              path === "/" ? "border-b-[2px] border-b-string" : "none"
+            } w-[121px] flex justify-center border-r-[0.5px] items-center hover:bg-hover transition-colors duration-150`}
           >
             <Link
               href="/"
-              className={`${path === "/" ? "text-white" : "inherit"}`}
+              className={`${path === "/" ? "text-highlight" : "inherit"}`}
             >
               _hello
             </Link>
           </li>
           <li
-            className={`${
-              path === "/about-me"
-                ? "border-b-[2px] border-b-[#FEA55F]"
-                : "none"
-            } w-[121px] flex justify-center border-r-[0.5px] items-center`}
+            className={`cursor-pointer ${
+              path === "/about-me" ? "border-b-[2px] border-b-string" : "none"
+            } w-[121px] flex justify-center border-r-[0.5px] items-center hover:bg-hover transition-colors duration-150`}
           >
             <Link
               href="/about-me"
-              className={`${path === "/about-me" ? "text-white" : "inherit"}`}
+              className={`${path === "/about-me" ? "text-highlight" : "inherit"}`}
             >
               _about-me
             </Link>
           </li>
           <li
-            className={`${
-              path === "/projects"
-                ? "border-b-[2px] border-b-[#FEA55F]"
-                : "none"
-            } w-[121px] flex justify-center border-r-[0.5px] items-center`}
+            className={`cursor-pointer ${
+              path === "/projects" ? "border-b-[2px] border-b-string" : "none"
+            } w-[121px] flex justify-center border-r-[0.5px] items-center hover:bg-hover transition-colors duration-150`}
           >
             <Link
               href="/projects"
-              className={`${path === "/projects" ? "text-white" : "inherit"}`}
+              className={`${path === "/projects" ? "text-highlight" : "inherit"}`}
             >
               _projects
             </Link>
           </li>
         </div>
         <li
-          className={`${
-            path === "/contact-me"
-              ? "border-b-[2px] border-b-[#FEA55F]"
-              : "none"
-          } w-[150px] flex justify-center border-l-[0.5px] items-center`}
+          className={`cursor-pointer ${
+            path === "/contact-me" ? "border-b-[2px] border-b-string" : "none"
+          } w-[150px] flex justify-center border-l-[0.5px] items-center hover:bg-hover transition-colors duration-150`}
         >
           <Link
             href="/contact-me"
-            className={`${path === "/contact-me" ? "text-white" : "inherit"}`}
+            className={`${path === "/contact-me" ? "text-highlight" : "inherit"}`}
           >
             _contact-me
           </Link>

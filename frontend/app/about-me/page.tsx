@@ -488,7 +488,7 @@ ease-in-out w-full`}
           <div className="h-full p-[35px] flex-col">
             <section className="mb-5">
               <h3
-                className={`text-[#719fe9] mb-3 text-[18px] ${firacode_medium.className}`}
+                className={`text-fe mb-3 text-[18px] ${firacode_medium.className}`}
               >
                 Frontend
               </h3>
@@ -504,9 +504,9 @@ ease-in-out w-full`}
 
                       transition-all duration-300 ease-out
 
-                      hover:text-[#719fe9]
-                      hover:bg-gradient-to-br hover:from-[#719fe9]/12 hover:via-white/2 hover:to-transparent
-                      hover:border-[#719fe9]/15 hover:border-t-[#719fe9]/30 hover:-translate-y-[1.5px]
+                      hover:text-fe
+                      hover:bg-gradient-to-br hover:from-fe/12 hover:via-white/2 hover:to-transparent
+                      hover:border-fe/15 hover:border-t-fe/30 hover:-translate-y-[1.5px]
                     "
                   >
                     {content}
@@ -516,7 +516,7 @@ ease-in-out w-full`}
             </section>
             <section className="mb-5">
               <h3
-                className={`text-[#66ebe6] mb-3 text-[18px] ${firacode_medium.className}`}
+                className={`text-be mb-3 text-[18px] ${firacode_medium.className}`}
               >
                 Backend
               </h3>
@@ -532,9 +532,9 @@ ease-in-out w-full`}
 
                       transition-all duration-300 ease-out
 
-                      hover:text-[#66ebe6]
-                      hover:bg-gradient-to-br hover:from-[#66ebe6]/12 hover:via-white/2 hover:to-transparent
-                      hover:border-[#66ebe6]/15 hover:border-t-[#66ebe6]/30 hover:-translate-y-[1.5px]
+                      hover:text-be
+                      hover:bg-gradient-to-br hover:from-be/12 hover:via-white/2 hover:to-transparent
+                      hover:border-be/15 hover:border-t-be/30 hover:-translate-y-[1.5px]
                     "
                   >
                     {content}
@@ -544,7 +544,7 @@ ease-in-out w-full`}
             </section>
             <section className="mb-5">
               <h3
-                className={`text-[#A7E399] mb-3 text-[18px] ${firacode_medium.className}`}
+                className={`text-mb mb-3 text-[18px] ${firacode_medium.className}`}
               >
                 Mobile
               </h3>
@@ -560,9 +560,9 @@ ease-in-out w-full`}
 
                       transition-all duration-300 ease-out
 
-                      hover:text-[#A7E399]
-                      hover:bg-gradient-to-br hover:from-[#A7E399]/12 hover:via-white/2 hover:to-transparent
-                      hover:border-[#A7E399]/15 hover:border-t-[#A7E399]/30 hover:-translate-y-[1.5px]
+                      hover:text-mb
+                      hover:bg-gradient-to-br hover:from-mb/12 hover:via-white/2 hover:to-transparent
+                      hover:border-mb/15 hover:border-t-mb/30 hover:-translate-y-[1.5px]
                     "
                   >
                     {content}
@@ -572,7 +572,7 @@ ease-in-out w-full`}
             </section>
             <section className="mb-5">
               <h3
-                className={`text-[#F6FF99] mb-3 text-[18px] ${firacode_medium.className}`}
+                className={`text-tool mb-3 text-[18px] ${firacode_medium.className}`}
               >
                 Tools & Infra
               </h3>
@@ -588,9 +588,9 @@ ease-in-out w-full`}
 
                       transition-all duration-300 ease-out
 
-                      hover:text-[#F6FF99]
-                      hover:bg-gradient-to-br hover:from-[#F6FF99]/12 hover:via-white/2 hover:to-transparent
-                      hover:border-[#F6FF99]/15 hover:border-t-[#F6FF99]/30 hover:-translate-y-[1.5px]
+                      hover:text-tool
+                      hover:bg-gradient-to-br hover:from-tool/12 hover:via-white/2 hover:to-transparent
+                      hover:border-tool/15 hover:border-t-tool/30 hover:-translate-y-[1.5px]
                     "
                   >
                     {content}

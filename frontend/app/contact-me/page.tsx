@@ -60,15 +60,15 @@ export default function ContactMe() {
   }
 
   return (
-    <div className="h-full w-full bg-[#011627] flex">
+    <div className="h-full w-full bg-fg flex">
       {/* 왼쪽 */}
-      <div className="h-full w-[270px] border-r-[0.5px] border-[#607B96]">
+      <div className="h-full w-[270px] border-r-[0.5px] border-border">
         <div>
           <button
             onClick={() => setIsContactOpen((prev) => !prev)}
-            className="cursor-pointer h-[40px] w-full flex p-[20px] items-center border-b-[0.5px] border-[#607B96]"
+            className="cursor-pointer h-[40px] w-full flex p-[20px] items-center border-b-[0.5px] border-border"
           >
-            <h3 className="text-white">
+            <h3 className="text-highlight">
               <span
                 className={`
                   inline-block
@@ -89,7 +89,7 @@ export default function ContactMe() {
             `}
           >
             <div
-              className={`text-[#607B96] flex flex-col p-[10px] gap-2 duration-200
+              className={`text-border flex flex-col p-[10px] gap-2 duration-200
             ${
               isContactOpen
                 ? "opacity-100 translate-y-0"
@@ -117,9 +117,9 @@ export default function ContactMe() {
         <div>
           <button
             onClick={() => setIsFindOpen((prev) => !prev)}
-            className="cursor-pointer h-[40px] w-full flex p-[20px] items-center border-y-[0.5px] border-[#607B96]"
+            className="cursor-pointer h-[40px] w-full flex p-[20px] items-center border-y-[0.5px] border-border"
           >
-            <h3 className="text-white">
+            <h3 className="text-highlight">
               <span
                 className={`
                   inline-block
@@ -139,7 +139,7 @@ export default function ContactMe() {
               ${isFindOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}
             `}
           >
-            <div className="text-[#607B96] flex flex-col p-[15px] gap-[8px]">
+            <div className="text-border flex flex-col p-[15px] gap-[8px]">
               <a
                 href="https://github.com/mkkim68"
                 className="flex items-center gap-2 hover:underline"
@@ -199,9 +199,9 @@ export default function ContactMe() {
         </div>
       </div>
       {/* 메인 */}
-      <div className="w-[calc(100%-270px)] flex flex-col text-white cursor-default">
-        <div className="h-[40px] border-b-[0.5px] border-[#607B96]">
-          <div className="h-full p-[20px] flex items-center w-[167px] border-r-[0.5px] border-[#607B96] justify-between">
+      <div className="w-[calc(100%-270px)] flex flex-col text-highlight cursor-default">
+        <div className="h-[40px] border-b-[0.5px] border-border">
+          <div className="h-full p-[20px] flex items-center w-[167px] border-r-[0.5px] border-border justify-between bg-focus hover:bg-hover transition-all duration-150">
             <span>contacts</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -218,7 +218,7 @@ export default function ContactMe() {
           </div>
         </div>
         <div ref={previewRef} className="flex h-full">
-          <div className="flex flex-col items-center w-[100%] border-r-[0.5px] border-[#607B96]">
+          <div className="flex flex-col items-center w-[100%] border-r-[0.5px] border-border">
             <form
               action=""
               className="flex flex-col items-start pt-[115px] gap-7 text-[14px]"
@@ -235,8 +235,8 @@ export default function ContactMe() {
                   spellCheck={false}
                   autoCorrect="off"
                   autoCapitalize="off"
-                  className="bg-[#011221] p-[13px] w-[372px] h-[40px] border-[0.5px] border-[#1E2D3D] duration-150
-ease-in-out focus:border-[#607B96] focus:border-[2px] outline-none rounded-[8px]"
+                  className="bg-submit-bg-active p-[13px] w-[372px] h-[40px] border-[0.5px] border-input-b duration-150
+ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
                 />
               </div>
               <div className="flex flex-col items-start gap-1.5">
@@ -251,8 +251,8 @@ ease-in-out focus:border-[#607B96] focus:border-[2px] outline-none rounded-[8px]
                   spellCheck={false}
                   autoCorrect="off"
                   autoCapitalize="off"
-                  className="bg-[#011221] p-[13px] w-[372px] h-[40px] border-[0.5px] border-[#1E2D3D] duration-150
-ease-in-out focus:border-[#607B96] focus:border-[2px] outline-none rounded-[8px]"
+                  className="bg-submit-bg-active p-[13px] w-[372px] h-[40px] border-[0.5px] border-input-b duration-150
+ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
                 />
               </div>
               <div className="flex flex-col items-start gap-1.5">
@@ -266,12 +266,12 @@ ease-in-out focus:border-[#607B96] focus:border-[2px] outline-none rounded-[8px]
                   spellCheck={false}
                   autoCorrect="off"
                   autoCapitalize="off"
-                  className="bg-[#011221] resize-none p-[13px] w-[372px] h-[145px] border-[0.5px] border-[#1E2D3D] duration-150
-ease-in-out focus:border-[#607B96] focus:border-[2px] outline-none rounded-[8px]"
+                  className="bg-submit-bg-active resize-none p-[13px] w-[372px] h-[145px] border-[0.5px] border-input-b duration-150
+ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
                 />
               </div>
               <button
-                className="bg-[#1C2B3A] cursor-pointer hover:bg-[#607B96] active:bg-[#011221] w-[146px] h-[38px] text-white rounded-[8px] duration-150
+                className="bg-submit-bg cursor-pointer hover:bg-border active:bg-submit-bg-active w-[146px] h-[38px] text-highlight rounded-[8px] duration-150
 ease-in-out"
               >
                 submit-message
@@ -282,11 +282,11 @@ ease-in-out"
           <div
             className={`text-[14px] ${
               w <= 800 ? "hidden" : "block"
-            } flex justify-center items-start w-[100%] border-r-[0.5px] border-[#607B96] py-[100px] px-[50px]`}
+            } flex justify-center items-start w-[100%] border-r-[0.5px] border-border py-[100px] px-[50px]`}
           >
             <div style={{ lineHeight: "20px" }} className="mr-[20px]">
               {lineArr.map((cnt, idx) => (
-                <p className="text-right" key={idx}>
+                <p className="text-right text-border" key={idx}>
                   {cnt}
                 </p>
               ))}
@@ -297,77 +297,77 @@ ease-in-out"
               className="flex flex-col items-start w-[98%]"
             >
               <p>
-                <span className="text-[#C98BDF]">const </span>
-                <span className="text-[#5565E8]">button</span>
-                <span className="text-[#C98BDF]"> = </span>
-                <span className="text-[#5565E8]">document</span>
-                <span>.</span>
-                <span className="text-[#5565E8]">querySelector</span>
-                <span>(</span>
-                <span className="text-[#FEA55F]">'#sendBtn'</span>
-                <span>);</span>
+                <span className="text-declare">const </span>
+                <span className="text-variable">button</span>
+                <span className="text-declare"> = </span>
+                <span className="text-variable">document</span>
+                <span className="text-border">.</span>
+                <span className="text-variable">querySelector</span>
+                <span className="text-border">(</span>
+                <span className="text-string">'#sendBtn'</span>
+                <span className="text-border">);</span>
               </p>
               <p>
-                <span className="text-[#C98BDF]">const </span>
-                <span className="text-[#5565E8]">message</span>
-                <span className="text-[#C98BDF]"> = </span>
-                <span>{`{`}</span>
+                <span className="text-declare">const </span>
+                <span className="text-variable">message</span>
+                <span className="text-declare"> = </span>
+                <span className="text-border">{`{`}</span>
               </p>
               <p>
-                <span className="text-[#5565E8] ml-[10px]">name</span>
-                <span>: </span>
-                <span className="text-[#FEA55F]">{`"${name}"`}</span>
-                <span>,</span>
+                <span className="text-variable ml-[10px]">name</span>
+                <span className="text-border">: </span>
+                <span className="text-string">{`"${name}"`}</span>
+                <span className="text-border">,</span>
               </p>
               <p>
-                <span className="text-[#5565E8] ml-[10px]">email</span>
-                <span>: </span>
-                <span className="text-[#FEA55F]">{`"${email}"`}</span>
-                <span>,</span>
+                <span className="text-variable ml-[10px]">email</span>
+                <span className="text-border">: </span>
+                <span className="text-string">{`"${email}"`}</span>
+                <span className="text-border">,</span>
               </p>
               <p>
-                <span className="text-[#5565E8] ml-[10px]">message</span>
-                <span>: </span>
-                <span className="text-[#FEA55F]">{`"${message}"`}</span>
-                <span>,</span>
+                <span className="text-variable ml-[10px]">message</span>
+                <span className="text-border">: </span>
+                <span className="text-string">{`"${message}"`}</span>
+                <span className="text-border">,</span>
               </p>
               <p>
-                <span className="ml-[10px]">date: </span>
-                <span className="text-[#FEA55F]">{`"${formatDate(
+                <span className="ml-[10px] text-border">date: </span>
+                <span className="text-string">{`"${formatDate(
                   "day",
-                  date.getDay(),
+                  date.getDay()
                 )} ${date.getDate()} ${formatDate(
                   "month",
-                  date.getMonth() + 1,
+                  date.getMonth() + 1
                 )}"`}</span>
               </p>
               <p>
-                <span>{`}`}</span>
+                <span className="text-border">{`}`}</span>
               </p>
               <p>
-                <span className="text-[#5565E8]">button.addEventListener</span>
-                <span>(</span>
-                <span className="text-[#FEA55F]">'click'</span>
-                <span>, ()</span>
-                <span className="text-[#C98BDF]">{` => `}</span>
-                <span>{`{`}</span>
+                <span className="text-variable">button.addEventListener</span>
+                <span className="text-border">(</span>
+                <span className="text-string">'click'</span>
+                <span className="text-border">, ()</span>
+                <span className="text-declare">{` => `}</span>
+                <span className="text-border">{`{`}</span>
               </p>
               <p>
-                <span className="text-[#5565E8] ml-[10px]">form</span>
-                <span>.</span>
-                <span className="text-[#5565E8]">send</span>
-                <span>(</span>
-                <span className="text-[#5565E8]">message</span>
-                <span>);</span>
+                <span className="text-variable ml-[10px]">form</span>
+                <span className="text-border">.</span>
+                <span className="text-variable">send</span>
+                <span className="text-border">(</span>
+                <span className="text-variable">message</span>
+                <span className="text-border">);</span>
               </p>
               <p>
-                <span>{`})`}</span>
+                <span className="text-border">{`})`}</span>
               </p>
             </div>
           </div>
-          <div className="w-[25px] border-l-[0.5px] border-[#607B96] flex justify-center pt-1">
+          <div className="w-[25px] border-l-[0.5px] border-border flex justify-center pt-1">
             {/* 스크롤인척 */}
-            <div className="w-[18px] h-[7px] bg-[#607B96]"></div>
+            <div className="w-[18px] h-[7px] bg-border"></div>
           </div>
         </div>
       </div>

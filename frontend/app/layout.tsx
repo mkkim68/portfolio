@@ -19,7 +19,6 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <Providers>
-          {/* <ThemeProvider attribute="data-theme" defaultTheme="red"> */}
           <div className={`bg-bg h-screen p-[30px]`}>
             <div
               className={`${firacode_light.className} border-[0.5px] rounded-[8px] border-border text-[14px]`}
@@ -29,7 +28,6 @@ export default function RootLayout({
               <Footer />
             </div>
           </div>
-          {/* </ThemeProvider> */}
         </Providers>
       </body>
     </html>
