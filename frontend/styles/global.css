@@ -10,6 +10,14 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: #607b96;
   caret-color: #607b96;
 }
+::-webkit-scrollbar {
+  height: 6px;
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
 
 @theme {
   --color-bg: #010c15;
@@ -52,24 +60,23 @@ input:-webkit-autofill:active {
   --color-variable: #5565e8;
   --color-string: #fea55f;
 }
-
 :root[data-theme="red"] {
-  --color-bg: red;
+  --color-bg: rgb(24, 1, 1);
   --color-primary: red; /* 나중에 사용 */
-  --color-fg: #011627;
-  --color-border: #607b96;
+  --color-fg: #2b0303;
+  --color-border: #9d6ba7;
   --color-highlight: white;
   --color-hover: #ffffff1a;
   --color-focus: #ffffff0b;
   --color-submit-bg: #1c2b3a;
   --color-submit-bg-active: #011221;
   --color-underline: #fea55f;
-  --color-fe: #719fe9;
-  --color-be: #66ebe6;
-  --color-mb: #a7e399;
-  --color-tool: #f6ff99;
+  --color-fe: #9bb4c0;
+  --color-be: #e1d0b3;
+  --color-mb: #a18d6d;
+  --color-tool: #3b704b;
   --color-input-b: #1e2d3d;
-  --color-declare: #c98bdf;
-  --color-variable: #5565e8;
-  --color-string: #fea55f;
+  --color-declare: #c678dc;
+  --color-variable: #d19966;
+  --color-string: #98c379;
 }

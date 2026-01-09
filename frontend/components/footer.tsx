@@ -1,6 +1,18 @@
+"use client";
+
+import { useTheme } from "next-themes";
+import { useState } from "react";
+
 export default function Footer() {
+  const [isThemeOpen, setIsThemeOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
   return (
-    <div className="text-border rounded-b-[8px] bg-fg flex justify-between w-full border-t-[0.5px] h-[5vh]">
+    <div
+      className="text-border rounded-b-[8px] bg-fg flex justify-between w-full border-t-[0.5px] h-[5vh] transition-colors duration-500 ease-in-out
+    [&_*]:transition-colors
+    [&_*]:duration-500
+    [&_*]:ease-in-out"
+    >
       <div className="flex">
         <div className="border-r-[0.5px] w-[150px] flex justify-center items-center">
           <span className="cursor-default">find me in :</span>
@@ -67,17 +79,50 @@ export default function Footer() {
           </svg>
         </a>
       </div>
-      <button className="w-[5vh]">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          viewBox="0 0 24 24"
-          name="moon"
-          className="w-6 cursor-pointer hover:opacity-80 fill-border transition-all duration-150 active:opacity-50"
+      <div className="relative flex items-center">
+        <div
+          className={`
+            absolute right-full
+            flex gap-2
+            rounded-xl
+            !transition-all !duration-300 !ease-out
+            ${
+              isThemeOpen
+                ? "opacity-100 translate-x-3 scale-100"
+                : "opacity-0 translate-x-15 scale-95 pointer-events-none"
+            }
+          `}
         >
-          <path d="M12 21c-2.5 0-4.625-.875-6.375-2.625S3 14.5 3 12s.875-4.625 2.625-6.375S9.5 3 12 3c.233 0 .463.008.688.025.225.017.446.042.662.075a5.296 5.296 0 0 0-1.638 1.888A5.297 5.297 0 0 0 11.1 7.5c0 1.5.525 2.775 1.575 3.825C13.725 12.375 15 12.9 16.5 12.9c.917 0 1.758-.204 2.525-.613A5.33 5.33 0 0 0 20.9 10.65 8.509 8.509 0 0 1 21 12c0 2.5-.875 4.625-2.625 6.375S14.5 21 12 21Z"></path>
-        </svg>
-      </button>
+          {/* theme buttons */}
+          <button
+            onClick={() => setTheme("default")}
+            className="px-2 py-1 rounded-md hover:bg-white/10"
+          >
+            Default
+          </button>
+          <button
+            onClick={() => setTheme("red")}
+            className="px-2 py-1 rounded-md hover:bg-white/10"
+          >
+            Red
+          </button>
+          <button className="px-1 py-1 rounded-md"></button>
+        </div>
+        <button className="w-[30px] h-[31px] bg-fg z-100 flex justify-center rounded-4xl mr-2">
+          <svg
+            onClick={() => {
+              setIsThemeOpen((prev) => !prev);
+              console.log(isThemeOpen);
+            }}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            name="moon"
+            className="w-6 cursor-pointer hover:opacity-80 fill-border transition-all duration-150 active:opacity-50"
+          >
+            <path d="M12 21c-2.5 0-4.625-.875-6.375-2.625S3 14.5 3 12s.875-4.625 2.625-6.375S9.5 3 12 3c.233 0 .463.008.688.025.225.017.446.042.662.075a5.296 5.296 0 0 0-1.638 1.888A5.297 5.297 0 0 0 11.1 7.5c0 1.5.525 2.775 1.575 3.825C13.725 12.375 15 12.9 16.5 12.9c.917 0 1.758-.204 2.525-.613A5.33 5.33 0 0 0 20.9 10.65 8.509 8.509 0 0 1 21 12c0 2.5-.875 4.625-2.625 6.375S14.5 21 12 21Z"></path>
+          </svg>
+        </button>
+      </div>
     </div>
   );
 }

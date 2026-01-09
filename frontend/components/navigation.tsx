@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 export default function Navigation() {
   const path = usePathname();
   return (
-    <nav className="h-[6vh] rounded-[8px] bg-fg">
+    <nav className="h-[6vh] rounded-[8px] bg-fg transition-colors duration-500 ease-in-out [&_*]:transition-colors [&_*]:duration-500 [&_*]:ease-in-out">
       <ul className="text-border flex justify-between w-full border-b-[0.5px] h-full">
         <div className="flex">
           <li className="cursor-pointer p-[20px] flex justify-start items-center hover:bg-hover transition-colors duration-150 border-r-[0.5px] w-[270px]">

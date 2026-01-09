@@ -67,7 +67,7 @@ export default function AboutMe() {
     "Mock Service Worker",
   ];
   return (
-    <div className="h-full w-full bg-fg flex">
+    <div className="h-full w-full flex [&_*]:transition-colors [&_*]:duration-500 [&_*]:ease-in-out">
       {/* 왼쪽 */}
       <div className="h-full w-[270px] border-r-[0.5px] border-border flex">
         <div className="w-[50px] h-full flex justify-center pt-[15px]">
@@ -409,6 +409,22 @@ ease-in-out w-full`}
             `}
             >
               <div className="text-border flex flex-col p-[15px] gap-[10px]">
+                <a
+                  href="mailto:kimminkyoung0608@gmail.com"
+                  className="flex items-center gap-2 cursor-pointer hover:underline"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 17 15"
+                    fill="none"
+                    className="fill-border"
+                  >
+                    <path d="M0.811096 0H15.4108C15.6259 0 15.8322 0.0854545 15.9844 0.237565C16.1365 0.389675 16.2219 0.59598 16.2219 0.811096V13.7886C16.2219 14.0038 16.1365 14.2101 15.9844 14.3622C15.8322 14.5143 15.6259 14.5997 15.4108 14.5997H0.811096C0.59598 14.5997 0.389675 14.5143 0.237565 14.3622C0.0854545 14.2101 0 14.0038 0 13.7886V0.811096C0 0.59598 0.0854545 0.389675 0.237565 0.237565C0.389675 0.0854545 0.59598 0 0.811096 0ZM8.15963 7.04275L2.95888 2.62633L1.90851 3.86244L8.17017 9.17918L14.3191 3.85838L13.2582 2.6312L8.16044 7.04275H8.15963Z" />
+                  </svg>
+                  <span>Send E-mail</span>
+                </a>
                 <a
                   href="https://www.linkedin.com/in/%EB%AF%BC%EA%B2%BD-%EA%B9%80-b36195373/"
                   className="flex items-center gap-2 hover:underline"
