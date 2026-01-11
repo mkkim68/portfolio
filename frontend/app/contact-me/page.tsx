@@ -72,7 +72,7 @@ export default function ContactMe() {
               <span
                 className={`
                   inline-block
-                  transition-transform duration-200 ease-in-out
+                  !transition-transform !duration-200 ease-in-out
                   ${isContactOpen ? "rotate-180" : "rotate-0"}
                 `}
               >
@@ -84,12 +84,12 @@ export default function ContactMe() {
           <div
             className={`
               overflow-hidden
-              transition-[max-height] duration-300 ease-in-out
-              ${isContactOpen ? "max-h-[70px]" : "max-h-0"}
+              !transition-[max-height] !duration-300
+              ${isContactOpen ? "max-h-[40px]" : "max-h-0"}
             `}
           >
             <div
-              className={`text-border flex flex-col p-[10px] gap-2 duration-200
+              className={`text-border flex flex-col p-[10px] gap-2 !duration-200
             ${
               isContactOpen
                 ? "opacity-100 translate-y-0"
@@ -123,7 +123,7 @@ export default function ContactMe() {
               <span
                 className={`
                   inline-block
-                  transition-transform duration-200 ease-in-out
+                  !transition-transform !duration-200
                   ${isFindOpen ? "rotate-180" : "rotate-0"}
                 `}
               >
@@ -135,7 +135,7 @@ export default function ContactMe() {
           <div
             className={`
               origin-top
-              transition-all duration-300 ease-in-out
+              !transition-all !duration-300
               ${isFindOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}
             `}
           >

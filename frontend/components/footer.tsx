@@ -83,8 +83,8 @@ export default function Footer() {
         <div
           className={`
             absolute right-full
-            flex gap-2
-            rounded-xl
+            flex gap-1
+            rounded-x
             !transition-all !duration-300 !ease-out
             ${
               isThemeOpen
@@ -96,19 +96,19 @@ export default function Footer() {
           {/* theme buttons */}
           <button
             onClick={() => setTheme("default")}
-            className="px-2 py-1 rounded-md hover:bg-white/10"
+            className={`px-1 py-1 rounded-md !transition-all !duration-200 !ease-in-out ${theme === "default" ? "bg-white/20" : "hover:-translate-y-0.5 active:translate-y-0.5"}`}
           >
-            Default
+            <div className="w-4 h-4 bg-[linear-gradient(200deg,#011627_20%,#43d9ad_100%)]"></div>
           </button>
           <button
             onClick={() => setTheme("red")}
-            className="px-2 py-1 rounded-md hover:bg-white/10"
+            className={`px-1 py-1 rounded-md !transition-all !duration-200 !ease-in-out ${theme === "red" ? "bg-white/20" : "hover:-translate-y-0.5 active:translate-y-0.5"}`}
           >
-            Red
+            <div className="w-4 h-4 bg-[linear-gradient(200deg,#2b0303_20%,#bf3d3d_100%)]"></div>
           </button>
           <button className="px-1 py-1 rounded-md"></button>
         </div>
-        <button className="w-[30px] h-[31px] bg-fg z-100 flex justify-center rounded-4xl mr-2">
+        <button className="w-[30px] h-[31px] bg-fg z-100 flex justify-center rounded-4xl mr-2 ml-1">
           <svg
             onClick={() => {
               setIsThemeOpen((prev) => !prev);

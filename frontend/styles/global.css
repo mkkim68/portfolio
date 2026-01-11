@@ -21,7 +21,6 @@ input:-webkit-autofill:active {
 
 @theme {
   --color-bg: #010c15;
-  --color-primary: red; /* 나중에 사용 */
   --color-fg: #011627;
   --color-border: #607b96;
   --color-highlight: white;
@@ -38,11 +37,11 @@ input:-webkit-autofill:active {
   --color-declare: #c98bdf;
   --color-variable: #5565e8;
   --color-string: #fea55f;
+  --color-gradient: #43d9ad;
 }
 
 :root[data-theme="default"] {
   --color-bg: #010c15;
-  --color-primary: red; /* 나중에 사용 */
   --color-fg: #011627;
   --color-border: #607b96;
   --color-highlight: white;
@@ -59,12 +58,12 @@ input:-webkit-autofill:active {
   --color-declare: #c98bdf;
   --color-variable: #5565e8;
   --color-string: #fea55f;
+  --color-gradient: #43d9ad;
 }
 :root[data-theme="red"] {
   --color-bg: rgb(24, 1, 1);
-  --color-primary: red; /* 나중에 사용 */
   --color-fg: #2b0303;
-  --color-border: #9d6ba7;
+  --color-border: #bb78c8;
   --color-highlight: white;
   --color-hover: #ffffff1a;
   --color-focus: #ffffff0b;
@@ -79,4 +78,5 @@ input:-webkit-autofill:active {
   --color-declare: #c678dc;
   --color-variable: #d19966;
   --color-string: #98c379;
+  --color-gradient: #9e2121;
 }

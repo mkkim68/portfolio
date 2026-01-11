@@ -67,7 +67,7 @@ export default function AboutMe() {
     "Mock Service Worker",
   ];
   return (
-    <div className="h-full w-full flex [&_*]:transition-colors [&_*]:duration-500 [&_*]:ease-in-out">
+    <div className="h-full w-full flex">
       {/* 왼쪽 */}
       <div className="h-full w-[270px] border-r-[0.5px] border-border flex">
         <div className="w-[50px] h-full flex justify-center pt-[15px]">
@@ -504,7 +504,7 @@ ease-in-out w-full`}
           <div className="h-full p-[35px] flex-col">
             <section className="mb-5">
               <h3
-                className={`text-fe mb-3 text-[18px] ${firacode_medium.className}`}
+                className={`text-fe mb-3 text-[18px] ${firacode_medium.className} transition-colors duration-500 ease-in-out`}
               >
                 Frontend
               </h3>
@@ -532,7 +532,7 @@ ease-in-out w-full`}
             </section>
             <section className="mb-5">
               <h3
-                className={`text-be mb-3 text-[18px] ${firacode_medium.className}`}
+                className={`text-be mb-3 text-[18px] ${firacode_medium.className} transition-colors duration-500 ease-in-out`}
               >
                 Backend
               </h3>
@@ -560,7 +560,7 @@ ease-in-out w-full`}
             </section>
             <section className="mb-5">
               <h3
-                className={`text-mb mb-3 text-[18px] ${firacode_medium.className}`}
+                className={`text-mb mb-3 text-[18px] ${firacode_medium.className} transition-colors duration-500 ease-in-out`}
               >
                 Mobile
               </h3>
@@ -588,7 +588,7 @@ ease-in-out w-full`}
             </section>
             <section className="mb-5">
               <h3
-                className={`text-tool mb-3 text-[18px] ${firacode_medium.className}`}
+                className={`text-tool mb-3 text-[18px] ${firacode_medium.className} transition-colors duration-500 ease-in-out`}
               >
                 Tools & Infra
               </h3>
