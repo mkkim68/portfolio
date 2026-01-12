@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { firacode_medium } from "../../styles/font";
 import Education from "./components/education";
+import { TECH_STACK } from "../../data/techstacks";
 
 export default function AboutMe() {
   const [isPersonalInfoOpen, setIsPersonalInfoOpen] = useState<Boolean>(true);
@@ -37,35 +38,6 @@ export default function AboutMe() {
     setOpenContents(openContents.filter((item) => item !== content));
   };
 
-  const techs_fe = [
-    "HTML5",
-    "CSS3",
-    "React",
-    "Vue.js",
-    "Next.js",
-    "Javascript",
-    "Typescript",
-    "Recoil",
-    "Redux",
-    "React-Query",
-    "Bootstrap",
-    "Styled-Components",
-    "Tailwind CSS",
-  ];
-  const techs_be = ["Python", "Django", "Node.js", "Express", "REST API"];
-  const techs_mb = ["Kotlin", "Jetpack Compose"];
-  const techs_tools = [
-    "Git",
-    "Docker",
-    "Jenkins",
-    "Visual Studio Code",
-    "Jira",
-    "Notion",
-    "Figma",
-    "Gitlab",
-    "Github",
-    "Mock Service Worker",
-  ];
   return (
     <div className="h-full w-full flex">
       {/* 왼쪽 */}
@@ -509,7 +481,7 @@ ease-in-out w-full`}
                 Frontend
               </h3>
               <div className="flex flex-wrap gap-2">
-                {techs_fe.map((content) => (
+                {TECH_STACK.frontend.map((content) => (
                   <div
                     key={content}
                     className="cursor-default text-[14px]
@@ -537,7 +509,7 @@ ease-in-out w-full`}
                 Backend
               </h3>
               <div className="flex flex-wrap gap-2">
-                {techs_be.map((content) => (
+                {TECH_STACK.backend.map((content) => (
                   <div
                     key={content}
                     className="cursor-default text-[14px]
@@ -565,7 +537,7 @@ ease-in-out w-full`}
                 Mobile
               </h3>
               <div className="flex flex-wrap gap-2">
-                {techs_mb.map((content) => (
+                {TECH_STACK.mobile.map((content) => (
                   <div
                     key={content}
                     className="cursor-default text-[14px]
@@ -593,7 +565,7 @@ ease-in-out w-full`}
                 Tools & Infra
               </h3>
               <div className="flex flex-wrap gap-2">
-                {techs_tools.map((content) => (
+                {TECH_STACK.tools.map((content) => (
                   <div
                     key={content}
                     className="cursor-default text-[14px]

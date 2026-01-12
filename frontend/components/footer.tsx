@@ -1,11 +1,17 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Footer() {
   const [isThemeOpen, setIsThemeOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   return (
     <div
       className="text-border rounded-b-[8px] bg-fg flex justify-between w-full border-t-[0.5px] h-[5vh] transition-colors duration-500 ease-in-out
@@ -96,13 +102,13 @@ export default function Footer() {
           {/* theme buttons */}
           <button
             onClick={() => setTheme("default")}
-            className={`px-1 py-1 rounded-md !transition-all !duration-200 !ease-in-out ${theme === "default" ? "bg-white/20" : "hover:-translate-y-0.5 active:translate-y-0.5"}`}
+            className={`px-1 py-1 rounded-md !transition-all !duration-200 !ease-in-out ${mounted && theme === "default" ? "bg-white/20" : "hover:-translate-y-0.5 active:translate-y-0.5"}`}
           >
             <div className="w-4 h-4 bg-[linear-gradient(200deg,#011627_20%,#43d9ad_100%)]"></div>
           </button>
           <button
             onClick={() => setTheme("red")}
-            className={`px-1 py-1 rounded-md !transition-all !duration-200 !ease-in-out ${theme === "red" ? "bg-white/20" : "hover:-translate-y-0.5 active:translate-y-0.5"}`}
+            className={`px-1 py-1 rounded-md !transition-all !duration-200 !ease-in-out ${mounted && theme === "red" ? "bg-white/20" : "hover:-translate-y-0.5 active:translate-y-0.5"}`}
           >
             <div className="w-4 h-4 bg-[linear-gradient(200deg,#2b0303_20%,#bf3d3d_100%)]"></div>
           </button>
@@ -112,7 +118,6 @@ export default function Footer() {
           <svg
             onClick={() => {
               setIsThemeOpen((prev) => !prev);
-              console.log(isThemeOpen);
             }}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
