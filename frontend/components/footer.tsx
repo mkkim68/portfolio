@@ -2,6 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { Icons } from "@icons/index";
 
 export default function Footer() {
   const [isThemeOpen, setIsThemeOpen] = useState(false);
@@ -14,75 +15,33 @@ export default function Footer() {
 
   return (
     <div
-      className="text-border rounded-b-[8px] bg-fg flex justify-between w-full border-t-[0.5px] h-[5vh] transition-colors duration-500 ease-in-out
+      className="text-border rounded-b-[8px] bg-fg flex justify-between w-full border-t-[0.5px] border-border h-[5vh] transition-colors duration-500 ease-in-out
     [&_*]:transition-colors
     [&_*]:duration-500
     [&_*]:ease-in-out"
     >
       <div className="flex">
-        <div className="border-r-[0.5px] w-[150px] flex justify-center items-center">
+        <div className="border-r-[0.5px] border-border w-[150px] flex justify-center items-center">
           <span className="cursor-default">find me in :</span>
         </div>
         <a
           href="https://www.linkedin.com/in/%EB%AF%BC%EA%B2%BD-%EA%B9%80-b36195373/"
-          className="border-r-[0.5px] w-[5vh] flex justify-center items-center hover:bg-hover transition-all duration-150"
+          className="border-r-[0.5px] border-border w-[5vh] flex justify-center items-center hover:bg-hover !duration-300"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="20px"
-            width="20px"
-            version="1.1"
-            id="Layer_1"
-            viewBox="0 0 382 382"
-            className="fill-border"
-          >
-            <path d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889  C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056  H65.345c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806  c5.554,0,10.056,4.502,10.056,10.056V329.844z M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666S64.289,42.1,86.748,42.1  s40.666,18.207,40.666,40.666S109.208,123.432,86.748,123.432z M341.91,330.654c0,5.106-4.14,9.246-9.246,9.246H286.73  c-5.106,0-9.246-4.14-9.246-9.246v-84.168c0-12.556,3.683-55.021-32.813-55.021c-28.309,0-34.051,29.066-35.204,42.11v97.079  c0,5.106-4.139,9.246-9.246,9.246h-44.426c-5.106,0-9.246-4.14-9.246-9.246V149.593c0-5.106,4.14-9.246,9.246-9.246h44.426  c5.106,0,9.246,4.14,9.246,9.246v15.655c10.497-15.753,26.097-27.912,59.312-27.912c73.552,0,73.131,68.716,73.131,106.472  L341.91,330.654L341.91,330.654z" />
-          </svg>
+          <Icons.LinkedIn className="w-[20px] h-[20px] fill-border" />
         </a>
         <a
           href="https://www.instagram.com/mmkkkkkim?igsh=YXB1OTYxcDhxdmR0&utm_source=qr"
-          className="border-r-[0.5px] w-[5vh] flex justify-center items-center hover:bg-hover transition-all duration-150"
+          className="border-r-[0.5px] w-[5vh] flex justify-center items-center hover:bg-hover border-border !duration-300"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="20px"
-            width="20px"
-            version="1.1"
-            id="Layer_1"
-            viewBox="0 0 551.034 551.034"
-            className="fill-border"
-          >
-            <g id="XMLID_13_">
-              <path
-                id="XMLID_17_"
-                d="M386.878,0H164.156C73.64,0,0,73.64,0,164.156v222.722   c0,90.516,73.64,164.156,164.156,164.156h222.722c90.516,0,164.156-73.64,164.156-164.156V164.156   C551.033,73.64,477.393,0,386.878,0z M495.6,386.878c0,60.045-48.677,108.722-108.722,108.722H164.156   c-60.045,0-108.722-48.677-108.722-108.722V164.156c0-60.046,48.677-108.722,108.722-108.722h222.722   c60.045,0,108.722,48.676,108.722,108.722L495.6,386.878L495.6,386.878z"
-              />
-
-              <path
-                id="XMLID_81_"
-                d="M275.517,133C196.933,133,133,196.933,133,275.516   s63.933,142.517,142.517,142.517S418.034,354.1,418.034,275.516S354.101,133,275.517,133z M275.517,362.6   c-48.095,0-87.083-38.988-87.083-87.083s38.989-87.083,87.083-87.083c48.095,0,87.083,38.988,87.083,87.083   C362.6,323.611,323.611,362.6,275.517,362.6z"
-              />
-
-              <circle id="XMLID_83_" cx="418.306" cy="134.072" r="34.149" />
-            </g>
-          </svg>
+          <Icons.Instagram className="w-[20px] h-[20px] fill-border" />
         </a>
 
         <a
           href="https://github.com/mkkim68"
-          className="w-[5vh] flex gap-2 justify-center items-center border-r-[0.5px] hover:bg-hover transition-all duration-150"
+          className="w-[5vh] flex gap-2 justify-center items-center border-r-[0.5px] border-border hover:bg-hover !duration-300"
         >
-          {/* <span>@mkkim68</span> */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 21 20"
-            fill="none"
-            className="fill-border"
-          >
-            <path d="M10.9771 0.27832C5.45205 0.27832 0.977052 4.75332 0.977052 10.2783C0.975918 12.3776 1.63587 14.4239 2.86327 16.127C4.09067 17.8301 5.8232 19.1034 7.81505 19.7663C8.31505 19.8533 8.50205 19.5533 8.50205 19.2903C8.50205 19.0533 8.48905 18.2663 8.48905 17.4283C5.97705 17.8913 5.32705 16.8163 5.12705 16.2533C5.01405 15.9653 4.52705 15.0783 4.10205 14.8403C3.75205 14.6533 3.25205 14.1903 4.08905 14.1783C4.87705 14.1653 5.43905 14.9033 5.62705 15.2033C6.52705 16.7153 7.96505 16.2903 8.53905 16.0283C8.62705 15.3783 8.88905 14.9413 9.17705 14.6913C6.95205 14.4413 4.62705 13.5783 4.62705 9.75332C4.62705 8.66532 5.01405 7.76632 5.65205 7.06532C5.55205 6.81532 5.20205 5.79032 5.75205 4.41532C5.75205 4.41532 6.58905 4.15332 8.50205 5.44132C9.31611 5.21538 10.1572 5.10166 11.0021 5.10332C11.8521 5.10332 12.7021 5.21532 13.5021 5.44032C15.4141 4.14032 16.2521 4.41632 16.2521 4.41632C16.8021 5.79132 16.4521 6.81632 16.3521 7.06632C16.9891 7.76632 17.3771 8.65332 17.3771 9.75332C17.3771 13.5913 15.0401 14.4413 12.8151 14.6913C13.1771 15.0033 13.4901 15.6033 13.4901 16.5413C13.4901 17.8783 13.4771 18.9533 13.4771 19.2913C13.4771 19.5533 13.6651 19.8653 14.1651 19.7653C16.1501 19.0951 17.875 17.8193 19.097 16.1175C20.3189 14.4156 20.9765 12.3734 20.9771 10.2783C20.9771 4.75332 16.5021 0.27832 10.9771 0.27832Z" />
-          </svg>
+          <Icons.Github className="w-[20px] h-[20px] fill-border" />
         </a>
       </div>
       <div className="relative flex items-center">
@@ -95,7 +54,7 @@ export default function Footer() {
             ${
               isThemeOpen
                 ? "opacity-100 translate-x-3 scale-100"
-                : "opacity-0 translate-x-15 scale-95 pointer-events-none"
+                : "opacity-0 translate-x-15 scale-50 pointer-events-none"
             }
           `}
         >
@@ -114,18 +73,13 @@ export default function Footer() {
           </button>
           <button className="px-1 py-1 rounded-md"></button>
         </div>
-        <button className="w-[30px] h-[31px] bg-fg z-100 flex justify-center rounded-4xl mr-2 ml-1">
-          <svg
+        <button className="w-[30px] h-[31px] bg-fg z-100 flex justify-center items-center rounded-4xl mr-2 ml-1">
+          <Icons.Moon
             onClick={() => {
               setIsThemeOpen((prev) => !prev);
             }}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            name="moon"
-            className="w-6 cursor-pointer hover:opacity-80 fill-border transition-all duration-150 active:opacity-50"
-          >
-            <path d="M12 21c-2.5 0-4.625-.875-6.375-2.625S3 14.5 3 12s.875-4.625 2.625-6.375S9.5 3 12 3c.233 0 .463.008.688.025.225.017.446.042.662.075a5.296 5.296 0 0 0-1.638 1.888A5.297 5.297 0 0 0 11.1 7.5c0 1.5.525 2.775 1.575 3.825C13.725 12.375 15 12.9 16.5 12.9c.917 0 1.758-.204 2.525-.613A5.33 5.33 0 0 0 20.9 10.65 8.509 8.509 0 0 1 21 12c0 2.5-.875 4.625-2.625 6.375S14.5 21 12 21Z"></path>
-          </svg>
+            className="w-6 h-6 cursor-pointer hover:opacity-80 fill-border transition-all duration-150 active:opacity-50"
+          />
         </button>
       </div>
     </div>
