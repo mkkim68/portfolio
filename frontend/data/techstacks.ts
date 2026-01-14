@@ -5,8 +5,8 @@ export type TechStack = Record<TechCategory, readonly string[]>;
 
 export const TECH_STACK: TechStack = {
   frontend: [
-    "HTML5",
-    "CSS3",
+    "HTML",
+    "CSS",
     "React",
     "Vue.js",
     "Next.js",

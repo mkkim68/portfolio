@@ -13,11 +13,10 @@ export const PROJECT_STACK: ProjectStack = [
   "Styled-Components",
   "Tailwind CSS",
   "Django",
-  "REST API",
   "Docker",
   "Jenkins",
   "Mock Service Worker",
   "PWA",
-  "WebRTC (OpenVidu)",
-  "WebSocket (STOMP)",
+  "WebRTC(OpenVidu)",
+  "WebSocket(STOMP)",
 ];
