@@ -4,6 +4,7 @@ import { PROJECT_STACK } from "data/project-tech";
 import { useState } from "react";
 import Icon from "components/Icon";
 import { Icons } from "@icons/index";
+import { PROJECTS } from "data/projects";
 
 export default function Projects() {
   const [isProjectsOpen, setIsProjectsOpen] = useState<boolean>(true);
@@ -42,7 +43,7 @@ export default function Projects() {
               {PROJECT_STACK.map((stack) => (
                 <div
                   key={stack}
-                  className="flex items-center cursor-default gap-2.5 hover:bg-hover py-[5px] px-[10px] !duration-200"
+                  className="flex items-center cursor-default gap-3 hover:bg-hover py-[7px] px-[10px] !duration-200"
                 >
                   <label className="relative flex items-center cursor-pointer">
                     <input type="checkbox" className="peer sr-only relative" />
@@ -64,15 +65,39 @@ export default function Projects() {
         </div>
       </div>
 
-      <div className="w-[calc(100%-270px)] flex text-border p-[100px] items-start">
-        <div className="w-96 h-80 relative">
-          <div className="w-96 h-36 left-0 top-0 absolute rounded-tl-2xl rounded-tr-2xl bg-amber-200">
-            up
+      <div className="w-[calc(100%-270px)] flex text-border p-[50px] items-start">
+        {PROJECTS.map((p) => (
+          <div key={p.title} className="w-90 h-88 relative">
+            <div className="h-5 px-2 text-variable text-[16px]">
+              {p.title} <span className="text-border">{p.summary}</span>
+            </div>
+            <img
+              src={p.image}
+              alt={`${p.title} thumbnail`}
+              className="w-90 h-30 left-0 top-8 absolute rounded-tl-2xl rounded-tr-2xl object-cover"
+            />
+            <div className="w-90 h-50 left-0 top-38 absolute rounded-bl-2xl rounded-br-2xl bg-fg border border-border flex flex-col p-5 items-start justify-between">
+              <p>{p.subscription}</p>
+              <div className="flex flex-col gap-3">
+                <div className="flex items-center gap-2">
+                  {p.techs.map((tech) => (
+                    <Icon
+                      key={`${p.title}-${tech}`}
+                      name={tech as keyof typeof Icons}
+                      className="w-[20px] h-[20px]"
+                    />
+                  ))}
+                </div>
+                <a
+                  href={p.github}
+                  className="w-fit h-9 text-highlight flex items-center bg-submit-bg hover:bg-border active:bg-submit-bg-active px-3 rounded-md !duration-300"
+                >
+                  <span>view-project</span>
+                </a>
+              </div>
+            </div>
           </div>
-          <div className="w-96 h-44 left-0 top-36 absolute rounded-bl-2xl rounded-br-2xl bg-blue-200">
-            down
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
