@@ -19,4 +19,6 @@ export const PROJECT_STACK: ProjectStack = [
   "PWA",
   "WebRTC(OpenVidu)",
   "WebSocket(STOMP)",
+  "Kotlin",
+  "Jetpack Compose",
 ];

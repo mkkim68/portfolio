@@ -16,6 +16,8 @@ import MSW from "./msw.svg";
 import PWA from "./pwa.svg";
 import WebRTC from "./webrtc.svg";
 import WebSocket from "./websocket.svg";
+import Kotlin from "./kotlin.svg";
+import Jetpack from "./jetpackcompose.svg";
 
 export const techIcons = {
   React: React,
@@ -36,4 +38,6 @@ export const techIcons = {
   PWA: PWA,
   "WebRTC(OpenVidu)": WebRTC,
   "WebSocket(STOMP)": WebSocket,
+  Kotlin: Kotlin,
+  "Jetpack Compose": Jetpack,
 } as const;

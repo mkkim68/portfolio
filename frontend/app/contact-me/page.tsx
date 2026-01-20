@@ -161,7 +161,7 @@ export default function ContactMe() {
       {/* 메인 */}
       <div className="w-[calc(100%-270px)] flex flex-col text-highlight cursor-default">
         <div className="h-[40px] border-b-[0.5px] border-border">
-          <div className="h-full p-[20px] flex items-center w-[167px] border-r-[0.5px] border-border justify-between bg-focus hover:bg-hover transition-all duration-150">
+          <div className="h-full p-[20px] flex items-center w-[167px] border-r-[0.5px] border-border justify-between bg-focus hover:bg-hover transition-all !duration-150">
             <span>contacts</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -229,7 +229,7 @@ ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
                 />
               </div>
               <button
-                className="bg-submit-bg cursor-pointer hover:bg-border active:bg-submit-bg-active w-[146px] h-[38px] text-highlight rounded-[8px] duration-150
+                className="bg-submit-bg cursor-pointer hover:bg-border active:bg-submit-bg-active w-[146px] h-[38px] text-highlight rounded-[8px] !duration-150
 ease-in-out"
               >
                 submit-message

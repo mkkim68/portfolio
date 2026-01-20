@@ -5,6 +5,7 @@ import { useState } from "react";
 import Icon from "components/Icon";
 import { Icons } from "@icons/index";
 import { PROJECTS } from "data/projects";
+import { firacode_medium } from "styles/font";
 
 export default function Projects() {
   const [isProjectsOpen, setIsProjectsOpen] = useState<boolean>(true);
@@ -65,35 +66,49 @@ export default function Projects() {
         </div>
       </div>
 
-      <div className="w-[calc(100%-270px)] flex text-border p-[50px] items-start">
+      <div className="w-[calc(100%-270px)] flex flex-wrap text-border p-[70px] items-start gap-8 overflow-y-auto">
         {PROJECTS.map((p) => (
-          <div key={p.title} className="w-90 h-88 relative">
-            <div className="h-5 px-2 text-variable text-[16px]">
-              {p.title} <span className="text-border">{p.summary}</span>
+          <div key={p.title} className="group w-93 cursor-default">
+            <div className="h-5 px-2 mb-2">
+              <span className={`text-variable ${firacode_medium.className}`}>
+                {p.title}
+              </span>
+              <span className="text-border"> {p.summary}</span>
             </div>
-            <img
-              src={p.image}
-              alt={`${p.title} thumbnail`}
-              className="w-90 h-30 left-0 top-8 absolute rounded-tl-2xl rounded-tr-2xl object-cover"
-            />
-            <div className="w-90 h-50 left-0 top-38 absolute rounded-bl-2xl rounded-br-2xl bg-fg border border-border flex flex-col p-5 items-start justify-between">
-              <p>{p.subscription}</p>
-              <div className="flex flex-col gap-3">
-                <div className="flex items-center gap-2">
-                  {p.techs.map((tech) => (
-                    <Icon
-                      key={`${p.title}-${tech}`}
-                      name={tech as keyof typeof Icons}
-                      className="w-[20px] h-[20px]"
-                    />
-                  ))}
+            <div
+              className="w-93 h-100 relative cursor-default rounded-2xl overflow-hidden 
+                        ring-1 ring-border
+                        group-hover:ring-highlight
+                        !transition-all !duration-300 !ease-out
+                        group-hover:shadow-[0_0_20px_rgba(93,220,255,0.25)]"
+            >
+              <img
+                src={p.image}
+                alt={`${p.title} thumbnail`}
+                className="w-93 h-35 left-0 top-0 absolute
+                         rounded-tl-2xl rounded-tr-2xl object-cover
+                         !transition-transform !duration-300 !ease-out
+                         group-hover:scale-[1.1]"
+              />
+              <div className="w-93 h-65 left-0 top-35 absolute z-10 bg-fg overflow-hidden !duration-300 rounded-bl-2xl rounded-br-2xl border-t border-border group-hover:border-highlight flex flex-col p-5 items-start justify-between ">
+                <p>{p.description}</p>
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-2">
+                    {p.techs.map((tech) => (
+                      <Icon
+                        key={`${p.title}-${tech}`}
+                        name={tech as keyof typeof Icons}
+                        className="w-[20px] h-[20px]"
+                      />
+                    ))}
+                  </div>
+                  <a
+                    href={p.github}
+                    className="w-fit h-9 text-highlight flex items-center bg-submit-bg hover:bg-border active:bg-submit-bg-active px-3 rounded-md !duration-300"
+                  >
+                    <span>view-project</span>
+                  </a>
                 </div>
-                <a
-                  href={p.github}
-                  className="w-fit h-9 text-highlight flex items-center bg-submit-bg hover:bg-border active:bg-submit-bg-active px-3 rounded-md !duration-300"
-                >
-                  <span>view-project</span>
-                </a>
               </div>
             </div>
           </div>
