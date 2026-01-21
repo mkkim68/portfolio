@@ -11,7 +11,7 @@ input:-webkit-autofill:active {
   caret-color: #607b96;
 }
 ::-webkit-scrollbar {
-  height: 6px;
+  height: 2px;
   width: 4px;
 }
 ::-webkit-scrollbar-thumb {
@@ -20,7 +20,7 @@ input:-webkit-autofill:active {
   transition: background-color 0.3s ease-in-out;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-submit-bg);
+  background: var(--color-scrollbar-hover);
 }
 
 @theme {
@@ -42,6 +42,7 @@ input:-webkit-autofill:active {
   --color-variable: #5565e8;
   --color-string: #fea55f;
   --color-gradient: #43d9ad;
+  --color-scrollbar-hover: #000000;
 }
 
 :root[data-theme="default"] {
@@ -63,6 +64,7 @@ input:-webkit-autofill:active {
   --color-variable: #5565e8;
   --color-string: #fea55f;
   --color-gradient: #43d9ad;
+  --color-scrollbar-hover: #9cb6d0;
 }
 :root[data-theme="red"] {
   --color-bg: rgb(24, 1, 1);
@@ -83,4 +85,5 @@ input:-webkit-autofill:active {
   --color-variable: #d19966;
   --color-string: #98c379;
   --color-gradient: #bf3d3d;
+  --color-scrollbar-hover: #d9b6e0;
 }

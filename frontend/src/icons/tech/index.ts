@@ -18,6 +18,7 @@ import WebRTC from "./webrtc.svg";
 import WebSocket from "./websocket.svg";
 import Kotlin from "./kotlin.svg";
 import Jetpack from "./jetpackcompose.svg";
+import Pandas from "./pandas.svg";
 
 export const techIcons = {
   React: React,
@@ -40,4 +41,5 @@ export const techIcons = {
   "WebSocket(STOMP)": WebSocket,
   Kotlin: Kotlin,
   "Jetpack Compose": Jetpack,
+  Pandas: Pandas,
 } as const;

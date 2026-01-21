@@ -21,4 +21,5 @@ export const PROJECT_STACK: ProjectStack = [
   "WebSocket(STOMP)",
   "Kotlin",
   "Jetpack Compose",
+  "Pandas",
 ];
