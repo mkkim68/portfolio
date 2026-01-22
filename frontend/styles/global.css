@@ -43,6 +43,9 @@ input:-webkit-autofill:active {
   --color-string: #fea55f;
   --color-gradient: #43d9ad;
   --color-scrollbar-hover: #000000;
+  --color-blur-first: #43d9ad;
+  --color-blur-second: #4d5bce;
+  --color-github: #e99287;
 }
 
 :root[data-theme="default"] {
@@ -65,6 +68,9 @@ input:-webkit-autofill:active {
   --color-string: #fea55f;
   --color-gradient: #43d9ad;
   --color-scrollbar-hover: #9cb6d0;
+  --color-blur-first: #43d9ad;
+  --color-blur-second: #4d5bce;
+  --color-github: #e99287;
 }
 :root[data-theme="red"] {
   --color-bg: rgb(24, 1, 1);
@@ -86,4 +92,7 @@ input:-webkit-autofill:active {
   --color-string: #98c379;
   --color-gradient: #bf3d3d;
   --color-scrollbar-hover: #d9b6e0;
+  --color-blur-first: #bf3d3d;
+  --color-blur-second: #ff8a5b;
+  --color-github: #a1e173;
 }
