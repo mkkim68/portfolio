@@ -46,6 +46,9 @@ input:-webkit-autofill:active {
   --color-blur-first: #43d9ad;
   --color-blur-second: #4d5bce;
   --color-github: #e99287;
+  --color-game-border: #4a5568;
+  --game-bg-rgb: 23 85 83;
+  --blur-first-rgb: 67 217 173;
 }
 
 :root[data-theme="default"] {
@@ -71,11 +74,14 @@ input:-webkit-autofill:active {
   --color-blur-first: #43d9ad;
   --color-blur-second: #4d5bce;
   --color-github: #e99287;
+  --color-game-border: #4a5568;
+  --game-bg-rgb: 23 85 83;
+  --blur-first-rgb: 67 217 173;
 }
 :root[data-theme="red"] {
   --color-bg: rgb(24, 1, 1);
   --color-fg: #2b0303;
-  --color-border: #bb78c8;
+  --color-border: #c29ab5;
   --color-highlight: white;
   --color-hover: #ffffff1a;
   --color-focus: #ffffff0b;
@@ -91,8 +97,12 @@ input:-webkit-autofill:active {
   --color-variable: #d19966;
   --color-string: #98c379;
   --color-gradient: #bf3d3d;
-  --color-scrollbar-hover: #d9b6e0;
+  --color-scrollbar-hover: #dec0d5;
   --color-blur-first: #bf3d3d;
-  --color-blur-second: #ff8a5b;
+  --color-blur-second: #ffb05b;
   --color-github: #a1e173;
+
+  --color-game-border: #4a3b35;
+  --game-bg-rgb: 106 62 44;
+  --blur-first-rgb: 191 61 61;
 }

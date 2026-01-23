@@ -469,7 +469,12 @@ ease-in-out w-full`}
             </div>
           </div>
         ) : (
-          <div className="h-full flex">none</div>
+          <div className="h-full w-full flex flex-col items-center justify-center gap-3">
+            <h1 className="text-xl text-scrollbar-hover">No file open</h1>
+            <p className="text-border">
+              Select a file from the explorer to view its contents
+            </p>
+          </div>
         )}
         {/* 컨텐츠 */}
         {open === "hard-skills" ? (
