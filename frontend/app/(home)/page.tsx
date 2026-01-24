@@ -1,4 +1,7 @@
+"use client";
 import { Icons } from "@icons/index";
+import TypingGame from "./components/typinggame";
+import { CODE_LINES } from "data/code-lines";
 
 export default function Home() {
   return (
@@ -31,11 +34,14 @@ export default function Home() {
         </div>
         {/*게임 */}
         <div className="relative h-[500px] w-[450px] hidden lg:inline-block xl:w-[540px]">
-          <div className="blur-[5px] max-h-full w-full h-full absolute z-1000 pointer-events-none">
-            <div className="left-[0%] top-[10%] w-[250px] h-[300px] rotate-[-94.30deg] opacity-70 bg-blur-first blur-[120px] absolute z-990 pointer-events-none"></div>
-            <div className="right-[0%] top-[50%] w-[250px] h-[300px] rotate-[13.51deg] opacity-70 bg-blur-second blur-[120px] absolute z-980 pointer-events-auto"></div>
+          <div className="blur-[5px] max-h-full w-full h-full absolute z-10 pointer-events-none">
+            <div className="left-[0%] top-[10%] w-[250px] h-[300px] rotate-[-94.30deg] opacity-70 bg-blur-first blur-[120px] absolute z-9 pointer-events-none"></div>
+            <div className="right-[0%] top-[50%] w-[250px] h-[300px] rotate-[13.51deg] opacity-70 bg-blur-second blur-[120px] absolute z-8 pointer-events-none"></div>
           </div>
-          <div className="transition-colors duration-500 ease-in-out w-full h-full border border-game-border rounded-lg bg-[linear-gradient(153.43deg,_rgb(var(--game-bg-rgb)/0.7),_rgb(var(--blur-first-rgb)/0.09)_100%)]">
+          <div className="flex flex-col xl:p-10 items-center justify-between transition-colors duration-500 ease-in-out w-full h-full border border-game-border rounded-lg bg-[linear-gradient(153.43deg,_rgb(var(--game-bg-rgb)/0.7),_rgb(var(--blur-first-rgb)/0.09)_100%)]">
+            <div className="relative w-full">
+              <TypingGame lines={CODE_LINES} />
+            </div>
             {/* screws */}
             <div className="absolute top-3 left-3">
               <div
