@@ -81,7 +81,6 @@ export default function TypingGame({ lines }: { lines: readonly string[] }) {
     if (phase !== "running") return;
     if (!target) return;
     if (typed === target) {
-      // stop timer
       if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
       rafRef.current = null;
       setPhase("done");
@@ -89,7 +88,6 @@ export default function TypingGame({ lines }: { lines: readonly string[] }) {
   }, [phase, target, typed]);
 
   const onChangeTyped = (v: string) => {
-    // keep it single-line + cap to target length
     const next = v.replace(/\n/g, "");
     setTyped(next.slice(0, target.length || next.length));
   };
@@ -101,7 +99,6 @@ export default function TypingGame({ lines }: { lines: readonly string[] }) {
     .slice(0, typed.length)
     .reduce((acc, ch, i) => acc + (typed[i] === ch ? 1 : 0), 0);
   const mistakes = Math.max(0, typed.length - correct);
-  const progress = total > 0 ? Math.min(1, typed.length / total) : 0;
   const accuracy =
     typed.length > 0 ? Math.round((correct / typed.length) * 100) : 100;
 
@@ -196,6 +193,7 @@ export default function TypingGame({ lines }: { lines: readonly string[] }) {
                   />
                 </div>
               </div>
+
               <div className="h-[20px] flex items-center justify-between">
                 {phase === "done" ? (
                   <div className="flex items-center gap-2 text-border/80 text-xs">
@@ -247,7 +245,7 @@ export default function TypingGame({ lines }: { lines: readonly string[] }) {
               {phase === "done" ? (
                 <button
                   onClick={startCountdown}
-                  className="px-2 py-1 rounded-md bg-white/10 hover:bg-white/15 border border-white/10 text-highlight transition-colors cursor-pointer"
+                  className="px-2 py-1 rounded-md bg-white/10 hover:bg-white/15 border border-white/10 text-highlight transition-colors"
                 >
                   Retry
                 </button>
@@ -259,6 +257,59 @@ export default function TypingGame({ lines }: { lines: readonly string[] }) {
             </div>
           </div>
         )}
+      </div>
+
+      {/* Buttons */}
+      <div className="h-[120px] w-full flex justify-between items-center">
+        {/* left */}
+        <div className="w-[120px] h-[96px] relative flex items-end px-2 pb-2">
+          {/* <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-border/40">
+            control
+          </span> */}
+        </div>
+
+        {/* right */}
+        <div className="w-[120px] h-[96px] relative flex items-center justify-center">
+          <div className="absolute inset-0 rounded-xl border border-white/10 bg-white/3 shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-10px_18px_rgba(0,0,0,0.35)]" />
+          <div className="absolute inset-0 rounded-xl pointer-events-none opacity-[0.08] [background:repeating-linear-gradient(90deg,rgba(255,255,255,0.35)_0px,rgba(255,255,255,0.35)_1px,transparent_2px,transparent_7px)]" />
+
+          {/* label */}
+          <div className="absolute top-2 left-3 text-[9px] uppercase tracking-[0.24em] text-border/60 font-mono cursor-default">
+            LEVEL
+          </div>
+
+          {/* tick marks */}
+          <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between">
+            {Array.from({ length: 7 }).map((_, i) => (
+              <span
+                key={i}
+                className={
+                  i % 3 === 0
+                    ? "h-[10px] w-[2px] bg-white/20"
+                    : "h-[6px] w-[2px] bg-white/12"
+                }
+              />
+            ))}
+          </div>
+
+          {/* knob */}
+          <div
+            className="relative z-10 w-[56px] h-[56px] rounded-full border border-white/10 shadow-[0_10px_18px_rgba(0,0,0,0.35)]"
+            style={{
+              background:
+                "radial-gradient(70% 70% at 35% 30%, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 35%, rgba(0,0,0,0.55) 100%)",
+            }}
+          >
+            {/* knurled edge */}
+            <div className="absolute inset-0 rounded-full pointer-events-none opacity-[0.22] [background:repeating-linear-gradient(90deg,rgba(255,255,255,0.30)_0px,rgba(255,255,255,0.30)_1px,transparent_2px,transparent_4px)]" />
+
+            {/* pointer */}
+            <div className="absolute left-1/2 top-[5px] -translate-x-1/2 w-[4px] h-[14px] rounded-sm bg-highlight/70 shadow-[0_0_0_1px_rgba(0,0,0,0.35)]" />
+
+            {/* center cap */}
+            <div className="absolute inset-0 m-auto w-[18px] h-[18px] rounded-full border border-white/10 bg-black/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.10)]" />
+          </div>
+        </div>
       </div>
     </div>
   );
