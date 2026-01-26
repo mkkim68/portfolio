@@ -3,6 +3,8 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Icons } from "@icons/index";
+import { SOCIAL_MEDIA } from "data/social-media";
+import Icon from "./Icon";
 
 export default function Footer() {
   const [isThemeOpen, setIsThemeOpen] = useState(false);
@@ -24,25 +26,18 @@ export default function Footer() {
         <div className="border-r-[0.5px] border-border w-[150px] flex justify-center items-center">
           <span className="cursor-default">find me in :</span>
         </div>
-        <a
-          href="https://www.linkedin.com/in/%EB%AF%BC%EA%B2%BD-%EA%B9%80-b36195373/"
-          className="border-r-[0.5px] border-border w-[5vh] flex justify-center items-center hover:bg-hover !duration-300"
-        >
-          <Icons.LinkedIn className="w-[20px] h-[20px] fill-border" />
-        </a>
-        <a
-          href="https://www.instagram.com/mmkkkkkim?igsh=YXB1OTYxcDhxdmR0&utm_source=qr"
-          className="border-r-[0.5px] w-[5vh] flex justify-center items-center hover:bg-hover border-border !duration-300"
-        >
-          <Icons.Instagram className="w-[20px] h-[20px] fill-border" />
-        </a>
-
-        <a
-          href="https://github.com/mkkim68"
-          className="w-[5vh] flex gap-2 justify-center items-center border-r-[0.5px] border-border hover:bg-hover !duration-300"
-        >
-          <Icons.Github className="w-[20px] h-[20px] fill-border" />
-        </a>
+        {SOCIAL_MEDIA.map((sns) => (
+          <a
+            key={sns.name}
+            href={sns.url}
+            className="border-r-[0.5px] border-border w-[5vh] flex justify-center items-center hover:bg-hover !duration-300"
+          >
+            <Icon
+              name={sns.name as keyof typeof Icons}
+              className="w-[20px] h-[20px] fill-border"
+            />
+          </a>
+        ))}
       </div>
       <div className="relative flex items-center">
         <div
