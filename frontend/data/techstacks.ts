@@ -1,5 +1,5 @@
 // data/tech-stack.ts
-export type TechCategory = "frontend" | "backend" | "mobile" | "tools";
+export type TechCategory = "frontend" | "backend" | "mobile" | "others";
 
 export type TechStack = Record<TechCategory, readonly string[]>;
 
@@ -21,7 +21,7 @@ export const TECH_STACK: TechStack = {
   ],
   backend: ["Python", "Django", "Node.js", "Express", "REST API"],
   mobile: ["Kotlin", "Jetpack Compose"],
-  tools: [
+  others: [
     "Git",
     "Docker",
     "Jenkins",

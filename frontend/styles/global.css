@@ -33,14 +33,20 @@ input:-webkit-autofill:active {
   --color-submit-bg: #1c2b3a;
   --color-submit-bg-active: #011221;
   --color-underline: #fea55f;
-  --color-fe: #719fe9;
-  --color-be: #66ebe6;
-  --color-mb: #a7e399;
-  --color-tool: #f6ff99;
+  --color-frontend: #719fe9;
+  --color-backend: #66ebe6;
+  --color-mobile: #a7e399;
+  --color-others: #f6ff99;
   --color-input-b: #1e2d3d;
-  --color-declare: #c98bdf;
-  --color-variable: #5565e8;
-  --color-string: #fea55f;
+
+  --color-keyword: #bb9af7;
+  --color-variable: #c0caf5;
+  --color-string: #9ece6a;
+  --color-function: #7aa2f7;
+  --color-number: #ff9e64;
+  --color-type: #2ac3de;
+  --color-comment: #565f89;
+
   --color-gradient: #43d9ad;
   --color-scrollbar-hover: #000000;
   --color-blur-first: #43d9ad;
@@ -61,14 +67,20 @@ input:-webkit-autofill:active {
   --color-submit-bg: #1c2b3a;
   --color-submit-bg-active: #011221;
   --color-underline: #fea55f;
-  --color-fe: #719fe9;
-  --color-be: #66ebe6;
-  --color-mb: #a7e399;
-  --color-tool: #f6ff99;
+  --color-frontend: #719fe9;
+  --color-backend: #66ebe6;
+  --color-mobile: #a7e399;
+  --color-others: #f6ff99;
   --color-input-b: #1e2d3d;
-  --color-declare: #c98bdf;
-  --color-variable: #5565e8;
-  --color-string: #fea55f;
+
+  --color-keyword: #bb9af7;
+  --color-variable: #c0caf5;
+  --color-string: #9ece6a;
+  --color-function: #7aa2f7;
+  --color-number: #ff9e64;
+  --color-type: #2ac3de;
+  --color-comment: #565f89;
+
   --color-gradient: #43d9ad;
   --color-scrollbar-hover: #9cb6d0;
   --color-blur-first: #43d9ad;
@@ -88,14 +100,20 @@ input:-webkit-autofill:active {
   --color-submit-bg: #1c2b3a;
   --color-submit-bg-active: #011221;
   --color-underline: #fea55f;
-  --color-fe: #9bb4c0;
-  --color-be: #e1d0b3;
-  --color-mb: #a18d6d;
-  --color-tool: #3b704b;
+  --color-frontend: #9bb4c0;
+  --color-backend: #e1d0b3;
+  --color-mobile: #a18d6d;
+  --color-others: #3b704b;
   --color-input-b: #1e2d3d;
-  --color-declare: #c678dc;
-  --color-variable: #d19966;
+
+  --color-keyword: #ff6b81;
+  --color-variable: #f5d0c5;
   --color-string: #98c379;
+  --color-function: #ffb86c;
+  --color-number: #ffd166;
+  --color-type: #6ee7b7;
+  --color-comment: #8b6f76;
+
   --color-gradient: #bf3d3d;
   --color-scrollbar-hover: #dec0d5;
   --color-blur-first: #bf3d3d;

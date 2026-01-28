@@ -3,7 +3,6 @@ import Icon from "components/Icon";
 import { TECH_STACK } from "data/techstacks";
 
 export default function Frontend() {
-  const button = document.querySelector("#sendBtn");
   return (
     <div className="h-full w-full flex">
       <div className="flex flex-col">

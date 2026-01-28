@@ -256,65 +256,67 @@ ease-in-out"
     break-all"
             >
               <p>
-                <span className="text-declare">const </span>
+                <span className="text-keyword">const </span>
                 <span className="text-variable">button</span>
-                <span className="text-declare"> = </span>
+                <span className="text-keyword"> = </span>
                 <span className="text-variable">document</span>
                 <span className="text-border">.</span>
-                <span className="text-variable">querySelector</span>
+                <span className="text-function">querySelector</span>
                 <span className="text-border">(</span>
                 <span className="text-string">'#sendBtn'</span>
                 <span className="text-border">);</span>
               </p>
               <p>
-                <span className="text-declare">const </span>
+                <span className="text-keyword">const </span>
                 <span className="text-variable">message</span>
-                <span className="text-declare"> = </span>
+                <span className="text-keyword"> = </span>
                 <span className="text-border">{`{`}</span>
               </p>
               <p>
-                <span className="text-variable ml-[10px]">name</span>
+                <span className="text-variable ml-3">name</span>
                 <span className="text-border">: </span>
                 <span className="text-string">{`"${name}"`}</span>
                 <span className="text-border">,</span>
               </p>
               <p>
-                <span className="text-variable ml-[10px]">email</span>
+                <span className="text-variable ml-3">email</span>
                 <span className="text-border">: </span>
                 <span className="text-string">{`"${email}"`}</span>
                 <span className="text-border">,</span>
               </p>
               <p>
-                <span className="text-variable ml-[10px]">message</span>
+                <span className="text-variable ml-3">message</span>
                 <span className="text-border">: </span>
                 <span className="text-string">{`"${message}"`}</span>
                 <span className="text-border">,</span>
               </p>
               <p>
-                <span className="ml-[10px] text-border">date: </span>
+                <span className="ml-3 text-border">date: </span>
                 <span className="text-string">{`"${formatDate(
                   "day",
-                  date.getDay()
+                  date.getDay(),
                 )} ${date.getDate()} ${formatDate(
                   "month",
-                  date.getMonth() + 1
+                  date.getMonth() + 1,
                 )}"`}</span>
               </p>
               <p>
                 <span className="text-border">{`}`}</span>
               </p>
               <p>
-                <span className="text-variable">button.addEventListener</span>
+                <span className="text-variable">button</span>
+                <span className="text-border">.</span>
+                <span className="text-function">addEventListener</span>
                 <span className="text-border">(</span>
                 <span className="text-string">'click'</span>
                 <span className="text-border">, ()</span>
-                <span className="text-declare">{` => `}</span>
+                <span className="text-keyword">{` => `}</span>
                 <span className="text-border">{`{`}</span>
               </p>
               <p>
-                <span className="text-variable ml-[10px]">form</span>
+                <span className="text-variable ml-3">form</span>
                 <span className="text-border">.</span>
-                <span className="text-variable">send</span>
+                <span className="text-function">send</span>
                 <span className="text-border">(</span>
                 <span className="text-variable">message</span>
                 <span className="text-border">);</span>

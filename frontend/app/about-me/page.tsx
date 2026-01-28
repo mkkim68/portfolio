@@ -2,12 +2,10 @@
 
 import { useState } from "react";
 import Education from "./components/education";
-import Frontend from "./components/frontend";
-import Backend from "./components/backend";
-import Mobile from "./components/mobile";
-import Others from "./components/others";
+import Skill from "./components/skill";
+import { TechCategory } from "data/techstacks";
 
-type OpenType = "education" | "frontend" | "backend" | "mobile" | "others" | "";
+type OpenType = "education" | TechCategory | "";
 
 export default function AboutMe() {
   const [isPersonalInfoOpen, setIsPersonalInfoOpen] = useState<Boolean>(true);
@@ -18,9 +16,9 @@ export default function AboutMe() {
   const [isSkillsOpen, setIsSkillsOpen] = useState<Boolean>(false);
   const [isExpOpen, setIsExpOpen] = useState<Boolean>(false);
 
-  const [open, setOpen] = useState<OpenType>("education");
+  const [open, setOpen] = useState<OpenType>("frontend");
   const [openContents, setOpenContents] = useState<Array<OpenType>>([
-    "education",
+    "frontend",
   ]);
 
   const handleDeleteContent = (content: OpenType, e: React.MouseEvent) => {
@@ -533,10 +531,10 @@ ease-in-out w-full`}
           </div>
         )}
         {/* 컨텐츠 */}
-        {open === "frontend" ? <Frontend /> : null}
-        {open === "backend" ? <Backend /> : null}
-        {open === "mobile" ? <Mobile /> : null}
-        {open === "others" ? <Others /> : null}
+        {open === "frontend" ? <Skill category="frontend" /> : null}
+        {open === "backend" ? <Skill category="backend" /> : null}
+        {open === "mobile" ? <Skill category="mobile" /> : null}
+        {open === "others" ? <Skill category="others" /> : null}
         {open === "education" ? <Education /> : null}
       </div>
     </div>
