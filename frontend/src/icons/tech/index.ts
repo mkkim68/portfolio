@@ -19,6 +19,18 @@ import WebSocket from "./websocket.svg";
 import Kotlin from "./kotlin.svg";
 import Jetpack from "./jetpackcompose.svg";
 import Pandas from "./pandas.svg";
+import Express from "./express.svg";
+import Figma from "./figma.svg";
+import Git from "./git.svg";
+import Gitlab from "./gitlab.svg";
+import Html from "./html.svg";
+import Jira from "./jira.svg";
+import Nodejs from "./nodejs.svg";
+import Notion from "./notion.svg";
+import Python from "./python.svg";
+import Restapi from "./restapi.svg";
+import VSCode from "./vscode.svg";
+import CSS from "./css.svg";
 
 export const techIcons = {
   React: React,
@@ -42,4 +54,16 @@ export const techIcons = {
   Kotlin: Kotlin,
   "Jetpack Compose": Jetpack,
   Pandas: Pandas,
+  Express: Express,
+  Figma: Figma,
+  Git: Git,
+  Gitlab: Gitlab,
+  HTML: Html,
+  Jira: Jira,
+  "Node.js": Nodejs,
+  Notion: Notion,
+  Python: Python,
+  "REST API": Restapi,
+  "Visual Studio Code": VSCode,
+  CSS: CSS,
 } as const;

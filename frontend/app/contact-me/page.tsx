@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import formatDate from "../../utils/formatdate";
 import { Icons } from "@icons/index";
+import { SOCIAL_MEDIA } from "data/social-media";
 
 export default function ContactMe() {
   const [isContactOpen, setIsContactOpen] = useState<Boolean>(true);
@@ -133,27 +134,16 @@ export default function ContactMe() {
             `}
           >
             <div className="text-border flex flex-col p-[15px] gap-[8px]">
-              <a
-                href="https://github.com/mkkim68"
-                className="flex items-center gap-2 hover:underline"
-              >
-                <Icons.Link className="w-[14px] h-[14px] fill-border" />
-                <span className="text-border">Github profile</span>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/%EB%AF%BC%EA%B2%BD-%EA%B9%80-b36195373/"
-                className="flex items-center gap-2 hover:underline"
-              >
-                <Icons.Link className="w-[14px] h-[14px] fill-border" />
-                <span className="text-border">Linked-In account</span>
-              </a>
-              <a
-                href="https://www.instagram.com/mmkkkkkim?igsh=YXB1OTYxcDhxdmR0&utm_source=qr"
-                className="flex items-center gap-2 hover:underline"
-              >
-                <Icons.Link className="w-[14px] h-[14px] fill-border" />
-                <span className="text-border">Instagram account</span>
-              </a>
+              {SOCIAL_MEDIA.map((sns) => (
+                <a
+                  key={sns.name}
+                  href={sns.url}
+                  className="flex items-center gap-2 hover:underline"
+                >
+                  <Icons.Link className="w-[14px] h-[14px] fill-border" />
+                  <span className="text-border">{sns.description}</span>
+                </a>
+              ))}
             </div>
           </div>
         </div>

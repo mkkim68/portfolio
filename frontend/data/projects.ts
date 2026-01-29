@@ -38,6 +38,7 @@ export const PROJECTS = [
       "Docker",
       "Jenkins",
       "Mock Service Worker",
+      "PWA",
     ],
     github: "https://github.com/mkkim68/newsseug",
     image: "/imgs/newsseug.jpeg",

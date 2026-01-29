@@ -50,7 +50,7 @@ export default function Skill({ category }: Props) {
             <span className="text-border">;</span>
           </p>
           <p>
-            <span>\n</span>
+            <span className="text-transparent">\n</span>
           </p>
           <p>
             <span className="text-keyword">export </span>
@@ -212,7 +212,7 @@ export default function Skill({ category }: Props) {
           {TECH_STACK[category].map((stack) => (
             <div
               key={stack}
-              className={`flex gap-2
+              className={`flex gap-2 items-center group
                           cursor-default text-[14px]
                           w-fit px-3 py-2 rounded-lg
                           text-border
@@ -232,7 +232,11 @@ export default function Skill({ category }: Props) {
             >
               <Icon
                 name={stack as keyof typeof Icons}
-                className="w-[20px] h-[20px]"
+                className={`w-[20px] h-[20px] ${
+                  stack === "Github"
+                    ? "text-[#14191D] group-hover:text-[#14191D]"
+                    : ""
+                }`}
               />
               {stack}
             </div>
