@@ -19,13 +19,19 @@ export default function ContactMe() {
 
   let date = new Date();
 
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/mrekwbzz";
+
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+  const [submitError, setSubmitError] = useState<string>("");
+
   useEffect(() => {
     if (previewRef.current) {
       const eventHandler = () => {
         const { width } = previewRef.current?.getBoundingClientRect();
 
         setWidth(width);
-        // console.log(width, height);
       };
 
       const resizeObserver = new ResizeObserver(eventHandler);
@@ -48,7 +54,7 @@ export default function ContactMe() {
     var lines = divHeight / lineHeight;
     let i = 0;
     const last = lineArr[lineArr.length - 1] ?? 0;
-    // console.log(line, last, lineArr);
+
     if (last < lines) {
       i = last;
       let temp = [];
@@ -58,6 +64,53 @@ export default function ContactMe() {
       setLineArr((prev) => [...prev, ...temp]);
     } else if (lines < last) {
       setLineArr((prev) => prev.slice(0, lines));
+    }
+  }
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+
+    if (!name || !email || !message) {
+      setSubmitStatus("error");
+      setSubmitError("Please fill in all fields.");
+      return;
+    }
+
+    try {
+      setSubmitStatus("submitting");
+      setSubmitError("");
+
+      const form = e.currentTarget;
+      const formData = new FormData(form);
+
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        const msg =
+          data?.errors?.[0]?.message ||
+          data?.error ||
+          "Failed to submit. Please try again.";
+        throw new Error(msg);
+      }
+
+      setSubmitStatus("success");
+
+      form.reset();
+      setName("");
+      setEmail("");
+      setMessage("");
+
+      requestAnimationFrame(() => countLines());
+    } catch (err: any) {
+      setSubmitStatus("error");
+      setSubmitError(err?.message || "Failed to submit. Please try again.");
     }
   }
 
@@ -167,14 +220,16 @@ export default function ContactMe() {
         <div ref={previewRef} className="flex h-full overflow-hidden">
           <div className="flex flex-col items-center w-[100%] border-r-[0.5px] border-border">
             <form
-              action=""
+              onSubmit={handleSubmit}
               className="flex flex-col items-start pt-[115px] gap-7 text-[14px]"
             >
               <div className="flex flex-col items-start gap-1.5">
                 <label htmlFor="name">_name:</label>
                 <input
                   id="name"
+                  name="name"
                   type="text"
+                  required
                   onChange={(e) => {
                     setName(e.target.value);
                     countLines();
@@ -190,7 +245,9 @@ ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
                 <label htmlFor="email">_email:</label>
                 <input
                   id="email"
+                  name="email"
                   type="text"
+                  required
                   onChange={(e) => {
                     setEmail(e.target.value);
                     countLines();
@@ -206,6 +263,8 @@ ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
                 <label htmlFor="message">_message:</label>
                 <textarea
                   id="message"
+                  name="message"
+                  required
                   onChange={(e) => {
                     setMessage(e.target.value);
                     countLines();
@@ -218,12 +277,27 @@ ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
 ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
                 />
               </div>
-              <button
-                className="bg-submit-bg cursor-pointer hover:bg-border active:bg-submit-bg-active w-[146px] h-[38px] text-highlight rounded-[8px] !duration-150
-ease-in-out"
-              >
-                submit-message
-              </button>
+              <div className="flex flex-col gap-2">
+                <button
+                  type="submit"
+                  disabled={submitStatus === "submitting"}
+                  className={`bg-submit-bg cursor-pointer hover:bg-border active:bg-submit-bg-active w-[146px] h-[38px] text-highlight rounded-[8px] !duration-150 ease-in-out
+        ${submitStatus === "submitting" ? "opacity-60 cursor-not-allowed hover:bg-submit-bg" : ""}`}
+                >
+                  {submitStatus === "submitting"
+                    ? "sending..."
+                    : "submit-message"}
+                </button>
+
+                {submitStatus === "success" ? (
+                  <p className="text-[12px] text-[var(--skill-color)]">
+                    Message sent ✅
+                  </p>
+                ) : null}
+                {submitStatus === "error" ? (
+                  <p className="text-[12px] text-[#ff5370]">{submitError}</p>
+                ) : null}
+              </div>
             </form>
           </div>
           {/* 코드부분 */}
