@@ -6,8 +6,9 @@ import Skill from "./components/skill";
 import { TechCategory } from "data/techstacks";
 import { SOCIAL_MEDIA } from "data/social-media";
 import { Icons } from "@icons/index";
+import Bio from "./components/bio";
 
-type OpenType = "education" | TechCategory | "";
+type OpenType = "bio" | "education" | TechCategory | "";
 
 export default function AboutMe() {
   const [isPersonalInfoOpen, setIsPersonalInfoOpen] = useState<Boolean>(true);
@@ -18,10 +19,8 @@ export default function AboutMe() {
   const [isSkillsOpen, setIsSkillsOpen] = useState<Boolean>(false);
   const [isExpOpen, setIsExpOpen] = useState<Boolean>(false);
 
-  const [open, setOpen] = useState<OpenType>("frontend");
-  const [openContents, setOpenContents] = useState<Array<OpenType>>([
-    "frontend",
-  ]);
+  const [open, setOpen] = useState<OpenType>("bio");
+  const [openContents, setOpenContents] = useState<Array<OpenType>>(["bio"]);
 
   const handleDeleteContent = (content: OpenType, e: React.MouseEvent) => {
     e.stopPropagation();
@@ -144,7 +143,35 @@ ease-in-out"
                     transition-[max-height] duration-300 ease-in-out
                     ${isBioOpen ? "max-h-[100px]" : "max-h-0"}
                   `}
-                ></div>
+                >
+                  <p
+                    onClick={() => {
+                      setOpen("bio");
+                      if (!openContents.includes("bio")) {
+                        setOpenContents([...openContents, "bio"]);
+                      }
+                    }}
+                    className={`pl-[27px] py-[4px]
+                      ${
+                        open === "bio"
+                          ? "text-highlight bg-focus cursor-default"
+                          : "cursor-pointer"
+                      } flex items-center gap-[10px] hover:bg-hover duration-150
+ease-in-out w-full`}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="17"
+                      height="15"
+                      viewBox="0 0 17 15"
+                      fill="none"
+                      className="fill-border"
+                    >
+                      <path d="M0.811096 0H15.4108C15.6259 0 15.8322 0.0854545 15.9844 0.237565C16.1365 0.389675 16.2219 0.59598 16.2219 0.811096V13.7886C16.2219 14.0038 16.1365 14.2101 15.9844 14.3622C15.8322 14.5143 15.6259 14.5997 15.4108 14.5997H0.811096C0.59598 14.5997 0.389675 14.5143 0.237565 14.3622C0.0854545 14.2101 0 14.0038 0 13.7886V0.811096C0 0.59598 0.0854545 0.389675 0.237565 0.237565C0.389675 0.0854545 0.59598 0 0.811096 0V0ZM4.05548 10.1387V6.89432L5.67767 8.51651L7.29987 6.89432V10.1387H8.92206V4.46103H7.29987L5.67767 6.08322L4.05548 4.46103H2.43329V10.1387H4.05548ZM12.9775 7.70541V4.46103H11.3553V7.70541H9.73315L12.1664 10.1387L14.5997 7.70541H12.9775Z" />
+                    </svg>
+                    <span>bio</span>
+                  </p>
+                </div>
               </div>
               {/* interests */}
               <div>
@@ -469,7 +496,7 @@ ease-in-out w-full`}
         </div>
       </div>
       {/* 메인 */}
-      <div className="w-[calc(100%-270px)] flex flex-col text-border ">
+      <div className="w-[calc(100%-270px)] flex flex-col text-border overflow-hidden">
         {/* 상단 */}
         {openContents.length > 0 ? (
           <div className="h-[40px] border-b-[0.5px] border-border">
@@ -516,6 +543,7 @@ ease-in-out w-full`}
         {open === "mobile" ? <Skill category="mobile" /> : null}
         {open === "others" ? <Skill category="others" /> : null}
         {open === "education" ? <Education /> : null}
+        {open === "bio" ? <Bio /> : null}
       </div>
     </div>
   );

@@ -11,8 +11,9 @@ input:-webkit-autofill:active {
   caret-color: #607b96;
 }
 ::-webkit-scrollbar {
-  height: 2px;
+  height: 4px;
   width: 4px;
+  border: 0.5px solid var(--color-border);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--color-border);

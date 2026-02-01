@@ -1,4 +1,15 @@
-export const PROJECTS = [
+type Project = {
+  title: string;
+  summary: string;
+  description: string;
+  techs: readonly string[];
+  github: string;
+  image: string;
+};
+
+type Projects = readonly Project[];
+
+export const PROJECTS: Projects = [
   {
     title: "Coin Forest",
     summary: "// _data-driven.finance.platform",

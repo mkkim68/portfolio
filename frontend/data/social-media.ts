@@ -1,4 +1,10 @@
-export const SOCIAL_MEDIA = [
+type SocialMediaInfo = "name" | "description" | "url";
+
+type SocialMedia = Record<SocialMediaInfo, string>;
+
+type SocialMedias = readonly SocialMedia[];
+
+export const SOCIAL_MEDIA: SocialMedias = [
   {
     name: "LinkedIn",
     description: "Linked-In account",

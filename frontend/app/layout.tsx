@@ -29,9 +29,9 @@ export default function RootLayout({
               className={`${firacode_light.className} border-[0.5px] rounded-[8px] border-border text-[14px]`}
             >
               <Navigation />
-              <div className="h-[calc(89vh-60px)] transition-colors duration-500 ease-in-out bg-fg">
+              <main className="h-[calc(89vh-60px)] transition-colors duration-500 ease-in-out bg-fg">
                 {children}
-              </div>
+              </main>
               <Footer />
             </div>
           </div>

@@ -1,4 +1,3 @@
-// data/tech-stack.ts
 export type TechCategory = "frontend" | "backend" | "mobile" | "others";
 
 export type TechStack = Record<TechCategory, readonly string[]>;
