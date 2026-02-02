@@ -13,9 +13,9 @@ export default function Home() {
       <div className="flex justify-center items-center lg:mx-auto flex-1 relative xl:max-w-7xl 2xl:w-[90rem] lg:max-w-4xl px-10 py-3 gap-8">
         <div className="flex flex-col w-[450px] justify-center h-full py-16 relative gap-20">
           <div>
-            <p className="text-border text-[18px]">Hi all. I am</p>
-            <h1 className="text-[50px] text-highlight">Kim Min Kyoung</h1>
-            <h3 className="text-2xl text-blur-second">
+            <p className="text-border text-[17px]">Hi all. I am</p>
+            <h1 className="text-[45px] text-highlight">Kim Min Kyoung</h1>
+            <h3 className="text-xl text-blur-second">
               {`>`} Front-end developer
             </h3>
           </div>
@@ -25,10 +25,14 @@ export default function Home() {
               // you can also see it on my Github page
             </p>
             <p>
-              <span className="text-blur-second">const </span>
-              <span className="text-blur-first">githubLink </span>
-              <span className="text-highlight">= </span>
-              <span className="text-github">"https://github.com/mkkim68"</span>
+              <span className="text-blur-second cursor-default">const </span>
+              <span className="text-blur-first cursor-default">
+                githubLink{" "}
+              </span>
+              <span className="text-highlight cursor-default">= </span>
+              <a href="https://github.com/mkkim68" className="text-github">
+                "https://github.com/mkkim68"
+              </a>
             </p>
           </div>
         </div>
@@ -43,58 +47,19 @@ export default function Home() {
               <TypingGame lines={CODE_LINES} />
             </div>
             {/* screws */}
-            <div className="absolute top-3 left-3">
-              <div
-                className="w-[20px] h-[20px] rounded-full relative"
-                style={{
-                  boxShadow:
-                    "rgb(13, 67, 65) 2px 2px 4px 0px, rgb(26, 130, 119) 0px 1px 2px 0px inset",
-                  background:
-                    "radial-gradient(73% 73% at 50% 27%, rgb(25, 108, 106) 15%, rgb(17, 75, 74) 100%)",
-                }}
-              >
-                <div className="absolute inset-0 flex justify-center items-center"></div>
+            {[
+              "absolute top-3 left-3",
+              "absolute top-3 right-3",
+              "absolute bottom-3 right-3",
+              "absolute bottom-3 left-3",
+            ].map((pos) => (
+              <div key={pos} className={pos}>
+                <div className="w-[20px] h-[20px] rounded-full relative overflow-hidden bg-white/5 shadow-[0_2px_6px_rgba(0,0,0,0.35),inset_0_0.5px_0_rgba(255,255,255,0),inset_0_-1px_0_rgba(0,0,0,0.35)]">
+                  <div className="absolute -top-[6px] -left-[6px] w-[20px] h-[20px] rounded-full bg-white/5 blur-[2px]" />
+                  <div className="absolute inset-0 rounded-full bg-[radial-gradient(70%_70%_at_50%_30%,_rgba(255,255,255,0.13)_0%,_rgba(255,255,255,0.08)_40%,_rgba(0,0,0,0.18)_100%)]" />
+                </div>
               </div>
-            </div>
-            <div className="absolute top-3 right-3">
-              <div
-                className="w-[20px] h-[20px] rounded-full relative"
-                style={{
-                  boxShadow:
-                    "rgb(13, 67, 65) 2px 2px 4px 0px, rgb(31, 129, 119) 0px 1px 2px 0px inset",
-                  background:
-                    "radial-gradient(73% 73% at 50% 27%, rgba(33, 125, 122, 0.7) 15%, rgb(17, 75, 74) 100%)",
-                }}
-              >
-                <div className="absolute inset-0 flex justify-center items-center"></div>
-              </div>
-            </div>
-            <div className="absolute bottom-3 right-3">
-              <div
-                className="w-[20px] h-[20px] rounded-full relative"
-                style={{
-                  boxShadow:
-                    "gb(18, 44, 78) 2px 2px 4px 0px, rgb(44, 88, 141) 0px 1px 2px 0px inset",
-                  background:
-                    "radial-gradient(73% 73% at 50% 27%, rgb(35, 75, 124) 15%, rgb(18, 46, 79) 100%)",
-                }}
-              >
-                <div className="absolute inset-0 flex justify-center items-center"></div>
-              </div>
-            </div>
-            <div className="absolute bottom-3 left-3">
-              <div
-                className="w-[20px] h-[20px] rounded-full relative"
-                style={{
-                  boxShadow:
-                    "rgb(9, 45, 50) 2px 2px 4px 0px, rgb(22, 100, 92) 0px 1px 2px 0px inset",
-                  background:
-                    "radial-gradient(73% 73% at 50% 27%, rgb(22, 76, 81) 15%, rgb(13, 58, 64) 100%)",
-                }}
-              >
-                <div className="absolute inset-0 flex justify-center items-center"></div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

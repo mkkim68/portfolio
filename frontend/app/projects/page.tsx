@@ -7,6 +7,7 @@ import { Icons } from "@icons/index";
 import { PROJECTS } from "data/projects";
 import { firacode_medium } from "styles/font";
 import { AnimatePresence, motion } from "motion/react";
+import Image from "next/image";
 
 export default function Projects() {
   const [isProjectsOpen, setIsProjectsOpen] = useState<boolean>(true);
@@ -61,7 +62,7 @@ export default function Projects() {
                         setIsClicked((prev) =>
                           prev.includes(stack)
                             ? prev.filter((s) => s !== stack)
-                            : [...prev, stack]
+                            : [...prev, stack],
                         );
                       }}
                     />
@@ -123,7 +124,7 @@ export default function Projects() {
             clear
           </span>
         </div>
-        <div className="flex flex-wrap text-border p-[70px] items-start gap-8 overflow-y-auto">
+        <div className="flex flex-wrap text-border p-[70px] items-start gap-13 overflow-y-auto">
           {filteredProjects.map((p) => (
             <div key={p.title} className="group w-100 cursor-default">
               <div className="h-5 px-2 mb-2">
@@ -139,14 +140,16 @@ export default function Projects() {
                         !transition-all !duration-300 !ease-out
                         group-hover:shadow-[0_0_20px_rgba(93,220,255,0.25)]"
               >
-                <img
-                  src={p.image}
-                  alt={`${p.title} thumbnail`}
-                  className="w-100 h-40 left-0 top-0 absolute
-                         rounded-tl-2xl rounded-tr-2xl object-cover
+                <div className="w-100 h-40 left-0 top-0 absolute rounded-tl-2xl rounded-tr-2xl ">
+                  <Image
+                    fill
+                    src={p.image}
+                    alt={`${p.title} thumbnail`}
+                    className="object-cover
                          !transition-transform !duration-300 !ease-out
                          group-hover:scale-[1.1]"
-                />
+                  />
+                </div>
                 <div className="w-100 h-75 left-0 top-40 absolute z-10 bg-fg overflow-hidden !duration-300 rounded-bl-2xl rounded-br-2xl border-t border-border group-hover:border-highlight flex flex-col p-5 items-start justify-between ">
                   <p>{p.description}</p>
                   <div className="flex flex-col gap-3">

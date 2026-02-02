@@ -5,21 +5,23 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 1000px #011221 inset;
-  -webkit-text-fill-color: #607b96;
   transition: background-color 9999s ease-in-out 0s;
   -webkit-text-fill-color: #607b96;
   caret-color: #607b96;
 }
+
 ::-webkit-scrollbar {
   height: 4px;
   width: 4px;
   border: 0.5px solid var(--color-border);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--color-border);
   border-radius: 0px;
   transition: background-color 0.3s ease-in-out;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-scrollbar-hover);
 }
@@ -56,6 +58,7 @@ input:-webkit-autofill:active {
   --color-game-border: #4a5568;
   --game-bg-rgb: 23 85 83;
   --blur-first-rgb: 67 217 173;
+  --blur-second-rgb: 77 91 206;
 }
 
 :root[data-theme="default"] {
@@ -67,12 +70,12 @@ input:-webkit-autofill:active {
   --color-focus: #ffffff0b;
   --color-submit-bg: #1c2b3a;
   --color-submit-bg-active: #011221;
+  --color-input-b: #1e2d3d;
   --color-underline: #fea55f;
   --color-frontend: #719fe9;
   --color-backend: #66ebe6;
   --color-mobile: #a7e399;
   --color-others: #f6ff99;
-  --color-input-b: #1e2d3d;
 
   --color-keyword: #bb9af7;
   --color-variable: #c0caf5;
@@ -90,22 +93,24 @@ input:-webkit-autofill:active {
   --color-game-border: #4a5568;
   --game-bg-rgb: 23 85 83;
   --blur-first-rgb: 67 217 173;
+  --blur-second-rgb: 77 91 206;
 }
+
 :root[data-theme="red"] {
-  --color-bg: rgb(24, 1, 1);
+  --color-bg: #180101;
   --color-fg: #2b0303;
   --color-border: #c29ab5;
   --color-highlight: white;
   --color-hover: #ffffff1a;
   --color-focus: #ffffff0b;
-  --color-submit-bg: #1c2b3a;
-  --color-submit-bg-active: #011221;
+  --color-submit-bg: #3a1c1c;
+  --color-submit-bg-active: #210101;
+  --color-input-b: #3d1e1e;
   --color-underline: #fea55f;
   --color-frontend: #9bb4c0;
   --color-backend: #e1d0b3;
   --color-mobile: #a18d6d;
   --color-others: #3b704b;
-  --color-input-b: #1e2d3d;
 
   --color-keyword: #ff6b81;
   --color-variable: #f5d0c5;
@@ -124,4 +129,5 @@ input:-webkit-autofill:active {
   --color-game-border: #4a3b35;
   --game-bg-rgb: 106 62 44;
   --blur-first-rgb: 191 61 61;
+  --blur-second-rgb: 255 176 91;
 }

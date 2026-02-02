@@ -1,8 +1,10 @@
+import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 
 type GamePhase = "idle" | "countdown" | "running" | "done";
 
 export default function TypingGame({ lines }: { lines: readonly string[] }) {
+  const router = useRouter();
   const [phase, setPhase] = useState<GamePhase>("idle");
   const [count, setCount] = useState<number>(3);
   const [target, setTarget] = useState<string>("");
@@ -127,7 +129,7 @@ export default function TypingGame({ lines }: { lines: readonly string[] }) {
             </div>
             <button
               onClick={startCountdown}
-              className="mt-2 w-fit px-4 py-2 rounded-md bg-white/10 hover:bg-white/15 border border-white/10 text-highlight transition-colors"
+              className="mt-2 w-fit px-4 py-2 rounded-md bg-white/10 hover:bg-white/15 border border-white/10 text-highlight transition-colors cursor-pointer"
             >
               Start
             </button>
@@ -145,7 +147,7 @@ export default function TypingGame({ lines }: { lines: readonly string[] }) {
 
         {(phase === "running" || phase === "done") && (
           <div className="relative z-10 flex flex-col gap-4 flex-1 min-h-0">
-            <div className="font-mono text-sm leading-6 whitespace-pre overflow-x-auto flex-1 min-h-0">
+            <div className="font-mono text-sm leading-6 whitespace-pre overflow-x-visible flex-1 min-h-0">
               {target.split("").map((ch, idx) => {
                 const hasTyped = idx < typed.length;
                 const isCursor = idx === typed.length && phase === "running";
@@ -245,7 +247,7 @@ export default function TypingGame({ lines }: { lines: readonly string[] }) {
               {phase === "done" ? (
                 <button
                   onClick={startCountdown}
-                  className="px-2 py-1 rounded-md bg-white/10 hover:bg-white/15 border border-white/10 text-highlight transition-colors"
+                  className="px-2 py-1 rounded-md bg-white/10 hover:bg-white/15 border border-white/10 text-highlight transition-colors cursor-pointer"
                 >
                   Retry
                 </button>
@@ -261,15 +263,7 @@ export default function TypingGame({ lines }: { lines: readonly string[] }) {
 
       {/* Buttons */}
       <div className="h-[120px] w-full flex justify-between items-center">
-        {/* left */}
-        <div className="w-[120px] h-[96px] relative flex items-end px-2 pb-2">
-          {/* <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-border/40">
-            control
-          </span> */}
-        </div>
-
-        {/* right */}
-        <div className="w-[120px] h-[96px] relative flex items-center justify-center">
+        <section className="w-[120px] h-[96px] relative flex items-center justify-center">
           <div className="absolute inset-0 rounded-xl border border-white/10 bg-white/3 shadow-[inset_0_1px_0_rgba(255,255,255,0.10),inset_0_-10px_18px_rgba(0,0,0,0.35)]" />
           <div className="absolute inset-0 rounded-xl pointer-events-none opacity-[0.08] [background:repeating-linear-gradient(90deg,rgba(255,255,255,0.35)_0px,rgba(255,255,255,0.35)_1px,transparent_2px,transparent_7px)]" />
 
@@ -309,7 +303,15 @@ export default function TypingGame({ lines }: { lines: readonly string[] }) {
             {/* center cap */}
             <div className="absolute inset-0 m-auto w-[18px] h-[18px] rounded-full border border-white/10 bg-black/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.10)]" />
           </div>
-        </div>
+        </section>
+        <section className="flex items-end h-[96px]">
+          <button
+            onClick={() => router.push("/about-me")}
+            className="py-2 px-4 rounded-lg border-1 border-highlight text-highlight hover:border-highlight/60 !duration-300 cursor-pointer"
+          >
+            skip
+          </button>
+        </section>
       </div>
     </div>
   );

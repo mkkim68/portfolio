@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import formatDate from "../../utils/formatdate";
 import { Icons } from "@icons/index";
 import { SOCIAL_MEDIA } from "data/social-media";
+import { firacode_medium } from "styles/font";
 
 export default function ContactMe() {
   const [isContactOpen, setIsContactOpen] = useState<Boolean>(true);
@@ -29,7 +30,10 @@ export default function ContactMe() {
   useEffect(() => {
     if (previewRef.current) {
       const eventHandler = () => {
-        const { width } = previewRef.current?.getBoundingClientRect();
+        const rect = previewRef.current?.getBoundingClientRect();
+        if (!rect) return;
+
+        const { width } = rect;
 
         setWidth(width);
       };
@@ -219,86 +223,101 @@ export default function ContactMe() {
         </div>
         <div ref={previewRef} className="flex h-full overflow-hidden">
           <div className="flex flex-col items-center w-[100%] border-r-[0.5px] border-border">
-            <form
-              onSubmit={handleSubmit}
-              className="flex flex-col items-start pt-[115px] gap-7 text-[14px]"
-            >
-              <div className="flex flex-col items-start gap-1.5">
-                <label htmlFor="name">_name:</label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  onChange={(e) => {
-                    setName(e.target.value);
-                    countLines();
-                  }}
-                  spellCheck={false}
-                  autoCorrect="off"
-                  autoCapitalize="off"
-                  className="bg-submit-bg-active p-[13px] w-[372px] h-[40px] border-[0.5px] border-input-b duration-150
-ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
-                />
-              </div>
-              <div className="flex flex-col items-start gap-1.5">
-                <label htmlFor="email">_email:</label>
-                <input
-                  id="email"
-                  name="email"
-                  type="text"
-                  required
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                    countLines();
-                  }}
-                  spellCheck={false}
-                  autoCorrect="off"
-                  autoCapitalize="off"
-                  className="bg-submit-bg-active p-[13px] w-[372px] h-[40px] border-[0.5px] border-input-b duration-150
-ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
-                />
-              </div>
-              <div className="flex flex-col items-start gap-1.5">
-                <label htmlFor="message">_message:</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  onChange={(e) => {
-                    setMessage(e.target.value);
-                    countLines();
-                  }}
-                  maxLength={300}
-                  spellCheck={false}
-                  autoCorrect="off"
-                  autoCapitalize="off"
-                  className="bg-submit-bg-active resize-none p-[13px] w-[372px] h-[145px] border-[0.5px] border-input-b duration-150
-ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <button
-                  type="submit"
-                  disabled={submitStatus === "submitting"}
-                  className={`bg-submit-bg cursor-pointer hover:bg-border active:bg-submit-bg-active w-[146px] h-[38px] text-highlight rounded-[8px] !duration-150 ease-in-out
-        ${submitStatus === "submitting" ? "opacity-60 cursor-not-allowed hover:bg-submit-bg" : ""}`}
+            {submitStatus === "success" ? (
+              <div className="flex flex-col items-center justify-center h-full gap-3">
+                <h3
+                  className={`text-[20px] text-highlight ${firacode_medium.className}`}
                 >
-                  {submitStatus === "submitting"
-                    ? "sending..."
-                    : "submit-message"}
+                  Thank you! 👽
+                </h3>
+                <p className="text-[14px] text-border w-[350px] text-center">
+                  Your message has been accepted. You will receive answer really
+                  soon!
+                </p>
+                <button
+                  onClick={() => setSubmitStatus("idle")}
+                  className="p-2 bg-submit-bg cursor-pointer hover:bg-border active:bg-submit-bg-active text-highlight rounded-[8px] !duration-150 ease-in-out"
+                >
+                  send-new-message
                 </button>
-
-                {submitStatus === "success" ? (
-                  <p className="text-[12px] text-[var(--skill-color)]">
-                    Message sent ✅
-                  </p>
-                ) : null}
-                {submitStatus === "error" ? (
-                  <p className="text-[12px] text-[#ff5370]">{submitError}</p>
-                ) : null}
               </div>
-            </form>
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col items-start pt-[115px] gap-7 text-[14px]"
+              >
+                <div className="flex flex-col items-start gap-1.5">
+                  <label htmlFor="name">_name:</label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    onChange={(e) => {
+                      setName(e.target.value);
+                      countLines();
+                    }}
+                    spellCheck={false}
+                    autoCorrect="off"
+                    autoCapitalize="off"
+                    className="bg-submit-bg-active p-[13px] w-[372px] h-[40px] border-[0.5px] border-input-b duration-150
+ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
+                  />
+                </div>
+                <div className="flex flex-col items-start gap-1.5">
+                  <label htmlFor="email">_email:</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="text"
+                    required
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      countLines();
+                    }}
+                    spellCheck={false}
+                    autoCorrect="off"
+                    autoCapitalize="off"
+                    className="bg-submit-bg-active p-[13px] w-[372px] h-[40px] border-[0.5px] border-input-b duration-150
+ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
+                  />
+                </div>
+                <div className="flex flex-col items-start gap-1.5">
+                  <label htmlFor="message">_message:</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    onChange={(e) => {
+                      setMessage(e.target.value);
+                      countLines();
+                    }}
+                    maxLength={300}
+                    spellCheck={false}
+                    autoCorrect="off"
+                    autoCapitalize="off"
+                    className="bg-submit-bg-active resize-none p-[13px] w-[372px] h-[145px] border-[0.5px] border-input-b duration-150
+ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <button
+                    type="submit"
+                    disabled={submitStatus === "submitting"}
+                    className={`bg-submit-bg cursor-pointer hover:bg-border active:bg-submit-bg-active w-[146px] h-[38px] text-highlight rounded-[8px] !duration-150 ease-in-out
+        ${submitStatus === "submitting" ? "opacity-60 cursor-not-allowed hover:bg-submit-bg" : ""}`}
+                  >
+                    {submitStatus === "submitting"
+                      ? "sending..."
+                      : "submit-message"}
+                  </button>
+
+                  {submitStatus === "error" ? (
+                    <p className="text-[12px] text-[#ff5370]">{submitError}</p>
+                  ) : null}
+                </div>
+              </form>
+            )}
           </div>
           {/* 코드부분 */}
           <div

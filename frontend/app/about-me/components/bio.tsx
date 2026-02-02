@@ -370,6 +370,7 @@ export default function Bio() {
           <div className="flex gap-3 my-3 flex-1 bg-function/10 p-2 rounded-2xl">
             {EXPLORING.map((stack) => (
               <Icon
+                key={stack}
                 name={stack as keyof typeof Icons}
                 className={`w-[35px] h-[35px]`}
               />
