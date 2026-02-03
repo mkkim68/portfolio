@@ -9,7 +9,7 @@ export default function Bio() {
   const lineArr = Array.from({ length: 51 }, (_, i) => i + 1);
   return (
     <div className="h-full min-h-0 flex cursor-default">
-      <section className="h-full w-[50%] border-r-[0.5px] border-border flex min-h-0 min-w-0 box-border overflow-x-auto overflow-y-auto p-5">
+      <section className="h-full w-[50%] border-r-[0.5px] border-border flex min-h-0 min-w-0 box-border overflow-x-auto overflow-y-auto p-5 cursor-default">
         <div style={{ lineHeight: "20px" }} className="mr-[15px]">
           {lineArr.map((cnt, idx) => (
             <p className="text-right text-border" key={idx}>

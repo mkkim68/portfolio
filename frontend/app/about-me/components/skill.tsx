@@ -12,7 +12,7 @@ export default function Skill({ category }: Props) {
       className="h-full w-full flex min-h-0"
       style={{ ["--skill-color" as any]: colorVar }}
     >
-      <div className="h-full w-[50%] border-r-[0.5px] border-border flex min-h-0 min-w-0 box-border overflow-x-auto overflow-y-auto p-5">
+      <div className="h-full w-[50%] border-r-[0.5px] border-border flex min-h-0 min-w-0 box-border overflow-x-auto overflow-y-auto p-5 cursor-default">
         <div style={{ lineHeight: "20px" }} className="mr-[15px]">
           {lineArr.map((cnt, idx) => (
             <p className="text-right text-border" key={idx}>

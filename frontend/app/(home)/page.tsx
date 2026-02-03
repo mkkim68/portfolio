@@ -57,6 +57,7 @@ export default function Home() {
                 <div className="w-[20px] h-[20px] rounded-full relative overflow-hidden bg-white/5 shadow-[0_2px_6px_rgba(0,0,0,0.35),inset_0_0.5px_0_rgba(255,255,255,0),inset_0_-1px_0_rgba(0,0,0,0.35)]">
                   <div className="absolute -top-[6px] -left-[6px] w-[20px] h-[20px] rounded-full bg-white/5 blur-[2px]" />
                   <div className="absolute inset-0 rounded-full bg-[radial-gradient(70%_70%_at_50%_30%,_rgba(255,255,255,0.13)_0%,_rgba(255,255,255,0.08)_40%,_rgba(0,0,0,0.18)_100%)]" />
+                  <Icons.Close className="text-[#0000008c] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[10.5px] h-[12px]" />
                 </div>
               </div>
             ))}

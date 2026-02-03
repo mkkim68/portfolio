@@ -24,21 +24,25 @@ export default function AboutMe() {
 
   const handleDeleteContent = (content: OpenType, e: React.MouseEvent) => {
     e.stopPropagation();
-    if (openContents.length > 1) {
-      let target = (e.currentTarget as HTMLElement).parentNode?.firstChild
-        ?.textContent;
-      if (open === target) {
-        let idx = openContents.findIndex((v) => v === target);
-        if (idx >= 1) {
-          setOpen(openContents[idx - 1]);
+
+    setOpenContents((prev) => {
+      const next = prev.filter((item) => item !== content);
+
+      if (open === content) {
+        if (next.length === 0) {
+          setOpen("");
         } else {
-          setOpen(openContents[1]);
+          const closedIdx = prev.findIndex((v) => v === content);
+          const nextOpen = next[closedIdx - 1] ?? next[0];
+          setOpen(nextOpen);
         }
+      } else {
+        if (next.length === 0) setOpen("");
+        else if (!next.includes(open)) setOpen(next[0]);
       }
-    } else {
-      setOpen("");
-    }
-    setOpenContents(openContents.filter((item) => item !== content));
+
+      return next;
+    });
   };
 
   return (
@@ -147,9 +151,9 @@ ease-in-out"
                   <p
                     onClick={() => {
                       setOpen("bio");
-                      if (!openContents.includes("bio")) {
-                        setOpenContents([...openContents, "bio"]);
-                      }
+                      setOpenContents((prev) =>
+                        prev.includes("bio") ? prev : [...prev, "bio"],
+                      );
                     }}
                     className={`pl-[27px] py-[4px]
                       ${
@@ -159,17 +163,8 @@ ease-in-out"
                       } flex items-center gap-[10px] hover:bg-hover duration-150
 ease-in-out w-full`}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="15"
-                      viewBox="0 0 17 15"
-                      fill="none"
-                      className="fill-border"
-                    >
-                      <path d="M0.811096 0H15.4108C15.6259 0 15.8322 0.0854545 15.9844 0.237565C16.1365 0.389675 16.2219 0.59598 16.2219 0.811096V13.7886C16.2219 14.0038 16.1365 14.2101 15.9844 14.3622C15.8322 14.5143 15.6259 14.5997 15.4108 14.5997H0.811096C0.59598 14.5997 0.389675 14.5143 0.237565 14.3622C0.0854545 14.2101 0 14.0038 0 13.7886V0.811096C0 0.59598 0.0854545 0.389675 0.237565 0.237565C0.389675 0.0854545 0.59598 0 0.811096 0V0ZM4.05548 10.1387V6.89432L5.67767 8.51651L7.29987 6.89432V10.1387H8.92206V4.46103H7.29987L5.67767 6.08322L4.05548 4.46103H2.43329V10.1387H4.05548ZM12.9775 7.70541V4.46103H11.3553V7.70541H9.73315L12.1664 10.1387L14.5997 7.70541H12.9775Z" />
-                    </svg>
-                    <span>bio</span>
+                    <Icons.React className="w-[17px] h-[17px] [&_circle]:!fill-[#3178c6] [&_g]:!stroke-[#3178c6] [&_g_*]:!fill-none" />
+                    <span>Bio.tsx</span>
                   </p>
                 </div>
               </div>
@@ -259,9 +254,11 @@ ease-in-out`}
                   <p
                     onClick={() => {
                       setOpen("education");
-                      if (!openContents.includes("education")) {
-                        setOpenContents([...openContents, "education"]);
-                      }
+                      setOpenContents((prev) =>
+                        prev.includes("education")
+                          ? prev
+                          : [...prev, "education"],
+                      );
                     }}
                     className={`
                       pl-[27px] py-[4px]
@@ -282,7 +279,7 @@ ease-in-out w-full`}
                     >
                       <path d="M0.811096 0H15.4108C15.6259 0 15.8322 0.0854545 15.9844 0.237565C16.1365 0.389675 16.2219 0.59598 16.2219 0.811096V13.7886C16.2219 14.0038 16.1365 14.2101 15.9844 14.3622C15.8322 14.5143 15.6259 14.5997 15.4108 14.5997H0.811096C0.59598 14.5997 0.389675 14.5143 0.237565 14.3622C0.0854545 14.2101 0 14.0038 0 13.7886V0.811096C0 0.59598 0.0854545 0.389675 0.237565 0.237565C0.389675 0.0854545 0.59598 0 0.811096 0V0ZM4.05548 10.1387V6.89432L5.67767 8.51651L7.29987 6.89432V10.1387H8.92206V4.46103H7.29987L5.67767 6.08322L4.05548 4.46103H2.43329V10.1387H4.05548ZM12.9775 7.70541V4.46103H11.3553V7.70541H9.73315L12.1664 10.1387L14.5997 7.70541H12.9775Z" />
                     </svg>
-                    <span>education</span>
+                    <span>education.md</span>
                   </p>
                 </div>
               </div>
@@ -330,9 +327,11 @@ ease-in-out"
                   <p
                     onClick={() => {
                       setOpen("frontend");
-                      if (!openContents.includes("frontend")) {
-                        setOpenContents([...openContents, "frontend"]);
-                      }
+                      setOpenContents((prev) =>
+                        prev.includes("frontend")
+                          ? prev
+                          : [...prev, "frontend"],
+                      );
                     }}
                     className={`
                       pl-[27px] py-[4px]
@@ -343,24 +342,16 @@ ease-in-out"
                       } flex items-center gap-[10px] hover:bg-hover duration-150
 ease-in-out w-full`}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="15"
-                      viewBox="0 0 17 15"
-                      fill="none"
-                      className="fill-border"
-                    >
-                      <path d="M0.811096 0H15.4108C15.6259 0 15.8322 0.0854545 15.9844 0.237565C16.1365 0.389675 16.2219 0.59598 16.2219 0.811096V13.7886C16.2219 14.0038 16.1365 14.2101 15.9844 14.3622C15.8322 14.5143 15.6259 14.5997 15.4108 14.5997H0.811096C0.59598 14.5997 0.389675 14.5143 0.237565 14.3622C0.0854545 14.2101 0 14.0038 0 13.7886V0.811096C0 0.59598 0.0854545 0.389675 0.237565 0.237565C0.389675 0.0854545 0.59598 0 0.811096 0V0ZM4.05548 10.1387V6.89432L5.67767 8.51651L7.29987 6.89432V10.1387H8.92206V4.46103H7.29987L5.67767 6.08322L4.05548 4.46103H2.43329V10.1387H4.05548ZM12.9775 7.70541V4.46103H11.3553V7.70541H9.73315L12.1664 10.1387L14.5997 7.70541H12.9775Z" />
-                    </svg>
-                    <span>frontend</span>
+                    <Icons.React className="w-[17px] h-[17px] [&_circle]:!fill-[#3178c6] [&_g]:!stroke-[#3178c6] [&_g_*]:!fill-none" />
+
+                    <span>Frontend.tsx</span>
                   </p>
                   <p
                     onClick={() => {
                       setOpen("backend");
-                      if (!openContents.includes("backend")) {
-                        setOpenContents([...openContents, "backend"]);
-                      }
+                      setOpenContents((prev) =>
+                        prev.includes("backend") ? prev : [...prev, "backend"],
+                      );
                     }}
                     className={`pl-[27px] py-[4px]
                       ${
@@ -370,24 +361,16 @@ ease-in-out w-full`}
                       } flex items-center gap-[10px] hover:bg-hover duration-150
 ease-in-out w-full`}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="15"
-                      viewBox="0 0 17 15"
-                      fill="none"
-                      className="fill-border"
-                    >
-                      <path d="M0.811096 0H15.4108C15.6259 0 15.8322 0.0854545 15.9844 0.237565C16.1365 0.389675 16.2219 0.59598 16.2219 0.811096V13.7886C16.2219 14.0038 16.1365 14.2101 15.9844 14.3622C15.8322 14.5143 15.6259 14.5997 15.4108 14.5997H0.811096C0.59598 14.5997 0.389675 14.5143 0.237565 14.3622C0.0854545 14.2101 0 14.0038 0 13.7886V0.811096C0 0.59598 0.0854545 0.389675 0.237565 0.237565C0.389675 0.0854545 0.59598 0 0.811096 0V0ZM4.05548 10.1387V6.89432L5.67767 8.51651L7.29987 6.89432V10.1387H8.92206V4.46103H7.29987L5.67767 6.08322L4.05548 4.46103H2.43329V10.1387H4.05548ZM12.9775 7.70541V4.46103H11.3553V7.70541H9.73315L12.1664 10.1387L14.5997 7.70541H12.9775Z" />
-                    </svg>
-                    <span>backend</span>
+                    <Icons.React className="w-[17px] h-[17px] [&_circle]:!fill-[#3178c6] [&_g]:!stroke-[#3178c6] [&_g_*]:!fill-none" />
+
+                    <span>Backend.tsx</span>
                   </p>
                   <p
                     onClick={() => {
                       setOpen("mobile");
-                      if (!openContents.includes("mobile")) {
-                        setOpenContents([...openContents, "mobile"]);
-                      }
+                      setOpenContents((prev) =>
+                        prev.includes("mobile") ? prev : [...prev, "mobile"],
+                      );
                     }}
                     className={`pl-[27px] py-[4px]
                       ${
@@ -397,24 +380,16 @@ ease-in-out w-full`}
                       } flex items-center gap-[10px] hover:bg-hover duration-150
 ease-in-out w-full`}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="15"
-                      viewBox="0 0 17 15"
-                      fill="none"
-                      className="fill-border"
-                    >
-                      <path d="M0.811096 0H15.4108C15.6259 0 15.8322 0.0854545 15.9844 0.237565C16.1365 0.389675 16.2219 0.59598 16.2219 0.811096V13.7886C16.2219 14.0038 16.1365 14.2101 15.9844 14.3622C15.8322 14.5143 15.6259 14.5997 15.4108 14.5997H0.811096C0.59598 14.5997 0.389675 14.5143 0.237565 14.3622C0.0854545 14.2101 0 14.0038 0 13.7886V0.811096C0 0.59598 0.0854545 0.389675 0.237565 0.237565C0.389675 0.0854545 0.59598 0 0.811096 0V0ZM4.05548 10.1387V6.89432L5.67767 8.51651L7.29987 6.89432V10.1387H8.92206V4.46103H7.29987L5.67767 6.08322L4.05548 4.46103H2.43329V10.1387H4.05548ZM12.9775 7.70541V4.46103H11.3553V7.70541H9.73315L12.1664 10.1387L14.5997 7.70541H12.9775Z" />
-                    </svg>
-                    <span>mobile</span>
+                    <Icons.React className="w-[17px] h-[17px] [&_circle]:!fill-[#3178c6] [&_g]:!stroke-[#3178c6] [&_g_*]:!fill-none" />
+
+                    <span>Mobile.tsx</span>
                   </p>
                   <p
                     onClick={() => {
                       setOpen("others");
-                      if (!openContents.includes("others")) {
-                        setOpenContents([...openContents, "others"]);
-                      }
+                      setOpenContents((prev) =>
+                        prev.includes("others") ? prev : [...prev, "others"],
+                      );
                     }}
                     className={`pl-[27px] py-[4px]
                       ${
@@ -424,17 +399,8 @@ ease-in-out w-full`}
                       } flex items-center gap-[10px] hover:bg-hover duration-150
 ease-in-out w-full`}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="15"
-                      viewBox="0 0 17 15"
-                      fill="none"
-                      className="fill-border"
-                    >
-                      <path d="M0.811096 0H15.4108C15.6259 0 15.8322 0.0854545 15.9844 0.237565C16.1365 0.389675 16.2219 0.59598 16.2219 0.811096V13.7886C16.2219 14.0038 16.1365 14.2101 15.9844 14.3622C15.8322 14.5143 15.6259 14.5997 15.4108 14.5997H0.811096C0.59598 14.5997 0.389675 14.5143 0.237565 14.3622C0.0854545 14.2101 0 14.0038 0 13.7886V0.811096C0 0.59598 0.0854545 0.389675 0.237565 0.237565C0.389675 0.0854545 0.59598 0 0.811096 0V0ZM4.05548 10.1387V6.89432L5.67767 8.51651L7.29987 6.89432V10.1387H8.92206V4.46103H7.29987L5.67767 6.08322L4.05548 4.46103H2.43329V10.1387H4.05548ZM12.9775 7.70541V4.46103H11.3553V7.70541H9.73315L12.1664 10.1387L14.5997 7.70541H12.9775Z" />
-                    </svg>
-                    <span>others</span>
+                    <Icons.React className="w-[17px] h-[17px] [&_circle]:!fill-[#3178c6] [&_g]:!stroke-[#3178c6] [&_g_*]:!fill-none" />
+                    <span>Others.tsx</span>
                   </p>
                 </div>
               </div>
@@ -507,23 +473,22 @@ ease-in-out w-full`}
                   onClick={() => setOpen(content)}
                   className={`${
                     open === content ? "bg-focus text-highlight" : ""
-                  } h-full p-[20px] pr-[17px] flex items-center w-fit border-r-[0.5px] border-border justify-between  cursor-pointer hover:bg-hover duration-150 ease-in-out`}
+                  } h-full p-[15px] pr-[12px] flex items-center w-fit border-r-[0.5px] border-border justify-between  cursor-pointer hover:bg-hover duration-150 ease-in-out`}
                 >
-                  <span className="mr-[20px] whitespace-nowrap">{content}</span>
+                  <span className="mr-[20px] whitespace-nowrap">
+                    {content === "education"
+                      ? content + ".md"
+                      : content.charAt(0).toUpperCase() +
+                        content.slice(1) +
+                        ".tsx"}
+                  </span>
                   <div
                     className="w-max p-[5px]"
                     onClick={(e) => handleDeleteContent(content, e)}
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="10"
-                      height="11"
-                      viewBox="0 0 10 11"
-                      fill="none"
-                      className={`${open === content ? "fill-highlight" : "fill-border"}`}
-                    >
-                      <path d="M5.00005 4.65244L8.71255 0.939941L9.77305 2.00044L6.06055 5.71294L9.77305 9.42544L8.71255 10.4859L5.00005 6.77344L1.28755 10.4859L0.227051 9.42544L3.93955 5.71294L0.227051 2.00044L1.28755 0.939941L5.00005 4.65244Z" />
-                    </svg>
+                    <Icons.Close
+                      className={`w-[10px] h-[11px] ${open === content ? "text-highlight" : "text-border"} `}
+                    />
                   </div>
                 </div>
               ))}{" "}

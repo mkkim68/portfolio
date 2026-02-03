@@ -66,9 +66,10 @@ export const PROJECTS: Projects = [
   {
     title: "Portfolio",
     summary: "// _interactive-portfolio",
-    description: "Duis aute irure dolor in velit esse cillum dolore.",
+    description:
+      "An interactive portfolio website built to showcase projects, skills, and design sensibility, focusing on smooth UI interactions, theming, and frontend architecture.",
     techs: ["Next.js", "React", "Typescript", "Tailwind CSS"],
     github: "https://github.com/mkkim68/portfolio",
-    image: "/imgs/dd.png",
+    image: "/imgs/portfolio.png",
   },
 ] as const;
