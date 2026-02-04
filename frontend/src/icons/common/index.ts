@@ -8,7 +8,7 @@ import Folder from "./folder.svg";
 import MBox from "./m.svg";
 import Phone from "./phone.svg";
 import Check from "./check.svg";
-// import Screw from "./screw.svg";
+import Menu from "./menu.svg";
 
 export const commonIcons = {
   Link,
@@ -21,5 +21,5 @@ export const commonIcons = {
   MBox,
   Phone,
   Check,
-  // Screw,
+  Menu,
 } as const;

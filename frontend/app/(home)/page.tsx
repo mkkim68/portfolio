@@ -6,43 +6,51 @@ import { CODE_LINES } from "data/code-lines";
 export default function Home() {
   return (
     <div className="h-full w-full flex [&_*]:transition-colors [&_*]:duration-500 [&_*]:ease-in-out overflow-hidden">
-      {/* <div className="blur-container lg:hidden">
-        <div className="first-blur"></div>
-        <div className="second-blur"></div>
-      </div> */}
-      <div className="flex justify-center items-center lg:mx-auto flex-1 relative xl:max-w-7xl 2xl:w-[90rem] lg:max-w-4xl px-10 py-3 gap-8">
-        <div className="flex flex-col w-[450px] justify-center h-full py-16 relative gap-20">
+      <div className="blur-[5px] max-h-full w-[100%] h-[100%] pointer-events-none fixed lg:hidden">
+        <div className="left-[20%] top-[25%] w-[200px] h-[200px] rotate-[-94.30deg] opacity-70 bg-blur-first blur-[100px] absolute z-9 pointer-events-none"></div>
+        <div className="right-[0%] bottom-[30%] w-[200px] h-[200px] rotate-[13.51deg] opacity-70 bg-blur-second blur-[100px] absolute z-8 pointer-events-none"></div>
+      </div>
+      <div className="flex lg:justify-center items-center justify-start lg:mx-auto flex-1 relative xl:max-w-7xl 2xl:w-[90rem] lg:max-w-5xl px-10 py-3 gap-8">
+        <div className="flex flex-col w-full max-w-[450px] justify-center h-full py-16 relative gap-20">
           <div>
             <p className="text-border text-[17px]">Hi all. I am</p>
-            <h1 className="text-[45px] text-highlight">Kim Min Kyoung</h1>
+            <h1 className="text-[40px] text-highlight">Kim Min Kyoung</h1>
             <h3 className="text-xl text-blur-second">
               {`>`} Front-end developer
             </h3>
           </div>
           <div className="flex flex-col gap-2">
-            <p className="text-border">// complete the game to continue</p>
-            <p className="text-border">
+            <p className="text-border hidden lg:block">
+              // complete the game to continue
+            </p>
+            <p className="text-border hidden lg:block">
               // you can also see it on my Github page
             </p>
-            <p>
+            <p className="text-border block lg:hidden">
+              // find my profile on Github:
+            </p>
+            <p className="">
               <span className="text-blur-second cursor-default">const </span>
               <span className="text-blur-first cursor-default">
                 githubLink{" "}
               </span>
               <span className="text-highlight cursor-default">= </span>
-              <a href="https://github.com/mkkim68" className="text-github">
+              <a
+                href="https://github.com/mkkim68"
+                className="text-github underline lg:no-underline break-all"
+              >
                 "https://github.com/mkkim68"
               </a>
             </p>
           </div>
         </div>
         {/*게임 */}
-        <div className="relative h-[500px] w-[450px] hidden lg:inline-block xl:w-[540px]">
+        <div className="relative h-[500px] w-[500px] hidden lg:inline-block xl:w-[540px]">
           <div className="blur-[5px] max-h-full w-full h-full absolute z-10 pointer-events-none">
             <div className="left-[0%] top-[10%] w-[250px] h-[300px] rotate-[-94.30deg] opacity-70 bg-blur-first blur-[120px] absolute z-9 pointer-events-none"></div>
             <div className="right-[0%] top-[50%] w-[250px] h-[300px] rotate-[13.51deg] opacity-70 bg-blur-second blur-[120px] absolute z-8 pointer-events-none"></div>
           </div>
-          <div className="flex flex-col xl:p-10 items-center justify-between transition-colors duration-500 ease-in-out w-full h-full border border-game-border rounded-lg bg-[linear-gradient(153.43deg,_rgb(var(--game-bg-rgb)/0.7),_rgb(var(--blur-first-rgb)/0.09)_100%)]">
+          <div className="flex flex-col px-5 py-10 xl:p-10 items-center justify-between transition-colors duration-500 ease-in-out w-full h-full border border-game-border rounded-lg bg-[linear-gradient(153.43deg,_rgb(var(--game-bg-rgb)/0.7),_rgb(var(--blur-first-rgb)/0.09)_100%)]">
             <div className="relative w-full">
               <TypingGame lines={CODE_LINES} />
             </div>

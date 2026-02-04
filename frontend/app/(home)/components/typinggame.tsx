@@ -113,7 +113,7 @@ export default function TypingGame({ lines }: { lines: readonly string[] }) {
       </div>
 
       {/* Screen */}
-      <div className="h-[220px] relative rounded-lg border border-white/10 bg-black/40 backdrop-blur-sm px-5 py-5 overflow-hidden flex flex-col">
+      <div className="h-[220px] relative rounded-lg border border-white/10 bg-black/40 backdrop-blur-sm px-2 py-5 xl:px-5 overflow-hidden flex flex-col">
         <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.08] [background:repeating-linear-gradient(180deg,transparent_0px,transparent_2px,rgba(255,255,255,0.35)_3px,transparent_4px)]" />
 
         {phase === "idle" && (

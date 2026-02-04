@@ -20,7 +20,8 @@ export default function Footer() {
       className="text-border rounded-b-[8px] bg-fg flex justify-between w-full border-t-[0.5px] border-border h-[5vh] transition-colors duration-500 ease-in-out
     [&_*]:transition-colors
     [&_*]:duration-500
-    [&_*]:ease-in-out"
+    [&_*]:ease-in-out
+    overflow-hidden"
     >
       <div className="flex">
         <div className="border-r-[0.5px] border-border w-[150px] flex justify-center items-center">
@@ -39,7 +40,7 @@ export default function Footer() {
           </a>
         ))}
       </div>
-      <div className="relative flex items-center">
+      <div className="relative lg:flex items-center hidden">
         <div
           className={`
             absolute right-full
