@@ -23,22 +23,24 @@ export default function Footer() {
     [&_*]:ease-in-out
     overflow-hidden"
     >
-      <div className="flex">
-        <div className="border-r-[0.5px] border-border w-[150px] flex justify-center items-center">
+      <div className="flex w-full justify-between lg:justify-start">
+        <div className="border-r-[0.5px] border-border w-[150px] flex justify-center items-center rounded-bl-[8px]">
           <span className="cursor-default">find me in :</span>
         </div>
-        {SOCIAL_MEDIA.map((sns) => (
-          <a
-            key={sns.name}
-            href={sns.url}
-            className="border-r-[0.5px] border-border w-[5vh] flex justify-center items-center hover:bg-hover !duration-300"
-          >
-            <Icon
-              name={sns.name as keyof typeof Icons}
-              className="w-[20px] h-[20px] fill-border"
-            />
-          </a>
-        ))}
+        <div className="flex">
+          {SOCIAL_MEDIA.map((sns, idx) => (
+            <a
+              key={sns.name}
+              href={sns.url}
+              className={`${idx === 0 ? "border-x-[0.5px] lg:border-r-[0.5px]" : "border-r-[0.5px]"} ${idx === SOCIAL_MEDIA.length - 1 ? "rounded-br-[8px]" : ""} border-border w-[5vh] flex justify-center items-center hover:bg-hover !duration-300`}
+            >
+              <Icon
+                name={sns.name as keyof typeof Icons}
+                className="w-[20px] h-[20px] fill-border"
+              />
+            </a>
+          ))}
+        </div>
       </div>
       <div className="relative lg:flex items-center hidden">
         <div

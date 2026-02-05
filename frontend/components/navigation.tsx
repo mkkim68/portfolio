@@ -88,7 +88,7 @@ export default function Navigation() {
             className={
               "lg:hidden absolute left-0 right-0 top-full z-50 flex flex-col justify-between " +
               "h-[calc(89vh-60px)] overflow-y-auto " +
-              "border-t-[0.5px] border-border bg-gradient-to-b from-fg via-fg/90 to-fg/30 transition-colors duration-500 ease-in-out"
+              "border-t-[0.5px] border-border bg-gradient-to-b from-fg via-fg/95 to-fg/50 transition-colors duration-500 ease-in-out"
             }
           >
             <motion.ul
@@ -135,7 +135,7 @@ export default function Navigation() {
                 >
                   <Link
                     href={item.href}
-                    className={`block w-full px-5 py-4 border-b-[0.5px] border-border hover:bg-hover transition-colors duration-150 ${
+                    className={`block w-full p-5 border-b-[0.5px] border-border hover:bg-hover transition-colors duration-150 ${
                       item.active ? "text-highlight" : "text-border"
                     }`}
                   >
@@ -143,35 +143,41 @@ export default function Navigation() {
                   </Link>
                 </motion.li>
               ))}
+              <motion.li
+                variants={{
+                  closed: { opacity: 0, y: -6, filter: "brightness(0.6)" },
+                  open: { opacity: 1, y: 0, filter: "brightness(1)" },
+                }}
+                transition={{ duration: 0.18, ease: "easeOut" }}
+                className="flex justify-between px-5 py-4 border-b-[0.5px] border-border items-center"
+              >
+                <span className="text-border cursor-default">_theme</span>
+                <div className="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setTheme("default")}
+                    className={`px-1 py-1 rounded-md !transition-all !duration-200 !ease-in-out ${
+                      mounted && theme === "default"
+                        ? "bg-white/20"
+                        : "hover:-translate-y-0.5 active:translate-y-0.5"
+                    }`}
+                  >
+                    <div className="w-5 h-5 bg-[linear-gradient(200deg,#011627_20%,#43d9ad_100%)]"></div>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setTheme("red")}
+                    className={`px-1 py-1 rounded-md !transition-all !duration-200 !ease-in-out ${
+                      mounted && theme === "red"
+                        ? "bg-white/20"
+                        : "hover:-translate-y-0.5 active:translate-y-0.5"
+                    }`}
+                  >
+                    <div className="w-5 h-5 bg-[linear-gradient(200deg,#2b0303_20%,#bf3d3d_100%)]"></div>
+                  </button>
+                </div>
+              </motion.li>
             </motion.ul>
-
-            <div className="flex justify-between px-5 py-4 border-t-[0.5px] border-border items-center">
-              <span className="text-border cursor-default">_theme</span>
-              <div className="flex gap-2">
-                <button
-                  type="button"
-                  onClick={() => setTheme("default")}
-                  className={`px-1 py-1 rounded-md !transition-all !duration-200 !ease-in-out ${
-                    mounted && theme === "default"
-                      ? "bg-white/20"
-                      : "hover:-translate-y-0.5 active:translate-y-0.5"
-                  }`}
-                >
-                  <div className="w-5 h-5 bg-[linear-gradient(200deg,#011627_20%,#43d9ad_100%)]"></div>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setTheme("red")}
-                  className={`px-1 py-1 rounded-md !transition-all !duration-200 !ease-in-out ${
-                    mounted && theme === "red"
-                      ? "bg-white/20"
-                      : "hover:-translate-y-0.5 active:translate-y-0.5"
-                  }`}
-                >
-                  <div className="w-5 h-5 bg-[linear-gradient(200deg,#2b0303_20%,#bf3d3d_100%)]"></div>
-                </button>
-              </div>
-            </div>
           </motion.div>
         ) : null}
       </AnimatePresence>

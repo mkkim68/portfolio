@@ -119,13 +119,16 @@ export default function ContactMe() {
   }
 
   return (
-    <div className="h-full w-full flex [&_*]:transition-colors [&_*]:duration-500 [&_*]:ease-in-out">
+    <div
+      ref={previewRef}
+      className="w-full flex h-full lg:flex-row flex-col [&_*]:transition-colors [&_*]:duration-500 [&_*]:ease-in-out overflow-auto"
+    >
       {/* 왼쪽 */}
-      <div className="h-full w-[270px] border-r-[0.5px] border-border">
+      <div className="lg:h-full lg:w-[270px] w-full lg:border-r-[0.5px] border-b-[0.5px] border-border">
         <div>
           <button
             onClick={() => setIsContactOpen((prev) => !prev)}
-            className="cursor-pointer h-[40px] w-full flex p-[20px] items-center border-b-[0.5px] border-border"
+            className="cursor-pointer lg:h-[40px] h-[30px] w-full flex lg:p-[20px] px-[20px] py-4 items-center border-b-[0.5px] border-border bg-border/50 lg:bg-fg"
           >
             <h3 className="text-highlight">
               <span
@@ -168,7 +171,7 @@ export default function ContactMe() {
         <div>
           <button
             onClick={() => setIsFindOpen((prev) => !prev)}
-            className="cursor-pointer h-[40px] w-full flex p-[20px] items-center border-y-[0.5px] border-border"
+            className="cursor-pointer lg:h-[40px] h-[30px] w-full flex lg:p-[20px] px-[20px] py-4 items-center border-y-[0.5px] border-border bg-border/50 lg:bg-fg"
           >
             <h3 className="text-highlight">
               <span
@@ -183,31 +186,32 @@ export default function ContactMe() {
               <span>find-me-also-in</span>
             </h3>
           </button>
+          {/* mobile (lg 미만) */}
           <div
             className={`
-              origin-top
-              !transition-all !duration-300
+              lg:hidden overflow-hidden
+              !transition-[max-height] !duration-300 !ease-in-out
+              ${isFindOpen ? "max-h-[150px] opacity-100" : "max-h-0 opacity-0"}
+            `}
+          >
+            <FindLinks />
+          </div>
+
+          {/* desktop (lg 이상) */}
+          <div
+            className={`
+              origin-top hidden lg:block
+              !transition-all !duration-300 min-h-0
               ${isFindOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}
             `}
           >
-            <div className="text-border flex flex-col p-[15px] gap-[8px]">
-              {SOCIAL_MEDIA.map((sns) => (
-                <a
-                  key={sns.name}
-                  href={sns.url}
-                  className="flex items-center gap-2 hover:underline"
-                >
-                  <Icons.Link className="w-[14px] h-[14px] fill-border" />
-                  <span className="text-border">{sns.description}</span>
-                </a>
-              ))}
-            </div>
+            <FindLinks />
           </div>
         </div>
       </div>
       {/* 메인 */}
-      <div className="w-[calc(100%-270px)] flex flex-col text-highlight cursor-default">
-        <div className="h-[40px] border-b-[0.5px] border-border">
+      <div className="lg:w-[calc(100%-270px)] h-full w-full flex flex-col text-highlight cursor-default">
+        <div className="h-[40px] border-b-[0.5px] border-border hidden lg:flex">
           <div className="h-full p-[20px] flex items-center w-[167px] border-r-[0.5px] border-border justify-between bg-focus hover:bg-hover transition-all !duration-150">
             <span>contacts</span>
             <svg
@@ -221,10 +225,10 @@ export default function ContactMe() {
             </svg>
           </div>
         </div>
-        <div ref={previewRef} className="flex h-full overflow-hidden">
-          <div className="flex flex-col items-center w-[100%] border-r-[0.5px] border-border">
+        <div className="flex flex-1 min-h-0 lg:overflow-hidden">
+          <div className="flex flex-col items-center w-full flex-1 min-h-0 lg:border-r-[0.5px] border-border overflow-y-auto">
             {submitStatus === "success" ? (
-              <div className="flex flex-col items-center justify-center h-full gap-3">
+              <div className="flex flex-1 flex-col items-center justify-center w-full gap-3">
                 <h3
                   className={`text-[20px] text-highlight ${firacode_medium.className}`}
                 >
@@ -244,7 +248,7 @@ export default function ContactMe() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="flex flex-col items-start pt-[115px] gap-7 text-[14px]"
+                className="flex flex-col items-start py-[115px] gap-7 text-[14px]"
               >
                 <div className="flex flex-col items-start gap-1.5">
                   <label htmlFor="name">_name:</label>
@@ -321,9 +325,7 @@ ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
           </div>
           {/* 코드부분 */}
           <div
-            className={`text-[14px] ${
-              w <= 800 ? "hidden" : "block"
-            } flex justify-center items-start w-[100%] border-r-[0.5px] border-border pt-[100px] px-[50px]`}
+            className={`text-[14px] w-full h-full ${w <= 1150 ? "hidden" : "flex flex-1 min-w-0"} justify-center items-start border-r-[0.5px] border-border pt-[100px]`}
           >
             <div style={{ lineHeight: "20px" }} className="mr-[20px]">
               {lineArr.map((cnt, idx) => (
@@ -335,7 +337,7 @@ ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
             <div
               id="content"
               style={{ lineHeight: "20px" }}
-              className="flex flex-col items-start w-[98%] whitespace-pre-wrap
+              className="flex flex-col items-start w-fit whitespace-pre-wrap
     break-all"
             >
               <p>
@@ -409,7 +411,7 @@ ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
               </p>
             </div>
           </div>
-          <div className="w-[25px] border-l-[0.5px] border-border flex justify-center pt-1">
+          <div className="w-[25px] border-l-[0.5px] border-border lg:flex justify-center pt-1 hidden">
             <div className="w-[18px] h-[7px] bg-border"></div>
           </div>
         </div>
@@ -417,3 +419,18 @@ ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
     </div>
   );
 }
+
+const FindLinks = () => (
+  <div className="text-border flex flex-col p-[15px] gap-[8px]">
+    {SOCIAL_MEDIA.map((sns) => (
+      <a
+        key={sns.name}
+        href={sns.url}
+        className="flex items-center gap-2 hover:underline"
+      >
+        <Icons.Link className="w-[14px] h-[14px] fill-border" />
+        <span className="text-border">{sns.description}</span>
+      </a>
+    ))}
+  </div>
+);

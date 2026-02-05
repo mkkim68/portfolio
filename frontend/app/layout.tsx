@@ -23,13 +23,13 @@ export default function RootLayout({
           defaultTheme="default"
         >
           <div
-            className={`bg-bg min-h-screen p-[30px] transition-colors duration-500 ease-in-out`}
+            className={`bg-bg min-h-screen p-[15px] lg:p-[30px] transition-colors duration-500 ease-in-out`}
           >
             <div
-              className={`${firacode_light.className} border-[0.5px] rounded-[8px] border-border text-[14px] h-[calc(100vh-60px)] flex flex-col min-h-0`}
+              className={`${firacode_light.className} border-[0.5px] rounded-[8px] border-border text-[14px] h-[calc(100vh-30px)] lg:h-[calc(100vh-60px)] flex flex-col min-h-0`}
             >
               <Navigation />
-              <main className="flex-1 min-h-0 transition-colors duration-500 ease-in-out bg-fg">
+              <main className="h-[calc(89vh-30px)] lg:h-[calc(89vh-60px)] transition-colors duration-500 ease-in-out bg-fg">
                 {children}
               </main>
               <Footer />
