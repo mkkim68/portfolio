@@ -8,8 +8,8 @@ import { firacode_medium } from "styles/font";
 export default function Bio() {
   const lineArr = Array.from({ length: 51 }, (_, i) => i + 1);
   return (
-    <div className="h-full min-h-0 flex cursor-default">
-      <section className="h-full w-[50%] border-r-[0.5px] border-border flex min-h-0 min-w-0 box-border overflow-x-auto overflow-y-auto p-5 cursor-default">
+    <div className="h-full min-h-0 flex cursor-default border-t-[0.5px] border-border lg:border-none">
+      <section className="hidden lg:flex h-full w-[50%] border-r-[0.5px] border-border min-h-0 min-w-0 box-border overflow-x-auto overflow-y-auto p-5 cursor-default">
         <div style={{ lineHeight: "20px" }} className="mr-[15px]">
           {lineArr.map((cnt, idx) => (
             <p className="text-right text-border" key={idx}>
@@ -297,7 +297,7 @@ export default function Bio() {
         </div>
       </section>
 
-      <section className="h-full w-[50%] p-6 min-h-0 min-w-0 overflow-y-auto flex flex-col">
+      <section className="h-full w-full lg:w-[50%] p-6 min-h-0 min-w-0 overflow-y-auto flex flex-col">
         <div>
           <Image
             src="/imgs/photo.jpg"

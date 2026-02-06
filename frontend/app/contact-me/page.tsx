@@ -7,12 +7,12 @@ import { SOCIAL_MEDIA } from "data/social-media";
 import { firacode_medium } from "styles/font";
 
 export default function ContactMe() {
-  const [isContactOpen, setIsContactOpen] = useState<Boolean>(true);
-  const [isFindOpen, setIsFindOpen] = useState<Boolean>(true);
-  const [name, setName] = useState<String>("");
-  const [email, setEmail] = useState<String>("");
-  const [message, setMessage] = useState<String>("");
-  const [lineArr, setLineArr] = useState<Array<number>>([
+  const [isContactOpen, setIsContactOpen] = useState<boolean>(false);
+  const [isFindOpen, setIsFindOpen] = useState<boolean>(false);
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const [lineArr, setLineArr] = useState<number[]>([
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
   ]);
   const previewRef = useRef<HTMLDivElement | null>(null);
@@ -26,6 +26,33 @@ export default function ContactMe() {
     "idle" | "submitting" | "success" | "error"
   >("idle");
   const [submitError, setSubmitError] = useState<string>("");
+
+  // Default dropdown state: mobile => closed, lg+ => open (and keep in sync on resize)
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+
+    const apply = (matches: boolean) => {
+      setIsContactOpen(matches);
+      setIsFindOpen(matches);
+    };
+
+    // initial
+    apply(mq.matches);
+
+    const onChange = (e: MediaQueryListEvent) => apply(e.matches);
+
+    // subscribe
+    if (typeof mq.addEventListener === "function") {
+      mq.addEventListener("change", onChange);
+      return () => mq.removeEventListener("change", onChange);
+    }
+
+    // fallback for older Safari
+    // @ts-ignore
+    mq.addListener(onChange);
+    // @ts-ignore
+    return () => mq.removeListener(onChange);
+  }, []);
 
   useEffect(() => {
     if (previewRef.current) {
@@ -143,21 +170,17 @@ export default function ContactMe() {
               <span>contacts</span>
             </h3>
           </button>
+          {/* mobile (lg 미만) */}
           <div
             className={`
               overflow-hidden
-              !transition-[max-height] !duration-300
-              ${isContactOpen ? "max-h-[40px]" : "max-h-0"}
+              !transition-[max-height,opacity] !duration-300 !ease-in-out
+              ${
+                isContactOpen ? "max-h-[80px] opacity-100" : "max-h-0 opacity-0"
+              }
             `}
           >
-            <div
-              className={`text-border flex flex-col p-[10px] gap-2 !duration-200
-            ${
-              isContactOpen
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 -translate-y-1"
-            }`}
-            >
+            <div className="text-border flex flex-col p-[10px] gap-2">
               <a
                 href="mailto:kimminkyoung0608@gmail.com"
                 className="flex items-center gap-2 cursor-pointer hover:underline"
@@ -419,6 +442,18 @@ ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
     </div>
   );
 }
+
+const ContactLinks = () => (
+  <div className="text-border flex flex-col p-[10px] gap-2">
+    <a
+      href="mailto:kimminkyoung0608@gmail.com"
+      className="flex items-center gap-2 cursor-pointer hover:underline"
+    >
+      <Icons.Mail className="w-[14px] h-[14px] fill-border" />
+      <span className="text-border">kimminkyoung0608@gmail.com</span>
+    </a>
+  </div>
+);
 
 const FindLinks = () => (
   <div className="text-border flex flex-col p-[15px] gap-[8px]">

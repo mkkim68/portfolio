@@ -1,8 +1,8 @@
 export default function Education() {
   const lineArr = Array.from({ length: 24 }, (_, i) => i + 1);
   return (
-    <div className="h-full flex cursor-default">
-      <div className="h-full w-[50%] border-r-[0.5px] border-border flex min-h-0 min-w-0 box-border overflow-x-auto overflow-y-auto p-5">
+    <div className="h-full flex cursor-default border-t-[0.5px] border-border lg:border-none">
+      <section className="hidden lg:flex h-full w-[50%] border-r-[0.5px] border-border min-h-0 min-w-0 box-border overflow-x-auto overflow-y-auto p-5">
         <div style={{ lineHeight: "20px" }} className="mr-[15px]">
           {lineArr.map((cnt, idx) => (
             <p className="text-right text-border" key={idx}>
@@ -75,8 +75,8 @@ export default function Education() {
             </span>
           </p>
         </div>
-      </div>
-      <div className="h-full w-[50%] p-[35px] min-h-0 min-w-0 overflow-y-auto box-border">
+      </section>
+      <section className="h-full w-full lg:w-[50%] p-[35px] min-h-0 min-w-0 overflow-y-auto box-border">
         <section
           className="
       rounded-xl border border-white/10 bg-white/5 backdrop-blur-md
@@ -148,7 +148,7 @@ export default function Education() {
             </div>
           </div>
         </section>
-      </div>
+      </section>
     </div>
   );
 }

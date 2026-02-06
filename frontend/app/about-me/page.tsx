@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Education from "./components/education";
 import Skill from "./components/skill";
 import { TechCategory } from "data/techstacks";
@@ -11,8 +11,34 @@ import Bio from "./components/bio";
 type OpenType = "bio" | "education" | TechCategory | "";
 
 export default function AboutMe() {
-  const [isPersonalInfoOpen, setIsPersonalInfoOpen] = useState<Boolean>(true);
-  const [isContacts, setIsContacts] = useState<Boolean>(true);
+  const [isPersonalInfoOpen, setIsPersonalInfoOpen] = useState<Boolean>(false);
+  const [isContacts, setIsContacts] = useState<boolean>(false);
+
+  // Default contacts state: mobile => closed, lg+ => open (and keep in sync on resize)
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+
+    const apply = (matches: boolean) => {
+      setIsContacts(matches);
+      setIsPersonalInfoOpen(matches);
+    };
+
+    // initial
+    apply(mq.matches);
+
+    const onChange = (e: MediaQueryListEvent) => apply(e.matches);
+
+    if (typeof mq.addEventListener === "function") {
+      mq.addEventListener("change", onChange);
+      return () => mq.removeEventListener("change", onChange);
+    }
+
+    // fallback for older Safari
+    // @ts-ignore
+    mq.addListener(onChange);
+    // @ts-ignore
+    return () => mq.removeListener(onChange);
+  }, []);
 
   const [isBioOpen, setIsBioOpen] = useState<Boolean>(false);
   const [isInterestsOpen, setIsInterestsOpen] = useState<Boolean>(false);
@@ -46,10 +72,10 @@ export default function AboutMe() {
   };
 
   return (
-    <div className="h-full w-full flex">
+    <div className="h-full w-full flex lg:flex-row flex-col [&_*]:transition-colors [&_*]:duration-500 [&_*]:ease-in-out">
       {/* 왼쪽 */}
-      <div className="h-full w-[270px] border-r-[0.5px] border-border flex">
-        <div className="w-[50px] h-full flex justify-center pt-[15px]">
+      <section className="lg:h-full lg:w-[270px] w-full lg:border-r-[0.5px] border-b-[0,5px] border-border flex">
+        <div className="w-[50px] h-full hidden lg:flex justify-center pt-[15px]">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -68,7 +94,7 @@ export default function AboutMe() {
             </defs>
           </svg>
         </div>
-        <div className="h-full w-[220px] border-l-[0.5px] border-border">
+        <div className="lg:h-full lg:w-[220px] w-full lg:border-l-[0.5px] border-border">
           <button
             onClick={() => {
               setIsPersonalInfoOpen((prev) => !prev);
@@ -76,13 +102,13 @@ export default function AboutMe() {
               setIsExpOpen(false);
               setIsInterestsOpen(false);
             }}
-            className="cursor-pointer h-[40px] w-full flex p-[20px] items-center border-b-[0.5px] border-border"
+            className="cursor-pointer lg:h-[40px] h-[30px] w-full flex lg:p-[20px] px-[20px] py-4 items-center border-b-[0.5px] border-border bg-border/50 lg:bg-fg"
           >
             <h3 className="text-highlight">
               <span
                 className={`
                   inline-block
-                  transition-transform duration-200 ease-in-out
+                  !transition-transform !duration-200 !ease-in-out
                   ${isPersonalInfoOpen ? "rotate-180" : "rotate-0"}
                 `}
               >
@@ -94,7 +120,7 @@ export default function AboutMe() {
           <div
             className={`
               overflow-hidden
-              transition-[max-height] duration-300 ease-in-out
+              !transition-[max-height] !duration-300 !ease-in-out
               ${isPersonalInfoOpen ? "max-h-[300px]" : "max-h-0"}
             `}
           >
@@ -122,7 +148,7 @@ ease-in-out"
                     className={`
                       fill-border
                   inline-block
-                  transition-transform duration-200 ease-in-out
+                  !transition-transform !duration-200 !ease-in-out
                   ${isBioOpen ? "rotate-90" : "rotate-0"}
                 `}
                   >
@@ -144,7 +170,7 @@ ease-in-out"
                 <div
                   className={`
                     overflow-hidden
-                    transition-[max-height] duration-300 ease-in-out
+                    !transition-[max-height] !duration-300 !ease-in-out
                     ${isBioOpen ? "max-h-[100px]" : "max-h-0"}
                   `}
                 >
@@ -185,7 +211,7 @@ ease-in-out"
 
                 fill-border
                   inline-block
-                  transition-transform duration-200 ease-in-out
+                  !transition-transform !duration-200 !ease-in-out
                   ${isInterestsOpen ? "rotate-90" : "rotate-0"}
                 `}
                   >
@@ -206,7 +232,7 @@ ease-in-out"
                 <div
                   className={`
                     overflow-hidden
-                    transition-[max-height] duration-300 ease-in-out
+                    !transition-[max-height] !duration-300 !ease-in-out
                     ${isInterestsOpen ? "max-h-[100px]" : "max-h-0"}
                   `}
                 ></div>
@@ -226,7 +252,7 @@ ease-in-out`}
                     fill="none"
                     className={`fill-border
                   inline-block
-                  transition-transform duration-200 ease-in-out
+                  !transition-transform !duration-200 !ease-in-out
                   ${isExpOpen ? "rotate-90" : "rotate-0"}
                 `}
                   >
@@ -247,7 +273,7 @@ ease-in-out`}
                 <div
                   className={`
                     overflow-hidden
-                    transition-[max-height] duration-300 ease-in-out
+                    !transition-[max-height] !duration-300 !ease-in-out
                     ${isExpOpen ? "max-h-[50px]" : "max-h-0"}
                   `}
                 >
@@ -299,7 +325,7 @@ ease-in-out"
                     className={`
                   fill-border
                   inline-block
-                  transition-transform duration-200 ease-in-out
+                  !transition-transform !duration-200 !ease-in-out
                   ${isSkillsOpen ? "rotate-90" : "rotate-0"}
                 `}
                   >
@@ -320,7 +346,7 @@ ease-in-out"
                 <div
                   className={`
                     overflow-hidden
-                    transition-[max-height] duration-300 ease-in-out
+                    !transition-[max-height] !duration-300 !ease-in-out
                     ${isSkillsOpen ? "max-h-[200px]" : "max-h-0"}
                   `}
                 >
@@ -408,13 +434,13 @@ ease-in-out w-full`}
           </div>
           <button
             onClick={() => setIsContacts((prev) => !prev)}
-            className="cursor-pointer h-[40px] w-full flex p-[20px] items-center border-y-[0.5px] border-border"
+            className="cursor-pointer lg:h-[40px] h-[30px] w-full flex lg:p-[20px] px-[20px] py-4 items-center border-y-[0.5px] border-border bg-border/50 lg:bg-fg"
           >
             <h3 className="text-highlight">
               <span
                 className={`
                   inline-block
-                  transition-transform duration-200 ease-in-out
+                  !transition-transform !duration-200 !ease-in-out
                   ${isContacts ? "rotate-180" : "rotate-0"}
                 `}
               >
@@ -425,83 +451,67 @@ ease-in-out w-full`}
           </button>
           <div
             className={`
-              origin-top
-              transition-all duration-300 ease-in-out
+              lg:hidden overflow-hidden
+              !transition-[max-height] !duration-300 !ease-in-out
+              ${isContacts ? "max-h-[180px] opacity-100" : "max-h-0 opacity-0"}
+            `}
+          >
+            <SocialLinks />
+          </div>
+          <div
+            className={`
+              origin-top hidden lg:block
+              !transition-all !duration-300 !ease-in-out min-h-0
               ${isContacts ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}
             `}
           >
-            <div className="text-border flex flex-col p-[15px] gap-[10px]">
-              <a
-                href="mailto:kimminkyoung0608@gmail.com"
-                className="flex items-center gap-2 cursor-pointer hover:underline"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 17 15"
-                  fill="none"
-                  className="fill-border"
-                >
-                  <path d="M0.811096 0H15.4108C15.6259 0 15.8322 0.0854545 15.9844 0.237565C16.1365 0.389675 16.2219 0.59598 16.2219 0.811096V13.7886C16.2219 14.0038 16.1365 14.2101 15.9844 14.3622C15.8322 14.5143 15.6259 14.5997 15.4108 14.5997H0.811096C0.59598 14.5997 0.389675 14.5143 0.237565 14.3622C0.0854545 14.2101 0 14.0038 0 13.7886V0.811096C0 0.59598 0.0854545 0.389675 0.237565 0.237565C0.389675 0.0854545 0.59598 0 0.811096 0ZM8.15963 7.04275L2.95888 2.62633L1.90851 3.86244L8.17017 9.17918L14.3191 3.85838L13.2582 2.6312L8.16044 7.04275H8.15963Z" />
-                </svg>
-                <span>Send E-mail</span>
-              </a>
-              {SOCIAL_MEDIA.map((sns) => (
-                <a
-                  key={sns.name}
-                  href={sns.url}
-                  className="flex items-center gap-2 hover:underline"
-                >
-                  <Icons.Link className="w-[14px] h-[14px] fill-border" />
-                  <span>{sns.description}</span>
-                </a>
-              ))}
-            </div>
+            <SocialLinks />
           </div>
         </div>
-      </div>
+      </section>
       {/* 메인 */}
-      <div className="w-[calc(100%-270px)] flex flex-col text-border overflow-hidden">
+      <section className="lg:w-[calc(100%-270px)] w-full flex flex-col text-border overflow-hidden">
         {/* 상단 */}
-        {openContents.length > 0 ? (
-          <div className="h-[40px] border-b-[0.5px] border-border">
-            <div className="h-full flex">
-              {openContents.map((content) => (
-                <div
-                  key={content}
-                  onClick={() => setOpen(content)}
-                  className={`${
-                    open === content ? "bg-focus text-highlight" : ""
-                  } h-full p-[15px] pr-[12px] flex items-center w-fit border-r-[0.5px] border-border justify-between  cursor-pointer hover:bg-hover duration-150 ease-in-out`}
-                >
-                  <span className="mr-[20px] whitespace-nowrap">
-                    {content === "education"
-                      ? content + ".md"
-                      : content.charAt(0).toUpperCase() +
-                        content.slice(1) +
-                        ".tsx"}
-                  </span>
+        <div className="lg:block hidden">
+          {openContents.length > 0 ? (
+            <div className="h-[40px] border-b-[0.5px] border-border">
+              <div className="h-full flex">
+                {openContents.map((content) => (
                   <div
-                    className="w-max p-[5px]"
-                    onClick={(e) => handleDeleteContent(content, e)}
+                    key={content}
+                    onClick={() => setOpen(content)}
+                    className={`${
+                      open === content ? "bg-focus text-highlight" : ""
+                    } h-full p-[15px] pr-[12px] flex items-center w-fit border-r-[0.5px] border-border justify-between  cursor-pointer hover:bg-hover duration-150 ease-in-out`}
                   >
-                    <Icons.Close
-                      className={`w-[10px] h-[11px] ${open === content ? "text-highlight" : "text-border"} `}
-                    />
+                    <span className="mr-[20px] whitespace-nowrap">
+                      {content === "education"
+                        ? content + ".md"
+                        : content.charAt(0).toUpperCase() +
+                          content.slice(1) +
+                          ".tsx"}
+                    </span>
+                    <div
+                      className="w-max p-[5px]"
+                      onClick={(e) => handleDeleteContent(content, e)}
+                    >
+                      <Icons.Close
+                        className={`w-[10px] h-[11px] ${open === content ? "text-highlight" : "text-border"} `}
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}{" "}
+                ))}{" "}
+              </div>
             </div>
-          </div>
-        ) : (
-          <div className="h-full w-full flex flex-col items-center justify-center gap-3">
-            <h1 className="text-xl text-scrollbar-hover">No file open</h1>
-            <p className="text-border">
-              Select a file from the explorer to view its contents
-            </p>
-          </div>
-        )}
+          ) : (
+            <div className="h-full w-full flex flex-col items-center justify-center gap-3">
+              <h1 className="text-xl text-scrollbar-hover">No file open</h1>
+              <p className="text-border">
+                Select a file from the explorer to view its contents
+              </p>
+            </div>
+          )}
+        </div>
         {/* 컨텐츠 */}
         {open === "frontend" ? <Skill category="frontend" /> : null}
         {open === "backend" ? <Skill category="backend" /> : null}
@@ -509,7 +519,38 @@ ease-in-out w-full`}
         {open === "others" ? <Skill category="others" /> : null}
         {open === "education" ? <Education /> : null}
         {open === "bio" ? <Bio /> : null}
-      </div>
+      </section>
     </div>
   );
 }
+
+const SocialLinks = () => (
+  <div className="text-border flex flex-col p-[15px] gap-[10px]">
+    <a
+      href="mailto:kimminkyoung0608@gmail.com"
+      className="flex items-center gap-2 cursor-pointer hover:underline"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="14"
+        height="14"
+        viewBox="0 0 17 15"
+        fill="none"
+        className="fill-border"
+      >
+        <path d="M0.811096 0H15.4108C15.6259 0 15.8322 0.0854545 15.9844 0.237565C16.1365 0.389675 16.2219 0.59598 16.2219 0.811096V13.7886C16.2219 14.0038 16.1365 14.2101 15.9844 14.3622C15.8322 14.5143 15.6259 14.5997 15.4108 14.5997H0.811096C0.59598 14.5997 0.389675 14.5143 0.237565 14.3622C0.0854545 14.2101 0 14.0038 0 13.7886V0.811096C0 0.59598 0.0854545 0.389675 0.237565 0.237565C0.389675 0.0854545 0.59598 0 0.811096 0ZM8.15963 7.04275L2.95888 2.62633L1.90851 3.86244L8.17017 9.17918L14.3191 3.85838L13.2582 2.6312L8.16044 7.04275H8.15963Z" />
+      </svg>
+      <span>Send E-mail</span>
+    </a>
+    {SOCIAL_MEDIA.map((sns) => (
+      <a
+        key={sns.name}
+        href={sns.url}
+        className="flex items-center gap-2 hover:underline"
+      >
+        <Icons.Link className="w-[14px] h-[14px] fill-border" />
+        <span>{sns.description}</span>
+      </a>
+    ))}
+  </div>
+);

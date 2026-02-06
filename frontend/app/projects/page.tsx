@@ -18,74 +18,115 @@ export default function Projects() {
       : PROJECTS.filter((p) => p.techs.some((t) => isClicked.includes(t)));
 
   return (
-    <div className="h-full w-full flex [&_*]:transition-colors [&_*]:duration-500 [&_*]:ease-in-out">
-      <div className="h-full w-[270px] border-r-[0.5px] border-border">
-        <div>
-          <button
-            onClick={() => setIsProjectsOpen((prev) => !prev)}
-            className="cursor-pointer h-[40px] w-full flex px-[20px] items-center border-b-[0.5px] border-border"
-          >
-            <h3 className="text-highlight">
-              <span
-                className={`
+    <div className="h-full w-full flex lg:flex-row flex-col [&_*]:transition-colors [&_*]:duration-500 [&_*]:ease-in-out">
+      <section className="lg:h-full lg:w-[270px] w-full lg:border-r-[0.5px] border-b-[0,5px] border-border">
+        <button
+          onClick={() => setIsProjectsOpen((prev) => !prev)}
+          className="cursor-pointer lg:h-[40px] h-[30px] w-full flex lg:p-[20px] px-[20px] py-4 items-center border-b-[0.5px] border-border bg-border/50 lg:bg-fg"
+        >
+          <h3 className="text-highlight">
+            <span
+              className={`
                   inline-block
                   !transition-transform !duration-200 
                   ${isProjectsOpen ? "rotate-180" : "rotate-0"}
                 `}
-              >
-                ▼
-              </span>{" "}
-              <span>projects</span>
-            </h3>
-          </button>
-          <div
-            className={`
-              origin-top
-              !transition-all !duration-300
-              ${isProjectsOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}
-            `}
-          >
-            <div
-              className={`h-[calc(89vh-100px)] text-border flex flex-col !duration-150 overflow-y-auto`}
             >
-              {PROJECT_STACK.map((stack) => (
-                <label
-                  key={stack}
-                  className="cursor-pointer flex items-center hover:bg-hover py-[7px] px-[10px] !duration-200"
-                >
-                  <div className="relative flex items-center gap-3">
-                    <input
-                      type="checkbox"
-                      className="peer sr-only"
-                      checked={isClicked.includes(stack)}
-                      onChange={() => {
-                        setIsClicked((prev) =>
-                          prev.includes(stack)
-                            ? prev.filter((s) => s !== stack)
-                            : [...prev, stack],
-                        );
-                      }}
-                    />
-                    <div
-                      className="w-[18px] h-[18px] border border-border rounded-md
+              ▼
+            </span>{" "}
+            <span>projects</span>
+          </h3>
+        </button>
+        <div
+          className={`
+              lg:hidden overflow-y-auto min-h-0
+              !transition-[max-height] !duration-300 !ease-in-out
+              ${isProjectsOpen ? "max-h-[180px] opacity-100" : "max-h-0 opacity-0"}
+            `}
+        >
+          <div
+            className={`lg:h-[calc(89vh-100px)] text-border flex flex-col !duration-150 overflow-hidden`}
+          >
+            {PROJECT_STACK.map((stack) => (
+              <label
+                key={stack}
+                className="cursor-pointer flex items-center hover:bg-hover py-[7px] px-[10px] !duration-200"
+              >
+                <div className="relative flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    className="peer sr-only"
+                    checked={isClicked.includes(stack)}
+                    onChange={() => {
+                      setIsClicked((prev) =>
+                        prev.includes(stack)
+                          ? prev.filter((s) => s !== stack)
+                          : [...prev, stack],
+                      );
+                    }}
+                  />
+                  <div
+                    className="w-[18px] h-[18px] border border-border rounded-md
                   transition-colors peer-checked:bg-border flex items-center justify-center"
-                    ></div>
-                    <Icons.Check className="absolute left-[1px] w-[15px] h-3 text-transparent peer-checked:text-highlight fill-current !transition-colors !duration-200 !ease-in-out" />
-                    <Icon
-                      name={stack as keyof typeof Icons}
-                      className="w-[20px] h-[20px]"
-                    />
-                    <span className="text-border">{stack}</span>
-                  </div>
-                </label>
-              ))}
-            </div>
+                  ></div>
+                  <Icons.Check className="absolute left-[1px] w-[15px] h-3 text-transparent peer-checked:text-highlight fill-current !transition-colors !duration-200 !ease-in-out" />
+                  <Icon
+                    name={stack as keyof typeof Icons}
+                    className="w-[20px] h-[20px]"
+                  />
+                  <span className="text-border">{stack}</span>
+                </div>
+              </label>
+            ))}
           </div>
         </div>
-      </div>
+        <div
+          className={`
+              origin-top hidden lg:block
+              !transition-all !duration-300 min-h-0
+              ${isProjectsOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0"}
+            `}
+        >
+          <div
+            className={`h-[calc(89vh-100px)] text-border flex flex-col !duration-150 overflow-y-auto`}
+          >
+            {PROJECT_STACK.map((stack) => (
+              <label
+                key={stack}
+                className="cursor-pointer flex items-center hover:bg-hover py-[7px] px-[10px] !duration-200"
+              >
+                <div className="relative flex items-center gap-3">
+                  <input
+                    type="checkbox"
+                    className="peer sr-only"
+                    checked={isClicked.includes(stack)}
+                    onChange={() => {
+                      setIsClicked((prev) =>
+                        prev.includes(stack)
+                          ? prev.filter((s) => s !== stack)
+                          : [...prev, stack],
+                      );
+                    }}
+                  />
+                  <div
+                    className="w-[18px] h-[18px] border border-border rounded-md
+                  transition-colors peer-checked:bg-border flex items-center justify-center"
+                  ></div>
+                  <Icons.Check className="absolute left-[1px] w-[15px] h-3 text-transparent peer-checked:text-highlight fill-current !transition-colors !duration-200 !ease-in-out" />
+                  <Icon
+                    name={stack as keyof typeof Icons}
+                    className="w-[20px] h-[20px]"
+                  />
+                  <span className="text-border">{stack}</span>
+                </div>
+              </label>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      <div className="w-[calc(100%-270px)] flex flex-col">
-        <div className="h-[40px] min-h-[40px] border-b border-border flex justify-between items-center pr-[10px]">
+      <section className="lg:w-[calc(100%-270px)] w-full flex flex-col overflow-hidden">
+        <div className="h-[40px] min-h-[40px] border-b border-border hidden lg:flex justify-between items-center pr-[10px]">
           <div className="h-[40px] pl-[20px] flex items-center overflow-x-auto whitespace-nowrap">
             <div className="flex items-center">
               <AnimatePresence initial={false} mode="popLayout">
@@ -124,7 +165,7 @@ export default function Projects() {
             clear
           </span>
         </div>
-        <div className="flex flex-wrap text-border p-[70px] items-start gap-13 overflow-y-auto">
+        <div className="flex flex-wrap text-border lg:p-[70px] lg:items-start items-center justify-center py-[50px] gap-13 overflow-y-auto border-t-[0.5px] border-border lg:border-none">
           {filteredProjects.map((p) => (
             <div key={p.title} className="group w-100 cursor-default">
               <div className="h-5 px-2 mb-2">
@@ -174,7 +215,7 @@ export default function Projects() {
             </div>
           ))}
         </div>
-      </div>
+      </section>
     </div>
   );
 }

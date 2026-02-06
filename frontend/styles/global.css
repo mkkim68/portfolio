@@ -4,10 +4,10 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 1000px #011221 inset;
+  -webkit-box-shadow: 0 0 0 1000px var(--color-submit-bg-active) inset;
   transition: background-color 9999s ease-in-out 0s;
-  -webkit-text-fill-color: #607b96;
-  caret-color: #607b96;
+  -webkit-text-fill-color: var(--color-highlight);
+  caret-color: var(--color-border);
 }
 
 ::-webkit-scrollbar {

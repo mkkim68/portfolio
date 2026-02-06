@@ -9,10 +9,10 @@ export default function Skill({ category }: Props) {
   const lineArr = Array.from({ length: 30 }, (_, i) => i + 1);
   return (
     <div
-      className="h-full w-full flex min-h-0"
+      className="h-full w-full flex min-h-0 border-t-[0.5px] border-border lg:border-none"
       style={{ ["--skill-color" as any]: colorVar }}
     >
-      <div className="h-full w-[50%] border-r-[0.5px] border-border flex min-h-0 min-w-0 box-border overflow-x-auto overflow-y-auto p-5 cursor-default">
+      <section className="hidden lg:flex h-full w-[50%] border-r-[0.5px] border-border min-h-0 min-w-0 box-border overflow-x-auto overflow-y-auto p-5 cursor-default">
         <div style={{ lineHeight: "20px" }} className="mr-[15px]">
           {lineArr.map((cnt, idx) => (
             <p className="text-right text-border" key={idx}>
@@ -201,8 +201,8 @@ export default function Skill({ category }: Props) {
             <span className="text-border">{`}`}</span>
           </p>
         </div>
-      </div>
-      <div className="h-full w-[50%] p-[35px] min-h-0 min-w-0 overflow-y-auto box-border">
+      </section>
+      <section className="h-full w-full lg:w-[50%] p-[35px] min-h-0 min-w-0 overflow-y-auto box-border flex flex-col items-start">
         <h3
           className={`text-[var(--skill-color)] mb-3 text-[18px] ${firacode_medium.className} transition-colors duration-500 ease-in-out`}
         >
@@ -242,7 +242,7 @@ export default function Skill({ category }: Props) {
             </div>
           ))}
         </div>
-      </div>
+      </section>
     </div>
   );
 }
