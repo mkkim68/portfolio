@@ -237,15 +237,7 @@ export default function ContactMe() {
         <div className="h-[40px] border-b-[0.5px] border-border hidden lg:flex">
           <div className="h-full p-[20px] flex items-center w-[167px] border-r-[0.5px] border-border justify-between bg-focus hover:bg-hover transition-all !duration-150">
             <span>contacts</span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="10"
-              height="11"
-              viewBox="0 0 10 11"
-              className="fill-highlight"
-            >
-              <path d="M5.00005 4.65244L8.71255 0.939941L9.77305 2.00044L6.06055 5.71294L9.77305 9.42544L8.71255 10.4859L5.00005 6.77344L1.28755 10.4859L0.227051 9.42544L3.93955 5.71294L0.227051 2.00044L1.28755 0.939941L5.00005 4.65244Z" />
-            </svg>
+            <Icons.Close className="text-highlight w-[10px] h-[11px]" />
           </div>
         </div>
         <div className="flex flex-1 min-h-0 lg:overflow-hidden">
@@ -271,7 +263,7 @@ export default function ContactMe() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="flex flex-col items-start py-[115px] gap-7 text-[14px]"
+                className="flex flex-col h-full items-start justify-center gap-7 text-[14px]"
               >
                 <div className="flex flex-col items-start gap-1.5">
                   <label htmlFor="name">_name:</label>
@@ -326,6 +318,11 @@ ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
                     className="bg-submit-bg-active resize-none p-[13px] w-[372px] h-[145px] border-[0.5px] border-input-b duration-150
 ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
                   />
+                  <div className="w-[372px] flex justify-end">
+                    <span className="text-[12px] text-border">
+                      {message.length}/300
+                    </span>
+                  </div>
                 </div>
                 <div className="flex flex-col gap-2">
                   <button
@@ -350,7 +347,7 @@ ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
           <div
             className={`text-[14px] w-full h-full ${w <= 1150 ? "hidden" : "flex flex-1 min-w-0"} justify-center items-start border-r-[0.5px] border-border pt-[100px]`}
           >
-            <div style={{ lineHeight: "20px" }} className="mr-[20px]">
+            <div style={{ lineHeight: "20px" }} className="mx-[20px]">
               {lineArr.map((cnt, idx) => (
                 <p className="text-right text-border" key={idx}>
                   {cnt}
@@ -360,7 +357,7 @@ ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
             <div
               id="content"
               style={{ lineHeight: "20px" }}
-              className="flex flex-col items-start w-fit whitespace-pre-wrap
+              className="flex flex-col items-start whitespace-pre-wrap max-w-[431px] mr-[20px]
     break-all"
             >
               <p>
@@ -434,26 +431,11 @@ ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
               </p>
             </div>
           </div>
-          <div className="w-[25px] border-l-[0.5px] border-border lg:flex justify-center pt-1 hidden">
-            <div className="w-[18px] h-[7px] bg-border"></div>
-          </div>
         </div>
       </div>
     </div>
   );
 }
-
-const ContactLinks = () => (
-  <div className="text-border flex flex-col p-[10px] gap-2">
-    <a
-      href="mailto:kimminkyoung0608@gmail.com"
-      className="flex items-center gap-2 cursor-pointer hover:underline"
-    >
-      <Icons.Mail className="w-[14px] h-[14px] fill-border" />
-      <span className="text-border">kimminkyoung0608@gmail.com</span>
-    </a>
-  </div>
-);
 
 const FindLinks = () => (
   <div className="text-border flex flex-col p-[15px] gap-[8px]">

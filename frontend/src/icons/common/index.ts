@@ -5,7 +5,7 @@ import Arrow from "./arrow.svg";
 import Close from "./close.svg";
 import Code from "./code.svg";
 import Folder from "./folder.svg";
-import MBox from "./m.svg";
+import Markdown from "./m.svg";
 import Phone from "./phone.svg";
 import Check from "./check.svg";
 import Menu from "./menu.svg";
@@ -18,7 +18,7 @@ export const commonIcons = {
   Close,
   Code,
   Folder,
-  MBox,
+  Markdown,
   Phone,
   Check,
   Menu,

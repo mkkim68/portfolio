@@ -1,7 +1,7 @@
 "use client";
 
 import { PROJECT_STACK } from "data/project-tech";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Icon from "components/Icon";
 import { Icons } from "@icons/index";
 import { PROJECTS } from "data/projects";
@@ -10,12 +10,38 @@ import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 
 export default function Projects() {
-  const [isProjectsOpen, setIsProjectsOpen] = useState<boolean>(true);
+  const [isProjectsOpen, setIsProjectsOpen] = useState<boolean>(false);
   const [isClicked, setIsClicked] = useState<string[]>([]);
   const filteredProjects =
     isClicked.length === 0
       ? PROJECTS
       : PROJECTS.filter((p) => p.techs.some((t) => isClicked.includes(t)));
+
+  // Default dropdown state: mobile => closed, lg+ => open (and keep in sync on resize)
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+
+    const apply = (matches: boolean) => {
+      setIsProjectsOpen(matches);
+    };
+
+    // initial
+    apply(mq.matches);
+
+    const onChange = (e: MediaQueryListEvent) => apply(e.matches);
+
+    // subscribe
+    if (typeof mq.addEventListener === "function") {
+      mq.addEventListener("change", onChange);
+      return () => mq.removeEventListener("change", onChange);
+    }
+
+    // fallback for older Safari
+    // @ts-ignore
+    mq.addListener(onChange);
+    // @ts-ignore
+    return () => mq.removeListener(onChange);
+  }, []);
 
   return (
     <div className="h-full w-full flex lg:flex-row flex-col [&_*]:transition-colors [&_*]:duration-500 [&_*]:ease-in-out">

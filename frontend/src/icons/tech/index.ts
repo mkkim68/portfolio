@@ -31,6 +31,7 @@ import Python from "./python.svg";
 import Restapi from "./restapi.svg";
 import VSCode from "./vscode.svg";
 import CSS from "./css.svg";
+import Java from "./java.svg";
 
 export const techIcons = {
   React: React,
@@ -66,4 +67,5 @@ export const techIcons = {
   "REST API": Restapi,
   "Visual Studio Code": VSCode,
   CSS: CSS,
+  Java: Java,
 } as const;

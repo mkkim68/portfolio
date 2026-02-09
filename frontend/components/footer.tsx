@@ -1,19 +1,13 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Icons } from "@icons/index";
 import { SOCIAL_MEDIA } from "data/social-media";
 import Icon from "./Icon";
+import { ThemeButtons } from "./themebuttons";
 
 export default function Footer() {
   const [isThemeOpen, setIsThemeOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
     <div
@@ -45,7 +39,7 @@ export default function Footer() {
       <div className="relative lg:flex items-center hidden">
         <div
           className={`
-            absolute right-full
+            absolute right-13
             flex gap-1
             rounded-x
             !transition-all !duration-300 !ease-out
@@ -56,20 +50,7 @@ export default function Footer() {
             }
           `}
         >
-          {/* theme buttons */}
-          <button
-            onClick={() => setTheme("default")}
-            className={`px-1 py-1 rounded-md !transition-all !duration-200 !ease-in-out ${mounted && theme === "default" ? "bg-white/20" : "hover:-translate-y-0.5 active:translate-y-0.5"}`}
-          >
-            <div className="w-4 h-4 bg-[linear-gradient(200deg,#011627_20%,#43d9ad_100%)]"></div>
-          </button>
-          <button
-            onClick={() => setTheme("red")}
-            className={`px-1 py-1 rounded-md !transition-all !duration-200 !ease-in-out ${mounted && theme === "red" ? "bg-white/20" : "hover:-translate-y-0.5 active:translate-y-0.5"}`}
-          >
-            <div className="w-4 h-4 bg-[linear-gradient(200deg,#2b0303_20%,#bf3d3d_100%)]"></div>
-          </button>
-          <button className="px-1 py-1 rounded-md"></button>
+          <ThemeButtons swatchClass="w-4 h-4" />
         </div>
         <button className="w-[30px] h-[31px] bg-fg z-100 flex justify-center items-center rounded-4xl mr-2 ml-1">
           <Icons.Moon

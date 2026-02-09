@@ -1,21 +1,15 @@
 "use client";
 
 import { Icons } from "@icons/index";
-import { useTheme } from "next-themes";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
+import { ThemeButtons } from "./themebuttons";
 
 export default function Navigation() {
   const path = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     setIsMenuOpen(false);
@@ -153,28 +147,7 @@ export default function Navigation() {
               >
                 <span className="text-border cursor-default">_theme</span>
                 <div className="flex gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setTheme("default")}
-                    className={`px-1 py-1 rounded-md !transition-all !duration-200 !ease-in-out ${
-                      mounted && theme === "default"
-                        ? "bg-white/20"
-                        : "hover:-translate-y-0.5 active:translate-y-0.5"
-                    }`}
-                  >
-                    <div className="w-5 h-5 bg-[linear-gradient(200deg,#011627_20%,#43d9ad_100%)]"></div>
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setTheme("red")}
-                    className={`px-1 py-1 rounded-md !transition-all !duration-200 !ease-in-out ${
-                      mounted && theme === "red"
-                        ? "bg-white/20"
-                        : "hover:-translate-y-0.5 active:translate-y-0.5"
-                    }`}
-                  >
-                    <div className="w-5 h-5 bg-[linear-gradient(200deg,#2b0303_20%,#bf3d3d_100%)]"></div>
-                  </button>
+                  <ThemeButtons swatchClass="w-5 h-5" />
                 </div>
               </motion.li>
             </motion.ul>
