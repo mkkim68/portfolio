@@ -5,7 +5,7 @@ import { ThemeProvider } from "next-themes";
 import "../styles/global.css";
 
 export const metadata = {
-  metadataBase: new URL("https://your-domain.vercel.app"),
+  metadataBase: new URL("https://minkyoung-kim.vercel.app"),
   title: "Kim Min Kyoung",
   description: "Front-end Developer Portfolio",
   icons: {
@@ -14,7 +14,7 @@ export const metadata = {
   openGraph: {
     title: "Kim Min Kyoung",
     description: "Front-end Developer Portfolio",
-    url: "https://your-domain.vercel.app",
+    url: "https://minkyoung-kim.vercel.app",
     siteName: "Kim Min Kyoung",
     images: [
       {
