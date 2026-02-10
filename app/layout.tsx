@@ -5,8 +5,27 @@ import { ThemeProvider } from "next-themes";
 import "../styles/global.css";
 
 export const metadata = {
+  metadataBase: new URL("https://your-domain.vercel.app"),
   title: "Kim Min Kyoung",
-  description: "Front-end Developer",
+  description: "Front-end Developer Portfolio",
+  icons: {
+    icon: "/icon.png",
+  },
+  openGraph: {
+    title: "Kim Min Kyoung",
+    description: "Front-end Developer Portfolio",
+    url: "https://your-domain.vercel.app",
+    siteName: "Kim Min Kyoung",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Kim Min Kyoung Portfolio",
+      },
+    ],
+    type: "website",
+  },
 };
 
 export default function RootLayout({

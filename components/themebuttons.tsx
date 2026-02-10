@@ -1,4 +1,4 @@
-import { THEME_OPTIONS } from "data/themes";
+import { THEME_OPTIONS } from "../data/themes";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 

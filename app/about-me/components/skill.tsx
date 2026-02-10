@@ -1,7 +1,7 @@
-import { Icons } from "@icons/index";
-import Icon from "components/Icon";
-import { TECH_STACK, TechCategory } from "data/techstacks";
-import { firacode_medium } from "styles/font";
+import { Icons } from "../../../src/icons/index";
+import Icon from "../../../components/Icon";
+import { TECH_STACK, TechCategory } from "../../../data/techstacks";
+import { firacode_medium } from "../../../styles/font";
 type Props = { category: TechCategory };
 export default function Skill({ category }: Props) {
   const title = category.charAt(0).toUpperCase() + category.slice(1);

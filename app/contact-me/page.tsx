@@ -2,9 +2,9 @@
 
 import { useEffect, useRef, useState } from "react";
 import formatDate from "../../utils/formatdate";
-import { Icons } from "@icons/index";
-import { SOCIAL_MEDIA } from "data/social-media";
-import { firacode_medium } from "styles/font";
+import { Icons } from "../../src/icons/index";
+import { SOCIAL_MEDIA } from "../../data/social-media";
+import { firacode_medium } from "../../styles/font";
 
 export default function ContactMe() {
   const [isContactOpen, setIsContactOpen] = useState<boolean>(false);

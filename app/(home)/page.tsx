@@ -1,7 +1,7 @@
 "use client";
-import { Icons } from "@icons/index";
+import { Icons } from "../../src/icons/index";
 import TypingGame from "./components/typinggame";
-import { CODE_LINES } from "data/code-lines";
+import { CODE_LINES } from "../../data/code-lines";
 
 export default function Home() {
   return (

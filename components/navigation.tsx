@@ -1,6 +1,6 @@
 "use client";
 
-import { Icons } from "@icons/index";
+import { Icons } from "../src/icons/index";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";

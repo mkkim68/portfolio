@@ -1,9 +1,9 @@
-import { Icons } from "@icons/index";
-import Icon from "components/Icon";
-import { EXPERIENCES } from "data/experiences";
-import { EXPLORING } from "data/exploring";
+import { Icons } from "../../../src/icons/index";
+import Icon from "../../../components/Icon";
+import { EXPERIENCES } from "../../../data/experiences";
+import { EXPLORING } from "../../../data/exploring";
 import Image from "next/image";
-import { firacode_medium } from "styles/font";
+import { firacode_medium } from "../../../styles/font";
 
 export default function Bio() {
   const lineArr = Array.from({ length: 51 }, (_, i) => i + 1);

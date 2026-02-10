@@ -1,11 +1,11 @@
 "use client";
 
-import { PROJECT_STACK } from "data/project-tech";
+import { PROJECT_STACK } from "../../data/project-tech";
 import { useEffect, useState } from "react";
-import Icon from "components/Icon";
-import { Icons } from "@icons/index";
-import { PROJECTS } from "data/projects";
-import { firacode_medium } from "styles/font";
+import Icon from "../../components/Icon";
+import { Icons } from "../../src/icons/index";
+import { PROJECTS } from "../../data/projects";
+import { firacode_medium } from "../../styles/font";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
 

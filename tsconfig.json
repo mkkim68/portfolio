@@ -18,7 +18,7 @@
         "name": "next"
       }
     ],
-    "baseUrl": "/Users/kimminkyoung/Desktop/study/portfolio/frontend",
+    "baseUrl": ".",
     "paths": {
       "@icons/*": ["src/icons/*"]
     }

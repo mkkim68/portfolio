@@ -1,5 +1,5 @@
 // src/components/Icon.tsx
-import { Icons } from "@icons/index";
+import { Icons } from "../src/icons/index";
 
 type IconProps = {
   name: keyof typeof Icons; // Icons 객체 key만 허용

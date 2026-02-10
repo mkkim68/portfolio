@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 import Education from "./components/education";
 import Skill from "./components/skill";
-import { TechCategory } from "data/techstacks";
-import { SOCIAL_MEDIA } from "data/social-media";
-import { Icons } from "@icons/index";
+import { TechCategory } from "../../data/techstacks";
+import { SOCIAL_MEDIA } from "../../data/social-media";
+import { Icons } from "../../src/icons/index";
 import Bio from "./components/bio";
 
 type OpenType = "bio" | "education" | TechCategory | "";

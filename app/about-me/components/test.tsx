@@ -1,6 +1,6 @@
-import { Icons } from "@icons/index";
-import Icon from "components/Icon";
-import { EXPLORING } from "data/exploring";
+import { Icons } from "../../../src/icons/index";
+import Icon from "../../../components/Icon";
+import { EXPLORING } from "../../../data/exploring";
 import Image from "next/image";
 
 export default function Frontend() {

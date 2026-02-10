@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Icons } from "@icons/index";
-import { SOCIAL_MEDIA } from "data/social-media";
+import { Icons } from "../src/icons/index";
+import { SOCIAL_MEDIA } from "../data/social-media";
 import Icon from "./Icon";
 import { ThemeButtons } from "./themebuttons";
 
