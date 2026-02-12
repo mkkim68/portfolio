@@ -52,13 +52,13 @@ input:-webkit-autofill:active {
 
   --color-gradient: #43d9ad;
   --color-scrollbar-hover: #000000;
-  --color-blur-first: #4d5bce;
-  --color-blur-second: #43d9ad;
+  --color-blur-first: #43d9ad;
+  --color-blur-second: #4d5bce;
   --color-github: #e99287;
   --color-game-border: #4a5568;
   --game-bg-rgb: 23 85 83;
-  --blur-first-rgb: 77 91 206;
-  --blur-second-rgb: 67 217 173;
+  --blur-first-rgb: 67 217 173;
+  --blur-second-rgb: 77 91 206;
   --fg-rgb: 1 22 39;
 }
 
@@ -94,8 +94,8 @@ input:-webkit-autofill:active {
   --color-github: #e99287;
   --color-game-border: #4a5568;
   --game-bg-rgb: 23 85 83;
-  --blur-first-rgb: 77 91 206;
-  --blur-second-rgb: 67 217 173;
+  --blur-first-rgb: 67 217 173;
+  --blur-second-rgb: 77 91 206;
   --fg-rgb: 1 22 39;
 }
 

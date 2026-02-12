@@ -6,10 +6,27 @@ import { CODE_LINES } from "../../data/code-lines";
 export default function Home() {
   return (
     <div className="h-full w-full flex [&_*]:transition-colors [&_*]:duration-500 [&_*]:ease-in-out overflow-hidden">
-      <div className="blur-[5px] max-h-full w-[100%] h-[100%] pointer-events-none fixed lg:hidden">
-        <div className="left-[20%] top-[25%] w-[200px] h-[200px] rotate-[-94.30deg] opacity-70 bg-blur-first blur-[100px] absolute z-9 pointer-events-none"></div>
-        <div className="right-[0%] bottom-[30%] w-[200px] h-[200px] rotate-[13.51deg] opacity-70 bg-blur-second blur-[100px] absolute z-8 pointer-events-none"></div>
+      <div className="max-h-full w-[100%] h-[100%] pointer-events-none fixed lg:hidden inset-0">
+        <div
+          className="
+            absolute left-[30%] top-[35%]
+            -translate-x-1/2 -translate-y-1/2
+            w-[700px] h-[700px]
+            opacity-70
+            bg-[radial-gradient(circle_at_50%_50%,_rgb(var(--blur-first-rgb)/0.5)_0%,_rgb(var(--blur-first-rgb)/0.18)_30%,_rgb(var(--blur-first-rgb)/0)_65%)]
+          "
+        />
+        <div
+          className="
+            absolute right-[20%] bottom-[30%]
+            translate-x-1/2 translate-y-1/2
+            w-[700px] h-[700px]
+            opacity-70
+            bg-[radial-gradient(circle_at_50%_50%,_rgb(var(--blur-second-rgb)/0.5)_0%,_rgb(var(--blur-second-rgb)/0.18)_30%,_rgb(var(--blur-second-rgb)/0)_65%)]
+          "
+        />
       </div>
+
       <div className="flex lg:justify-center items-center justify-start lg:mx-auto flex-1 relative xl:max-w-7xl 2xl:w-[90rem] lg:max-w-5xl px-10 py-3 gap-8">
         <div className="flex flex-col w-full max-w-[450px] justify-center h-full py-16 relative gap-20">
           <div>
