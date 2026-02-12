@@ -4,6 +4,8 @@ import { firacode_light } from "../styles/font";
 import { ThemeProvider } from "next-themes";
 import "../styles/global.css";
 
+// baseline for mobile performance measurement
+
 export const metadata = {
   metadataBase: new URL("https://minkyoung-kim.vercel.app"),
   title: "Kim Min Kyoung",
