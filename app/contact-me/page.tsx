@@ -249,7 +249,7 @@ export default function ContactMe() {
                 >
                   Thank you! 👽
                 </h3>
-                <p className="text-[14px] text-border w-[350px] text-center">
+                <p className="text-[14px] text-border w-full max-w-[350px] text-center">
                   Your message has been accepted. You will receive answer really
                   soon!
                 </p>
