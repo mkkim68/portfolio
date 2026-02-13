@@ -4,8 +4,10 @@ import { firacode_light } from "../styles/font";
 import { ThemeProvider } from "next-themes";
 import "../styles/global.css";
 
+// baseline for mobile performance measurement
+
 export const metadata = {
-  metadataBase: new URL("https://minkyoung-kim.vercel.app"),
+  metadataBase: new URL("https://kim-minkyoung.vercel.app"),
   title: "Kim Min Kyoung",
   description: "Front-end Developer Portfolio",
   icons: {
@@ -14,7 +16,7 @@ export const metadata = {
   openGraph: {
     title: "Kim Min Kyoung",
     description: "Front-end Developer Portfolio",
-    url: "https://minkyoung-kim.vercel.app",
+    url: "https://kim-minkyoung.vercel.app",
     siteName: "Kim Min Kyoung",
     images: [
       {
@@ -42,13 +44,13 @@ export default function RootLayout({
           defaultTheme="default"
         >
           <div
-            className={`bg-bg min-h-screen p-[15px] lg:p-[30px] transition-colors duration-500 ease-in-out`}
+            className={`bg-bg min-h-[100dvh] p-[15px] lg:p-[30px] transition-colors duration-500 ease-in-out`}
           >
             <div
-              className={`${firacode_light.className} border-[0.5px] rounded-[8px] border-border text-[14px] h-[calc(100vh-30px)] lg:h-[calc(100vh-60px)] flex flex-col min-h-0`}
+              className={`${firacode_light.className} border-[0.5px] rounded-[8px] border-border text-[14px] h-[calc(100dvh-30px)] lg:h-[calc(100dvh-60px)] flex flex-col min-h-0`}
             >
               <Navigation />
-              <main className="h-[calc(89vh-30px)] lg:h-[calc(89vh-60px)] transition-colors duration-500 ease-in-out bg-fg">
+              <main className="flex-1 min-h-0 transition-colors duration-500 ease-in-out bg-fg">
                 {children}
               </main>
               <Footer />

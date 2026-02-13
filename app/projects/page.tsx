@@ -45,7 +45,7 @@ export default function Projects() {
 
   return (
     <div className="h-full w-full flex lg:flex-row flex-col [&_*]:transition-colors [&_*]:duration-500 [&_*]:ease-in-out">
-      <section className="lg:h-full lg:w-[270px] w-full lg:border-r-[0.5px] border-b-[0,5px] border-border">
+      <section className="lg:h-full lg:w-[270px] w-full lg:border-r-[0.5px] border-b-[0.5px] border-border">
         <button
           onClick={() => setIsProjectsOpen((prev) => !prev)}
           className="cursor-pointer lg:h-[40px] h-[30px] w-full flex lg:p-[20px] px-[20px] py-4 items-center border-b-[0.5px] border-border bg-border/50 lg:bg-fg"
@@ -71,7 +71,7 @@ export default function Projects() {
             `}
         >
           <div
-            className={`lg:h-[calc(89vh-100px)] text-border flex flex-col !duration-150 overflow-hidden`}
+            className={`lg:h-[calc(89dvh-100px)] text-border flex flex-col !duration-150 overflow-hidden`}
           >
             {PROJECT_STACK.map((stack) => (
               <label
@@ -114,7 +114,7 @@ export default function Projects() {
             `}
         >
           <div
-            className={`h-[calc(89vh-100px)] text-border flex flex-col !duration-150 overflow-y-auto`}
+            className={`h-[calc(89dvh-100px)] text-border flex flex-col !duration-150 overflow-y-auto`}
           >
             {PROJECT_STACK.map((stack) => (
               <label
@@ -152,7 +152,7 @@ export default function Projects() {
       </section>
 
       <section className="lg:w-[calc(100%-270px)] w-full flex flex-col overflow-hidden">
-        <div className="h-[40px] min-h-[40px] border-b border-border hidden lg:flex justify-between items-center pr-[10px]">
+        <section className="h-[40px] min-h-[40px] border-b-[0.5px] border-border hidden lg:flex justify-between items-center pr-[10px]">
           <div className="h-[40px] pl-[20px] flex items-center overflow-x-auto whitespace-nowrap">
             <div className="flex items-center">
               <AnimatePresence initial={false} mode="popLayout">
@@ -190,24 +190,27 @@ export default function Projects() {
           >
             clear
           </span>
-        </div>
-        <div className="flex flex-wrap text-border lg:p-[70px] lg:items-start items-center justify-center py-[50px] gap-13 overflow-y-auto border-t-[0.5px] border-border lg:border-none">
+        </section>
+        <section className="flex flex-wrap text-border lg:p-[70px] lg:items-start items-center justify-center py-[30px] lg:py-[50px] gap-8 lg:gap-13 overflow-y-auto border-t-[0.5px] border-border lg:border-none">
           {filteredProjects.map((p) => (
-            <div key={p.title} className="group w-100 cursor-default">
-              <div className="h-5 px-2 mb-2">
+            <article
+              key={p.title}
+              className="group w-80 lg:w-100 cursor-default"
+            >
+              <div className="h-10 lg:h-5 px-2 mb-2 flex flex-col lg:block">
                 <span className={`text-variable ${firacode_medium.className}`}>
                   {p.title}
                 </span>
                 <span className="text-border"> {p.summary}</span>
               </div>
               <div
-                className="w-100 h-115 relative cursor-default rounded-2xl overflow-hidden 
+                className="w-80 lg:w-100 h-120 lg:h-115 relative cursor-default rounded-2xl overflow-hidden 
                         ring-1 ring-border
                         group-hover:ring-highlight
                         !transition-all !duration-300 !ease-out
                         group-hover:shadow-[0_0_20px_rgba(93,220,255,0.25)]"
               >
-                <div className="w-100 h-40 left-0 top-0 absolute rounded-tl-2xl rounded-tr-2xl ">
+                <div className="w-80 lg:w-100 h-40 left-0 top-0 absolute rounded-tl-2xl rounded-tr-2xl ">
                   <Image
                     fill
                     src={p.image}
@@ -217,7 +220,7 @@ export default function Projects() {
                          group-hover:scale-[1.1]"
                   />
                 </div>
-                <div className="w-100 h-75 left-0 top-40 absolute z-10 bg-fg overflow-hidden !duration-300 rounded-bl-2xl rounded-br-2xl border-t border-border group-hover:border-highlight flex flex-col p-5 items-start justify-between ">
+                <div className="w-80 lg:w-100 h-80 lg:h-75 left-0 top-40 absolute z-10 bg-fg overflow-hidden !duration-300 rounded-bl-2xl rounded-br-2xl border-t border-border group-hover:border-highlight flex flex-col p-5 items-start justify-between ">
                   <p>{p.description}</p>
                   <div className="flex flex-col gap-3">
                     <div className="flex items-center gap-2">
@@ -238,9 +241,9 @@ export default function Projects() {
                   </div>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
-        </div>
+        </section>
       </section>
     </div>
   );

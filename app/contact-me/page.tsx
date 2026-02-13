@@ -249,7 +249,7 @@ export default function ContactMe() {
                 >
                   Thank you! 👽
                 </h3>
-                <p className="text-[14px] text-border w-[350px] text-center">
+                <p className="text-[14px] text-border w-full max-w-[350px] text-center">
                   Your message has been accepted. You will receive answer really
                   soon!
                 </p>
@@ -263,9 +263,9 @@ export default function ContactMe() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="flex flex-col h-full items-start justify-center gap-7 text-[14px]"
+                className="flex flex-1 flex-col w-full max-w-[400px] h-full items-start justify-center gap-7 text-[14px] p-5"
               >
-                <div className="flex flex-col items-start gap-1.5">
+                <div className="flex flex-col w-full items-start gap-1.5">
                   <label htmlFor="name">_name:</label>
                   <input
                     id="name"
@@ -279,11 +279,11 @@ export default function ContactMe() {
                     spellCheck={false}
                     autoCorrect="off"
                     autoCapitalize="off"
-                    className="bg-submit-bg-active p-[13px] w-[372px] h-[40px] border-[0.5px] border-input-b duration-150
+                    className="bg-submit-bg-active p-[13px] w-full max-w-[372px] h-[40px] border-[0.5px] border-input-b duration-150
 ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
                   />
                 </div>
-                <div className="flex flex-col items-start gap-1.5">
+                <div className="flex flex-col w-full items-start gap-1.5">
                   <label htmlFor="email">_email:</label>
                   <input
                     id="email"
@@ -297,11 +297,11 @@ ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
                     spellCheck={false}
                     autoCorrect="off"
                     autoCapitalize="off"
-                    className="bg-submit-bg-active p-[13px] w-[372px] h-[40px] border-[0.5px] border-input-b duration-150
+                    className="bg-submit-bg-active p-[13px] w-full max-w-[372px] h-[40px] border-[0.5px] border-input-b duration-150
 ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
                   />
                 </div>
-                <div className="flex flex-col items-start gap-1.5">
+                <div className="flex flex-col w-full items-start gap-1.5">
                   <label htmlFor="message">_message:</label>
                   <textarea
                     id="message"
@@ -315,10 +315,10 @@ ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
                     spellCheck={false}
                     autoCorrect="off"
                     autoCapitalize="off"
-                    className="bg-submit-bg-active resize-none p-[13px] w-[372px] h-[145px] border-[0.5px] border-input-b duration-150
+                    className="bg-submit-bg-active resize-none p-[13px] w-full max-w-[372px] h-[145px] border-[0.5px] border-input-b duration-150
 ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
                   />
-                  <div className="w-[372px] flex justify-end">
+                  <div className="w-full max-w-[372px] flex justify-end">
                     <span className="text-[12px] text-border">
                       {message.length}/300
                     </span>
