@@ -2,13 +2,21 @@
 
 import { Icons } from "../src/icons/index";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ThemeButtons } from "./themebuttons";
 
 export default function Navigation() {
-  const path = usePathname();
+  const params = useParams<{ lang?: string | string[] }>();
+  const rawLang = params?.lang;
+  const lang = Array.isArray(rawLang) ? rawLang[0] : (rawLang ?? "en");
+
+  const pathname = usePathname();
+
+  const path = pathname?.startsWith(`/${lang}`)
+    ? pathname.slice(`/${lang}`.length) || "/"
+    : pathname;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -20,13 +28,13 @@ export default function Navigation() {
       <ul className="text-border flex justify-between items-center w-full border-b-[0.5px] border-border h-full">
         <div className="flex h-full w-full">
           <Link
-            href="/"
+            href={`/${lang}`}
             className="cursor-pointer lg:flex-none flex-1 p-[20px] flex justify-start items-center hover:bg-hover transition-colors duration-150 lg:border-r-[0.5px] lg:border-border lg:w-[270px]"
           >
             kim-min-kyoung
           </Link>
           <Link
-            href="/"
+            href={`/${lang}`}
             className={`${path === "/" ? "text-highlight" : "inherit"} cursor-pointer 
               ${
                 path === "/" ? "border-b-[2px] border-b-string" : "none"
@@ -35,7 +43,7 @@ export default function Navigation() {
             _hello
           </Link>
           <Link
-            href="/about-me"
+            href={`/${lang}/about-me`}
             className={`${path === "/about-me" ? "text-highlight" : "inherit"} cursor-pointer ${
               path === "/about-me" ? "border-b-[2px] border-b-string" : "none"
             } w-[121px] hidden lg:flex justify-center border-r-[0.5px] border-border items-center hover:bg-hover transition-colors duration-150`}
@@ -43,7 +51,7 @@ export default function Navigation() {
             _about-me
           </Link>
           <Link
-            href="/projects"
+            href={`/${lang}/projects`}
             className={`${path === "/projects" ? "text-highlight" : "inherit"} cursor-pointer ${
               path === "/projects" ? "border-b-[2px] border-b-string" : "none"
             } w-[121px] hidden lg:flex justify-center border-r-[0.5px] border-border items-center hover:bg-hover transition-colors duration-150`}
@@ -52,7 +60,7 @@ export default function Navigation() {
           </Link>
         </div>
         <Link
-          href="/contact-me"
+          href={`/${lang}/contact-me`}
           className={`${path === "/contact-me" ? "text-highlight" : "inherit"} cursor-pointer ${
             path === "/contact-me" ? "border-b-[2px] border-b-string" : "none"
           } w-[150px] h-full hidden lg:flex justify-center border-l-[0.5px] border-border items-center hover:bg-hover transition-colors duration-150`}
@@ -101,19 +109,19 @@ export default function Navigation() {
               }}
             >
               {[
-                { href: "/", label: "_hello", active: path === "/" },
+                { href: `/${lang}`, label: "_hello", active: path === "/" },
                 {
-                  href: "/about-me",
+                  href: `/${lang}/about-me`,
                   label: "_about-me",
                   active: path === "/about-me",
                 },
                 {
-                  href: "/projects",
+                  href: `/${lang}/projects`,
                   label: "_projects",
                   active: path === "/projects",
                 },
                 {
-                  href: "/contact-me",
+                  href: `/${lang}/contact-me`,
                   label: "_contact-me",
                   active: path === "/contact-me",
                 },

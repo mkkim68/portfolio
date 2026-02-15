@@ -24,13 +24,13 @@ export default function Footer() {
         <div className="flex">
           {SOCIAL_MEDIA.map((sns, idx) => (
             <a
-              key={sns.name}
+              key={sns.id}
               href={sns.url}
               className={`${idx === 0 ? "border-x-[0.5px] lg:border-r-[0.5px]" : "border-r-[0.5px]"} ${idx === SOCIAL_MEDIA.length - 1 ? "rounded-br-[8px] lg:rounded-none " : ""} border-border w-[5vh] flex justify-center items-center hover:bg-hover !duration-300`}
             >
               <Icon
-                name={sns.name as keyof typeof Icons}
-                className="w-[20px] h-[20px] fill-border"
+                name={sns.id as keyof typeof Icons}
+                className="w-[2.2vh] h-[2.2vh] fill-border"
               />
             </a>
           ))}
@@ -57,7 +57,7 @@ export default function Footer() {
             onClick={() => {
               setIsThemeOpen((prev) => !prev);
             }}
-            className="w-6 h-6 cursor-pointer hover:opacity-80 fill-border transition-all duration-150 active:opacity-50"
+            className="w-[3vh] h-[3vh] cursor-pointer hover:opacity-80 fill-border transition-all duration-150 active:opacity-50"
           />
         </button>
       </div>

@@ -1,11 +1,11 @@
-import Github from "./github.svg";
-import LinkedIn from "./linkedin.svg";
-import Instagram from "./instagram.svg";
-import Velog from "./velog.svg";
+import github from "./github.svg";
+import linkedin from "./linkedin.svg";
+import instagram from "./instagram.svg";
+import velog from "./velog.svg";
 
 export const socialIcons = {
-  Github,
-  LinkedIn,
-  Instagram,
-  Velog,
+  github,
+  linkedin,
+  instagram,
+  velog,
 } as const;
