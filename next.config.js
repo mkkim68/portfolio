@@ -3,7 +3,7 @@ const nextConfig = {
   webpack(config) {
     // 기존 svg 처리 규칙 제외
     const fileLoaderRule = config.module.rules.find((rule) =>
-      rule.test?.test?.(".svg")
+      rule.test?.test?.(".svg"),
     );
 
     if (fileLoaderRule) {
@@ -19,7 +19,7 @@ const nextConfig = {
           loader: "@svgr/webpack",
           options: {
             icon: true, // width/height 1em
-            svgo: true,
+            svgo: false,
             svgoConfig: {
               plugins: [
                 {
