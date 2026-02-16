@@ -5,12 +5,13 @@ import { LangProvider } from "./LangProvider";
 const SUPPORTED = ["ko", "en"] as const;
 export type Lang = (typeof SUPPORTED)[number];
 
-export default function LangLayout({
+export default async function LangLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { lang: Lang };
+  params: Promise<{ lang: Lang }>;
 }) {
-  return <LangProvider lang={params.lang}>{children}</LangProvider>;
+  const { lang } = await params;
+  return <LangProvider lang={lang}>{children}</LangProvider>;
 }

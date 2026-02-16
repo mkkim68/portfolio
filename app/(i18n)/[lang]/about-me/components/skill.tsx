@@ -1,7 +1,6 @@
 import { Icons } from "src/icons/index";
 import Icon from "components/Icon";
 import { TECH_STACK, TechCategory } from "data/techstacks";
-import { firacode_medium } from "styles/font";
 type Props = { category: TechCategory };
 export default function Skill({ category }: Props) {
   const title = category.charAt(0).toUpperCase() + category.slice(1);
@@ -204,7 +203,7 @@ export default function Skill({ category }: Props) {
       </section>
       <section className="h-full w-full lg:w-[50%] p-[35px] min-h-0 min-w-0 overflow-y-auto box-border flex flex-col items-start">
         <h3
-          className={`text-[var(--skill-color)] mb-3 text-[18px] ${firacode_medium.className} transition-colors duration-500 ease-in-out`}
+          className={`text-[var(--skill-color)] mb-3 text-[18px] font-bold transition-colors duration-500 ease-in-out`}
         >
           {title}
         </h3>

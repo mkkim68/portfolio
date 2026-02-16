@@ -4,5 +4,4 @@ export const EXPLORING: readonly string[] = [
   "Typescript",
   "Tailwind CSS",
   "Java",
-  "Docker",
 ];

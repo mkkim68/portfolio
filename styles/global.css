@@ -25,6 +25,48 @@ input:-webkit-autofill:active {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-scrollbar-hover);
 }
+/* 영어 */
+@font-face {
+  font-family: "basic_font";
+  src: url("../public/fonts/FiraCode-Light.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+
+  unicode-range: U+0020-007F, U+25A0-25FF;
+}
+@font-face {
+  font-family: "basic_font";
+  src: url("../public/fonts/FiraCode-Medium.ttf") format("truetype");
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal;
+
+  unicode-range: U+0020-007F, U+25A0-25FF;
+}
+
+/* 한글 */
+@font-face {
+  font-family: "basic_font";
+  src: url("../public/fonts/Pretendard-Regular.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+
+  unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7AF;
+}
+@font-face {
+  font-family: "basic_font";
+  src: url("../public/fonts/Pretendard-Medium.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal;
+
+  unicode-range: U+1100-11FF, U+3130-318F, U+AC00-D7AF;
+}
+body {
+  font-family: "basic_font", sans-serif;
+}
 
 @theme {
   --color-bg: #010c15;

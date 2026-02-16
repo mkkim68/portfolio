@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Education from "./components/bio";
+import Education from "./components/education";
 import Skill from "./components/skill";
 import { TechCategory } from "data/techstacks";
 import { SOCIAL_MEDIA } from "data/social-media";

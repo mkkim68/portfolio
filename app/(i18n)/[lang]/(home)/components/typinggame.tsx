@@ -233,10 +233,11 @@ export default function TypingGame({ lines }: { lines: readonly string[] }) {
             <div className="mt-2 flex items-center justify-between text-[12px] font-mono text-border/80 tabular-nums h-[20px]">
               <div className="flex items-center gap-4">
                 <span>
-                  ACC <span className="text-highlight">{accuracy}%</span>
+                  {t.game.info.acc}{" "}
+                  <span className="text-highlight">{accuracy}%</span>
                 </span>
                 <span>
-                  ERR{" "}
+                  {t.game.info.err}{" "}
                   <span
                     className={mistakes > 0 ? "text-red-400" : "text-highlight"}
                   >
@@ -244,8 +245,8 @@ export default function TypingGame({ lines }: { lines: readonly string[] }) {
                   </span>
                 </span>
                 <span>
-                  POS <span className="text-highlight">{typed.length}</span>/
-                  {total}
+                  {t.game.info.pos}{" "}
+                  <span className="text-highlight">{typed.length}</span>/{total}
                 </span>
               </div>
 
@@ -311,7 +312,7 @@ export default function TypingGame({ lines }: { lines: readonly string[] }) {
         </section>
         <section className="flex items-end h-[96px]">
           <button
-            onClick={() => router.push("/about-me")}
+            onClick={() => router.push(`${lang}/about-me`)}
             className="py-2 px-4 rounded-lg border-1 border-highlight text-highlight hover:border-highlight/60 !duration-300 cursor-pointer"
           >
             skip

@@ -3,7 +3,6 @@ import Icon from "components/Icon";
 import { EXPERIENCES } from "data/experiences";
 import { EXPLORING } from "data/exploring";
 import Image from "next/image";
-import { firacode_medium } from "styles/font";
 import { useLang } from "../../LangProvider";
 import { getDict } from "data/i18n";
 
@@ -132,54 +131,11 @@ export default function Bio() {
             <span className="text-variable">p</span>
             <span className="text-border">{`>`}</span>
           </p>
-          <p className="ml-24">
-            <span className="text-highlight/70">
-              Hi, I’m Minkyoung Kim, a frontend developer based in Korea. I was
-            </span>
-          </p>
-          <p className="ml-24">
-            <span className="text-highlight/70">
-              originally an Electronic Engineering major, and my first encounter
-            </span>
-          </p>
-          <p className="ml-24">
-            <span className="text-highlight/70">
-              with programming came through basic major courses. While the
-            </span>
-          </p>
-          <p className="ml-24">
-            <span className="text-highlight/70">
-              curriculum focused heavily on hardware, I found myself far more
-            </span>
-          </p>
-          <p className="ml-24">
-            <span className="text-highlight/70">
-              interested in the logic and problem-solving aspects of software.
-              At
-            </span>
-          </p>
-          <p className="ml-24">
-            <span className="text-highlight/70">
-              some point, I realized that what truly excited me wasn’t circuits
-              or
-            </span>
-          </p>
-          <p className="ml-24">
-            <span className="text-highlight/70">
-              signals, but building things through code — especially things
-              users
-            </span>
-          </p>
-          <p className="ml-24">
-            <span className="text-highlight/70">
-              could directly interact with. That realization led me to shift my
-            </span>
-          </p>
-          <p className="ml-24">
-            <span className="text-highlight/70">
-              career path toward software development.
-            </span>
-          </p>
+          {t.bio.introduction.p1Lines.map((line, idx) => (
+            <p key={`bio-p1-${idx}`} className="ml-24">
+              <span className="text-highlight/70">{line}</span>
+            </p>
+          ))}
           <p className="ml-20">
             <span className="text-border">{`</`}</span>
             <span className="text-variable">p</span>
@@ -191,34 +147,11 @@ export default function Bio() {
             <span className="text-variable">p</span>
             <span className="text-border">{`>`}</span>
           </p>
-          <p className="ml-24">
-            <span className="text-highlight/70">
-              Since then, I’ve been focusing on strengthening my skills through
-            </span>
-          </p>
-          <p className="ml-24">
-            <span className="text-highlight/70">
-              intensive study and a developer bootcamp, where I gained hands-on
-            </span>
-          </p>
-          <p className="ml-24">
-            <span className="text-highlight/70">
-              experience in web development and frontend engineering. I enjoy
-            </span>
-          </p>
-          <p className="ml-24">
-            <span className="text-highlight/70">
-              turning ideas into interactive, well-structured user experiences,
-            </span>
-          </p>
-          <p className="ml-24">
-            <span className="text-highlight/70">
-              and I’m constantly exploring better ways to build maintainable and
-            </span>
-          </p>
-          <p className="ml-24">
-            <span className="text-highlight/70">scalable interfaces.</span>
-          </p>
+          {t.bio.introduction.p2Lines.map((line, idx) => (
+            <p key={`bio-p2-${idx}`} className="ml-24">
+              <span className="text-highlight/70">{line}</span>
+            </p>
+          ))}
           <p className="ml-20">
             <span className="text-border">{`</`}</span>
             <span className="text-variable">p</span>
@@ -310,15 +243,13 @@ export default function Bio() {
             height={160}
             className="mr-6 mb-2 float-left"
           />
-          <p>{t.bio.introduction.p1}</p>
+          <p>{t.bio.introduction.p1Lines.join(" ")}</p>
           <p className="text-transparent">blank</p>
-          <p>{t.bio.introduction.p2}</p>
+          <p>{t.bio.introduction.p2Lines.join(" ")}</p>
         </div>
         <div className="my-3">
-          <h1
-            className={`text-[18px] ${firacode_medium.className} text-function`}
-          >
-            Experiences
+          <h1 className={`text-[18px] font-bold text-function`}>
+            {t.bio.titles.experience}
           </h1>
           {(
             EXPERIENCES[lang as keyof typeof EXPERIENCES] ?? EXPERIENCES.en
@@ -333,9 +264,7 @@ export default function Bio() {
                 <div className="w-0.5 h-full mt-2 bg-gradient-to-b from-function/80 to-transparent rounded-xl" />
               </div>
               <div className="flex-1 p-3 mb-3 flex flex-col gap-1 bg-comment/30 border-[0.5px] border-border rounded-xl">
-                <h3
-                  className={`text-[16px] ${firacode_medium.className} text-highlight`}
-                >
+                <h3 className={`text-[16px] font-bold text-highlight`}>
                   {data.name}
                 </h3>
                 <p className="text-function mb-2">{data.institute}</p>
@@ -351,10 +280,8 @@ export default function Bio() {
           ))}
         </div>
         <div>
-          <h1
-            className={`text-[18px] ${firacode_medium.className} text-function`}
-          >
-            Currently exploring
+          <h1 className={`text-[18px] text-function font-bold`}>
+            {t.bio.titles.exploring}
           </h1>
           <div className="flex gap-3 my-3 flex-1 bg-function/10 p-2 rounded-2xl">
             {EXPLORING.map((stack) => (

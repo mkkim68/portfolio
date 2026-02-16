@@ -1,8 +1,7 @@
-import Footer from "../components/footer";
-import Navigation from "../components/navigation";
-import { firacode_light } from "../styles/font";
+import Footer from "components/footer";
+import Navigation from "components/navigation";
 import { ThemeProvider } from "next-themes";
-import "../styles/global.css";
+import "styles/global.css";
 
 export const metadata = {
   metadataBase: new URL("https://kim-minkyoung.vercel.app"),
@@ -45,7 +44,7 @@ export default function RootLayout({
             className={`bg-bg min-h-[100dvh] p-[15px] lg:p-[30px] transition-colors duration-500 ease-in-out`}
           >
             <div
-              className={`${firacode_light.className} border-[0.5px] rounded-[8px] border-border text-[14px] h-[calc(100dvh-30px)] lg:h-[calc(100dvh-60px)] flex flex-col min-h-0`}
+              className={` border-[0.5px] rounded-[8px] border-border text-[14px] h-[calc(100dvh-30px)] lg:h-[calc(100dvh-60px)] flex flex-col min-h-0`}
             >
               <Navigation />
               <main className="flex-1 min-h-0 transition-colors duration-500 ease-in-out bg-fg">

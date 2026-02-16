@@ -1,43 +1,59 @@
 "use client";
 
-import { PROJECT_STACK } from "../../data/project-tech";
-import { useEffect, useState } from "react";
-import Icon from "../../components/Icon";
-import { Icons } from "../../src/icons/index";
-import { PROJECTS } from "../../data/projects";
-import { firacode_medium } from "../../styles/font";
+import { PROJECT_STACK } from "data/project-tech";
+import { useEffect, useMemo, useState } from "react";
+import Icon from "components/Icon";
+import { Icons } from "src/icons/index";
+import { PROJECTS } from "data/projects";
 import { AnimatePresence, motion } from "motion/react";
 import Image from "next/image";
+import { useParams } from "next/navigation";
 
 export default function Projects() {
-  const [isProjectsOpen, setIsProjectsOpen] = useState<boolean>(false);
+  const [isProjectsOpen, setIsProjectsOpen] = useState(false);
   const [isClicked, setIsClicked] = useState<string[]>([]);
+
+  const params = useParams<{ lang: string }>();
+  const lang = (params?.lang === "ko" ? "ko" : "en") as "en" | "ko";
+
+  const labels = useMemo(
+    () =>
+      lang === "ko"
+        ? {
+            title: "projects",
+            all: "전체",
+            clear: "초기화",
+            view: "프로젝트 보기",
+          }
+        : {
+            title: "projects",
+            all: "All",
+            clear: "clear",
+            view: "view-project",
+          },
+    [lang],
+  );
+
+  const projects = PROJECTS[lang];
+
   const filteredProjects =
     isClicked.length === 0
-      ? PROJECTS
-      : PROJECTS.filter((p) => p.techs.some((t) => isClicked.includes(t)));
+      ? projects
+      : projects.filter((p) => p.techs.some((t) => isClicked.includes(t)));
 
-  // Default dropdown state: mobile => closed, lg+ => open (and keep in sync on resize)
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 1024px)");
-
-    const apply = (matches: boolean) => {
-      setIsProjectsOpen(matches);
-    };
-
-    // initial
+    const apply = (matches: boolean) => setIsProjectsOpen(matches);
     apply(mq.matches);
 
     const onChange = (e: MediaQueryListEvent) => apply(e.matches);
 
-    // subscribe
     if (typeof mq.addEventListener === "function") {
       mq.addEventListener("change", onChange);
       return () => mq.removeEventListener("change", onChange);
     }
 
-    // fallback for older Safari
-    // @ts-ignore
+    // @ts-ignore (old Safari)
     mq.addListener(onChange);
     // @ts-ignore
     return () => mq.removeListener(onChange);
@@ -53,14 +69,14 @@ export default function Projects() {
           <h3 className="text-highlight">
             <span
               className={`
-                  inline-block
-                  !transition-transform !duration-200 
-                  ${isProjectsOpen ? "rotate-180" : "rotate-0"}
-                `}
+                inline-block
+                !transition-transform !duration-200 
+                ${isProjectsOpen ? "rotate-180" : "rotate-0"}
+              `}
             >
               ▼
             </span>{" "}
-            <span>projects</span>
+            <span>{labels.title}</span>
           </h3>
         </button>
         <div
@@ -156,41 +172,43 @@ export default function Projects() {
           <div className="h-[40px] pl-[20px] flex items-center overflow-x-auto whitespace-nowrap">
             <div className="flex items-center">
               <AnimatePresence initial={false} mode="popLayout">
-                {isClicked.length === 0
-                  ? [
-                      <motion.span
-                        key="all"
-                        className="text-border whitespace-nowrap"
-                        initial={{ opacity: 0, y: 4 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -4 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        All
-                      </motion.span>,
-                    ]
-                  : isClicked.map((tech, idx) => (
-                      <motion.span
-                        key={tech}
-                        className="text-border whitespace-nowrap"
-                        initial={{ opacity: 0, y: 4 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -4 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        {idx > 0 ? `; ${tech}` : tech}
-                      </motion.span>
-                    ))}
+                {isClicked.length === 0 ? (
+                  <motion.span
+                    key="all"
+                    className="text-border whitespace-nowrap"
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -4 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {labels.all}
+                  </motion.span>
+                ) : (
+                  isClicked.map((tech, idx) => (
+                    <motion.span
+                      key={tech}
+                      className="text-border whitespace-nowrap"
+                      initial={{ opacity: 0, y: 4 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -4 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {idx > 0 ? `; ${tech}` : tech}
+                    </motion.span>
+                  ))
+                )}
               </AnimatePresence>
             </div>
           </div>
+
           <span
             className="cursor-pointer underline text-border"
             onClick={() => setIsClicked([])}
           >
-            clear
+            {labels.clear}
           </span>
         </section>
+
         <section className="flex flex-wrap text-border lg:p-[70px] lg:items-start items-center justify-center py-[30px] lg:py-[50px] gap-8 lg:gap-13 overflow-y-auto border-t-[0.5px] border-border lg:border-none">
           {filteredProjects.map((p) => (
             <article
@@ -198,30 +216,28 @@ export default function Projects() {
               className="group w-80 lg:w-100 cursor-default"
             >
               <div className="h-10 lg:h-5 px-2 mb-2 flex flex-col lg:block">
-                <span className={`text-variable ${firacode_medium.className}`}>
-                  {p.title}
-                </span>
+                <span className={`text-variable font-bold`}>{p.title}</span>
                 <span className="text-border"> {p.summary}</span>
               </div>
+
               <div
                 className="w-80 lg:w-100 h-120 lg:h-115 relative cursor-default rounded-2xl overflow-hidden 
-                        ring-1 ring-border
-                        group-hover:ring-highlight
-                        !transition-all !duration-300 !ease-out
-                        group-hover:shadow-[0_0_20px_rgba(93,220,255,0.25)]"
+                  ring-1 ring-border group-hover:ring-highlight
+                  !transition-all !duration-300 !ease-out
+                  group-hover:shadow-[0_0_20px_rgba(93,220,255,0.25)]"
               >
-                <div className="w-80 lg:w-100 h-40 left-0 top-0 absolute rounded-tl-2xl rounded-tr-2xl ">
+                <div className="w-80 lg:w-100 h-40 left-0 top-0 absolute rounded-tl-2xl rounded-tr-2xl">
                   <Image
                     fill
                     src={p.image}
                     alt={`${p.title} thumbnail`}
-                    className="object-cover
-                         !transition-transform !duration-300 !ease-out
-                         group-hover:scale-[1.1]"
+                    className="object-cover !transition-transform !duration-300 !ease-out group-hover:scale-[1.1]"
                   />
                 </div>
-                <div className="w-80 lg:w-100 h-80 lg:h-75 left-0 top-40 absolute z-10 bg-fg overflow-hidden !duration-300 rounded-bl-2xl rounded-br-2xl border-t border-border group-hover:border-highlight flex flex-col p-5 items-start justify-between ">
+
+                <div className="w-80 lg:w-100 h-80 lg:h-75 left-0 top-40 absolute z-10 bg-fg overflow-hidden !duration-300 rounded-bl-2xl rounded-br-2xl border-t border-border group-hover:border-highlight flex flex-col p-5 items-start justify-between">
                   <p>{p.description}</p>
+
                   <div className="flex flex-col gap-3">
                     <div className="flex items-center gap-2">
                       {p.techs.map((tech) => (
@@ -232,11 +248,12 @@ export default function Projects() {
                         />
                       ))}
                     </div>
+
                     <a
                       href={p.github}
                       className="w-fit h-9 text-highlight flex items-center bg-submit-bg hover:bg-border active:bg-submit-bg-active px-3 rounded-md !duration-300"
                     >
-                      <span>view-project</span>
+                      <span>{labels.view}</span>
                     </a>
                   </div>
                 </div>

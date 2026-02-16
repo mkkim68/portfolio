@@ -1,13 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { Icons } from "../src/icons/index";
 import { SOCIAL_MEDIA } from "../data/social-media";
 import Icon from "./Icon";
 import { ThemeButtons } from "./themebuttons";
+import {
+  applyLang,
+  getLangFromPath,
+  setLangCookie,
+  syncLangWithCookie,
+} from "utils/setlang";
 
 export default function Footer() {
   const [isThemeOpen, setIsThemeOpen] = useState(false);
+
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const currentLang = getLangFromPath(pathname);
+  const toggleLang = () => {
+    const target = currentLang === "en" ? "ko" : "en";
+    setLangCookie(target);
+    applyLang(router, pathname, target);
+  };
+
+  useEffect(() => {
+    syncLangWithCookie(router, pathname);
+  }, [pathname]);
 
   return (
     <div
@@ -39,7 +60,7 @@ export default function Footer() {
       <div className="relative lg:flex items-center hidden">
         <div
           className={`
-            absolute right-13
+            absolute right-21
             flex gap-1
             rounded-x
             !transition-all !duration-300 !ease-out
@@ -52,13 +73,21 @@ export default function Footer() {
         >
           <ThemeButtons swatchClass="w-4 h-4" />
         </div>
-        <button className="w-[30px] h-[31px] bg-fg z-100 flex justify-center items-center rounded-4xl mr-2 ml-1">
+        <button className="w-[30px] h-[31px] bg-fg z-100 flex justify-center items-center rounded-4xl">
           <Icons.Moon
             onClick={() => {
               setIsThemeOpen((prev) => !prev);
             }}
             className="w-[3vh] h-[3vh] cursor-pointer hover:opacity-80 fill-border transition-all duration-150 active:opacity-50"
           />
+        </button>
+        <button
+          type="button"
+          onClick={toggleLang}
+          aria-label="Toggle language"
+          className="px-2 pt-0.5 h-[31px] bg-fg z-100 flex justify-center items-center mr-2 hover:bg-highlight/20 rounded-lg !duration-300 text-center"
+        >
+          {currentLang === "en" ? "KO" : "EN"}
         </button>
       </div>
     </div>

@@ -1,4 +1,9 @@
+import { getDict } from "data/i18n";
+import { useLang } from "../../LangProvider";
+
 export default function Education() {
+  const lang = useLang();
+  const t = getDict(lang);
   const lineArr = Array.from({ length: 24 }, (_, i) => i + 1);
   return (
     <div className="h-full flex cursor-default border-t-[0.5px] border-border lg:border-none">
@@ -14,64 +19,74 @@ export default function Education() {
           style={{ lineHeight: "20px" }}
           className="flex flex-col items-start whitespace-nowrap"
         >
-          <p className="text-keyword">
-            # SSAFY 11th (Samsung Software Academy For Youth)
-          </p>
+          <p className="text-keyword">{t.education.ssafy.code.header}</p>
           <p className="text-transparent">blank</p>
-          <p className="text-border">
-            - Intensive software development program sponsored by Samsung
-          </p>
+          <p className="text-border">{t.education.ssafy.code.programLine}</p>
           <p>
-            <span className="text-border">- studied </span>
+            <span className="text-border">
+              {t.education.ssafy.code.studiedBefore}
+            </span>
             <span className="text-type">
-              **Python, JavaScript, Django, Vue.js**
+              {t.education.ssafy.code.studiedTech}
             </span>
             <span className="text-border">
-              {" "}
-              and core problem-solving skills through algorithms and team-based
-              projects
+              {t.education.ssafy.code.studiedAfter}
             </span>
           </p>
 
           <p className="text-transparent">blank</p>
-          <p className="text-keyword">## Projects</p>
-          <p className="text-transparent">blank</p>
-
-          <p className="text-keyword">### JamJam</p>
-          <p className="text-transparent">blank</p>
-          <p className="text-border">- A real-time meeting service</p>
-          <p>
-            <span className="text-border">- built with </span>
-            <span className="text-function">
-              _JavaScript, React, Styled-components, Recoil_
-            </span>
+          <p className="text-keyword">
+            {t.education.ssafy.code.projectsHeader}
           </p>
-          <p className="text-border">- 🏆 Award-winning project</p>
-
           <p className="text-transparent">blank</p>
 
-          <p className="text-keyword">### Newsseug</p>
-          <p className="text-transparent">blank</p>
-          <p className="text-border">- A short-form news platform</p>
-          <p>
-            <span className="text-border">- built with </span>
-            <span className="text-function">
-              _TypeScript, React, Redux, React-Query, Styled-components_
-            </span>
-          </p>
-          <p className="text-border">- 🏆 Award-winning project</p>
-
-          <p className="text-transparent">blank</p>
-
-          <p className="text-keyword">### C-LASSIK</p>
+          <p className="text-keyword">{t.education.ssafy.code.jamjam.title}</p>
           <p className="text-transparent">blank</p>
           <p className="text-border">
-            - A multisensory music streaming application
+            {t.education.ssafy.code.jamjam.description}
           </p>
           <p>
-            <span className="text-border">- built with </span>
+            <span className="text-border">
+              {t.education.ssafy.code.jamjam.builtWithLabel}
+            </span>
             <span className="text-function">
-              _Kotlin, Android Studio, Jetpack Compose_
+              {t.education.ssafy.code.jamjam.tech}
+            </span>
+          </p>
+          <p className="text-border">{t.education.ssafy.code.jamjam.award}</p>
+
+          <p className="text-transparent">blank</p>
+
+          <p className="text-keyword">
+            {t.education.ssafy.code.newsseug.title}
+          </p>
+          <p className="text-transparent">blank</p>
+          <p className="text-border">
+            {t.education.ssafy.code.newsseug.description}
+          </p>
+          <p>
+            <span className="text-border">
+              {t.education.ssafy.code.newsseug.builtWithLabel}
+            </span>
+            <span className="text-function">
+              {t.education.ssafy.code.newsseug.tech}
+            </span>
+          </p>
+          <p className="text-border">{t.education.ssafy.code.newsseug.award}</p>
+
+          <p className="text-transparent">blank</p>
+
+          <p className="text-keyword">{t.education.ssafy.code.classik.title}</p>
+          <p className="text-transparent">blank</p>
+          <p className="text-border">
+            {t.education.ssafy.code.classik.description}
+          </p>
+          <p>
+            <span className="text-border">
+              {t.education.ssafy.code.classik.builtWithLabel}
+            </span>
+            <span className="text-function">
+              {t.education.ssafy.code.classik.tech}
             </span>
           </p>
         </div>
@@ -87,10 +102,10 @@ export default function Education() {
           <div className="flex items-start justify-between gap-4">
             <div>
               <h3 className="text-highlight text-lg font-semibold">
-                SSAFY 11th
+                {t.education.ssafy.title}
               </h3>
               <p className="text-border text-sm mt-1">
-                Samsung Software Academy For Youth
+                {t.education.ssafy.card.subtitle}
               </p>
             </div>
           </div>
@@ -99,26 +114,33 @@ export default function Education() {
             <div className="flex gap-2">
               <span className="text-border">•</span>
               <p className="text-border">
-                Built web services with{" "}
-                <span className="text-type">Python</span>,{" "}
-                <span className="text-type">JavaScript</span>,{" "}
-                <span className="text-type">Django</span>,{" "}
-                <span className="text-type">Vue.js</span>.
+                {t.education.ssafy.card.bullets.b1Before}
+                {t.education.ssafy.card.bullets.b1Tech.map((tech, idx, arr) => (
+                  <span key={tech} className="text-type">
+                    {tech}
+                    {idx < arr.length - 1 ? ", " : ""}
+                  </span>
+                ))}
+                {t.education.ssafy.card.bullets.b1After}
               </p>
             </div>
 
             <div className="flex gap-2">
               <span className="text-border">•</span>
               <p className="text-border">
-                Strengthened problem-solving through{" "}
-                <span className="text-function">algorithm practice</span> and
-                collaboration in an industry-like environment.
+                {t.education.ssafy.card.bullets.b2Before}
+                <span className="text-function">
+                  {t.education.ssafy.card.bullets.b2Highlight}
+                </span>
+                {t.education.ssafy.card.bullets.b2After}
               </p>
             </div>
           </div>
 
           <div className="mt-5">
-            <p className="text-highlight text-sm mb-2">Highlights</p>
+            <p className="text-highlight text-sm mb-2">
+              {t.education.ssafy.card.highlightsTitle}
+            </p>
 
             <div className="flex flex-wrap gap-2">
               <span
@@ -127,7 +149,7 @@ export default function Education() {
             border border-highlight/10 bg-highlight/5 text-highlight/80
           "
               >
-                JamJam 🏆
+                {t.education.ssafy.card.highlights.jamjam}
               </span>
               <span
                 className="
@@ -135,7 +157,7 @@ export default function Education() {
             border border-highlight/10 bg-highlight/5 text-highlight/80
           "
               >
-                Newsseug 🏆
+                {t.education.ssafy.card.highlights.newsseug}
               </span>
               <span
                 className="
@@ -143,7 +165,7 @@ export default function Education() {
             border border-highlight/10 bg-highlight/5 text-highlight/80
           "
               >
-                C-LASSIK
+                {t.education.ssafy.card.highlights.classik}
               </span>
             </div>
           </div>

@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import formatDate from "../../utils/formatdate";
-import { Icons } from "../../src/icons/index";
-import { SOCIAL_MEDIA } from "../../data/social-media";
-import { firacode_medium } from "../../styles/font";
+import formatDate from "utils/formatdate";
+import { Icons } from "src/icons/index";
+import { SOCIAL_MEDIA } from "data/social-media";
+import { useLang } from "../LangProvider";
+import { getDict } from "data/i18n";
 
 export default function ContactMe() {
+  const lang = useLang();
+  const t = getDict(lang);
   const [isContactOpen, setIsContactOpen] = useState<boolean>(false);
   const [isFindOpen, setIsFindOpen] = useState<boolean>(false);
   const [name, setName] = useState<string>("");
@@ -244,20 +247,17 @@ export default function ContactMe() {
           <div className="flex flex-col items-center w-full flex-1 min-h-0 lg:border-r-[0.5px] border-border overflow-y-auto">
             {submitStatus === "success" ? (
               <div className="flex flex-1 flex-col items-center justify-center w-full gap-3">
-                <h3
-                  className={`text-[20px] text-highlight ${firacode_medium.className}`}
-                >
-                  Thank you! 👽
+                <h3 className={`text-[20px] text-highlight font-bold`}>
+                  {t.contact_me.success.h3}
                 </h3>
                 <p className="text-[14px] text-border w-full max-w-[350px] text-center">
-                  Your message has been accepted. You will receive answer really
-                  soon!
+                  {t.contact_me.success.p}
                 </p>
                 <button
                   onClick={() => setSubmitStatus("idle")}
                   className="p-2 bg-submit-bg cursor-pointer hover:bg-border active:bg-submit-bg-active text-highlight rounded-[8px] !duration-150 ease-in-out"
                 >
-                  send-new-message
+                  {t.contact_me.success.button}
                 </button>
               </div>
             ) : (
@@ -332,8 +332,8 @@ ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
         ${submitStatus === "submitting" ? "opacity-60 cursor-not-allowed hover:bg-submit-bg" : ""}`}
                   >
                     {submitStatus === "submitting"
-                      ? "sending..."
-                      : "submit-message"}
+                      ? t.contact_me.submits.sending
+                      : t.contact_me.submits.submit}
                   </button>
 
                   {submitStatus === "error" ? (
@@ -437,17 +437,21 @@ ease-in-out focus:border-border focus:border-[2px] outline-none rounded-[8px]"
   );
 }
 
-const FindLinks = () => (
-  <div className="text-border flex flex-col p-[15px] gap-[8px]">
-    {SOCIAL_MEDIA.map((sns) => (
-      <a
-        key={sns.name}
-        href={sns.url}
-        className="flex items-center gap-2 hover:underline"
-      >
-        <Icons.Link className="w-[14px] h-[14px] fill-border" />
-        <span className="text-border">{sns.description}</span>
-      </a>
-    ))}
-  </div>
-);
+const FindLinks = () => {
+  const lang = useLang();
+  const t = getDict(lang);
+  return (
+    <div className="text-border flex flex-col p-[15px] gap-[8px]">
+      {SOCIAL_MEDIA.map((sns) => (
+        <a
+          key={sns.id}
+          href={sns.url}
+          className="flex items-center gap-2 hover:underline"
+        >
+          <Icons.Link className="w-[14px] h-[14px] fill-border" />
+          <span className="text-border">{t.contact.social[sns.id]}</span>
+        </a>
+      ))}
+    </div>
+  );
+};
