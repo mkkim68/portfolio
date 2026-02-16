@@ -66,6 +66,7 @@ export const ko = {
       code: {
         header: "# SSAFY 11기",
         programLine: "- 삼성 주관 집중 소프트웨어 개발 교육 프로그램",
+        studiedBefore: "",
         studiedTech: "**Python, JavaScript, Django, Vue.js**",
         studiedAfter:
           " 등을 학습하고 알고리즘 및 팀 프로젝트를 통해 문제 해결 역량을 강화함",
