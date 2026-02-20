@@ -90,7 +90,7 @@ export const PROJECTS: ProjectsByLang = {
       title: "JamJam",
       summary: "// _위치_기반_실시간_미팅_게임",
       description:
-        "WebRTC와 WebSocket을 활용해 참가자 간 음성 통신과 상호작용을 지원하는 실시간 미팅 서비스로, 라이브 오디오 스트리밍과 상태 동기화, 인터랙티브 UI 피드백을 제공합니다.",
+        "WebRTC, WebSocket을 활용해 참가자 간 음성 통신과 상호작용을 지원하는 실시간 미팅 서비스로, 모임 참가자들의 위치를 기반으로 최적의 중심 장소를 찾고 게임 요소를 통해 모임 장소를 변경하는 기능을 제공합니다. 중심 장소 찾기와 게임을 통한 장소 변경으로 모임의 편의성과 재미를 모두 제공합니다.",
       techs: [
         "React",
         "Javascript",
@@ -106,7 +106,7 @@ export const PROJECTS: ProjectsByLang = {
       title: "뉴쓱(Newsseug)",
       summary: "// _숏폼_뉴스_플랫폼",
       description:
-        "뉴스 소비 경험을 개선하기 위해 영상형 숏폼 콘텐츠로 기사를 제공하는 뉴스 플랫폼으로, 간단한 인터랙션 기능을 통해 사용자 참여를 유도합니다.",
+        "뉴스 소비 경험을 개선하기 위해 영상형 숏폼 콘텐츠로 기사를 제공하는 뉴스 플랫폼입니다. 사용자들은 간단한 숏폼 영상으로 최신 뉴스를 빠르게 확인하고, 접근성을 높인 인터페이스를 통해 다양한 뉴스를 소비할 수 있습니다.",
       techs: [
         "React",
         "Typescript",
@@ -123,18 +123,18 @@ export const PROJECTS: ProjectsByLang = {
     },
     {
       title: "C-LASSIK",
-      summary: "// _다중_감각_음악_스트리밍",
+      summary: "// _유니버셜_디자인_음악_스트리밍",
       description:
-        "오디오 재생과 시각·촉각 피드백을 결합해 클래식 음악 감상을 확장하는 안드로이드 기반의 멀티센서리 음악 스트리밍 애플리케이션으로, 선택적으로 VR 기기 연동을 지원합니다.",
+        "C-LASSIK은 공감각적 클래식 음악 감상을 위한 안드로이드 기반 음악 스트리밍 애플리케이션으로, 선택적으로 VR 기기 연동을 지원합니다. 청각, 시각, 촉각을 사용하여 비장애인뿐만 아니라 청각장애인도 음악을 즐길 수 있도록 유니버셜 컨텐츠를 제공합니다.",
       techs: ["Kotlin", "Jetpack Compose"],
       github: "https://github.com/mkkim68/C-LASSIK",
       image: "/imgs/classik.png",
     },
     {
       title: "Portfolio",
-      summary: "// _인터랙티브_포트폴리오",
+      summary: "// _반응형_포트폴리오",
       description:
-        "프로젝트와 기술 스택, 디자인 감각을 효과적으로 보여주기 위해 제작한 인터랙티브 포트폴리오 웹사이트로, 부드러운 UI 인터랙션과 테마 전환, 프론트엔드 아키텍처에 중점을 두었습니다.",
+        "프로젝트와 기술 스택, 디자인 감각을 효과적으로 보여주기 위해 제작한 반응형 포트폴리오 웹사이트로, 부드러운 UI 인터랙션과 테마 전환, 프론트엔드 아키텍처에 중점을 두었습니다.",
       techs: ["Next.js", "React", "Typescript", "Tailwind CSS"],
       github: "https://github.com/mkkim68/portfolio",
       image: "/imgs/portfolio.png",

@@ -67,7 +67,7 @@ export const EXPERIENCES: ExperiencesByLang = {
       descriptions: [
         "전공 기초 과목을 통해 Python, 웹 프로그래밍(HTML), 객체지향 프로그래밍, C++ 등 프로그래밍 기초를 학습했습니다.",
         "웹·파이썬 수업의 텀프로젝트로 Pygame 기반의 간단한 게임을 구현한 경험이 있습니다.",
-        "'Adventure Design' 과목에서 3D 모델링, 회로 설계, C 기반 동작 구현까지 포함한 아두이노 프로젝트를 완성해 분반 2등을 기록했습니다.",
+        "'Adventure Design' 과목에서 3D 모델링, 회로 설계, C 기반 동작 구현까지 포함한 아두이노 프로젝트를 완성했습니다.",
       ],
       period: {
         start: "2019.03",
@@ -90,7 +90,7 @@ export const EXPERIENCES: ExperiencesByLang = {
     },
     {
       id: "goorm",
-      name: "풀스택 웹 개발 부트캠프",
+      name: "풀스택 웹 개발 국비 프로그램",
       institute: "구름(goorm)",
       descriptions: [
         "TypeScript, React, Java, Spring을 중심으로 풀스택 개발 역량을 학습하고 있습니다.",

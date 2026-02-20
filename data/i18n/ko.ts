@@ -36,7 +36,7 @@ export const ko = {
   bio: {
     introduction: {
       p1Lines: [
-        "안녕하세요, 한국을 기반으로 활동하는 프론트엔드 개발자 김민경입니다.",
+        "안녕하세요, 프론트엔드 개발자 김민경입니다.",
         "전자공학을 전공하며 처음 프로그래밍을 접했고, 전공 기초 과목을 통해",
         "코드로 문제를 해결하는 경험을 쌓기 시작했습니다. 커리큘럼은 주로",
         "하드웨어 중심이었지만, 저는 점점 회로보다 소프트웨어의 논리와",
@@ -47,7 +47,7 @@ export const ko = {
       ],
       p2Lines: [
         "이후 개발자로서의 전문성을 키우기 위해 집중적인 학습과",
-        "개발자 부트캠프 과정을 거치며 웹 개발과 프론트엔드 엔지니어링에 대한",
+        "개발자 부트캠프 과정을 거치며 웹 개발과 프론트엔드에 대한",
         "실무 경험을 쌓았습니다. 아이디어를 실제로 동작하는 인터랙션과",
         "구조화된 UI로 구현하는 과정을 즐기며,",
         "유지보수성과 확장성을 고려한 인터페이스를 만들기 위해",
@@ -73,21 +73,21 @@ export const ko = {
         projectsHeader: "## 프로젝트",
         jamjam: {
           title: "### JamJam",
-          description: "- 실시간 회의 서비스",
+          description: "- 실시간 회의를 접목시킨 모임 장소 찾기 서비스",
           builtWithLabel: "- 기술: ",
           tech: "_JavaScript, React, Styled-components, Recoil_",
           award: "- 🏆 수상 프로젝트",
         },
         newsseug: {
           title: "### Newsseug",
-          description: "- 숏폼 뉴스 플랫폼",
+          description: "- 뉴스 기사를 숏폼으로 제공하는 플랫폼",
           builtWithLabel: "- 기술: ",
           tech: "_TypeScript, React, Redux, React-Query, Styled-components_",
           award: "- 🏆 수상 프로젝트",
         },
         classik: {
           title: "### C-LASSIK",
-          description: "- 멀티센서리 음악 스트리밍 앱",
+          description: "- 유니버셜 디자인을 적용한 클래식 음악 스트리밍 앱",
           builtWithLabel: "- 기술: ",
           tech: "_Kotlin, Android Studio, Jetpack Compose_",
         },
